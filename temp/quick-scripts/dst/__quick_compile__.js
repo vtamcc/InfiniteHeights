@@ -1,6 +1,6 @@
 
 (function () {
-var scripts = [{"deps":{},"path":"preview-scripts/__qc_index__.js"}];
+var scripts = [{"deps":{"./assets/InfiniteHeights/scripts/GameManager":1},"path":"preview-scripts/__qc_index__.js"},{"deps":{},"path":"preview-scripts/assets/InfiniteHeights/scripts/GameManager.js"}];
 var entries = ["preview-scripts/__qc_index__.js"];
 var bundleScript = 'preview-scripts/__qc_bundle__.js';
 

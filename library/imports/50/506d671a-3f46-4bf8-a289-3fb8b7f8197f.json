@@ -1,0 +1,28 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "btn_restart-sheet0",
+    "texture": "b05a2dd0-3f09-4b33-b377-91c420b24fe2",
+    "atlas": "",
+    "rect": [
+      0,
+      0,
+      135,
+      136
+    ],
+    "offset": [
+      0,
+      0
+    ],
+    "originalSize": [
+      135,
+      136
+    ],
+    "capInsets": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}

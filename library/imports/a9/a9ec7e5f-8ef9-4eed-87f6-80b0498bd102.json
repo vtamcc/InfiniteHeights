@@ -1,0 +1,28 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "btn_play-sheet0",
+    "texture": "c31cccb8-c8a4-4d27-a508-bc95d8483f92",
+    "atlas": "",
+    "rect": [
+      0,
+      0,
+      135,
+      136
+    ],
+    "offset": [
+      0,
+      0
+    ],
+    "originalSize": [
+      135,
+      136
+    ],
+    "capInsets": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}
