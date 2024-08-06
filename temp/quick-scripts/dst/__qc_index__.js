@@ -10,7 +10,9 @@
                     };
                     function __define (exports, require, module) {
                         if (!nodeEnv) {__quick_compile_project__.registerModule(__filename, module);}
-require('./assets/InfiniteHeights/scripts/GameManager');
+require('./assets/InfiniteHeights/scripts/Game/InfiniteHeights.GameView');
+require('./assets/InfiniteHeights/scripts/Game/InfiniteHeights.ObstacleManager');
+require('./assets/InfiniteHeights/scripts/InfiniteHeights.GameManager');
 
                     }
                     if (nodeEnv) {

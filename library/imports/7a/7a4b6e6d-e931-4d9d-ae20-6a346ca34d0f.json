@@ -1,0 +1,28 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "ob_7-sheet0",
+    "texture": "d6f7aa3a-51ca-4029-a9a9-ebaf18c31b3f",
+    "atlas": "",
+    "rect": [
+      0,
+      0,
+      340,
+      423
+    ],
+    "offset": [
+      -86,
+      44.5
+    ],
+    "originalSize": [
+      512,
+      512
+    ],
+    "capInsets": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}

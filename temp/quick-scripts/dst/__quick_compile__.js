@@ -1,6 +1,6 @@
 
 (function () {
-var scripts = [{"deps":{"./assets/InfiniteHeights/scripts/GameManager":1},"path":"preview-scripts/__qc_index__.js"},{"deps":{},"path":"preview-scripts/assets/InfiniteHeights/scripts/GameManager.js"}];
+var scripts = [{"deps":{"./assets/InfiniteHeights/scripts/InfiniteHeights.GameManager":1,"./assets/InfiniteHeights/scripts/Game/InfiniteHeights.ObstacleManager":3,"./assets/InfiniteHeights/scripts/Game/InfiniteHeights.GameView":2},"path":"preview-scripts/__qc_index__.js"},{"deps":{},"path":"preview-scripts/assets/InfiniteHeights/scripts/InfiniteHeights.GameManager.js"},{"deps":{"./InfiniteHeights.ObstacleManager":3},"path":"preview-scripts/assets/InfiniteHeights/scripts/Game/InfiniteHeights.GameView.js"},{"deps":{},"path":"preview-scripts/assets/InfiniteHeights/scripts/Game/InfiniteHeights.ObstacleManager.js"}];
 var entries = ["preview-scripts/__qc_index__.js"];
 var bundleScript = 'preview-scripts/__qc_bundle__.js';
 

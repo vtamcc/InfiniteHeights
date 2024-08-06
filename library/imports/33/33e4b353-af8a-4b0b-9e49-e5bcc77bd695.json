@@ -1,0 +1,28 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "ob_1-sheet0",
+    "texture": "66b75048-9147-416d-a30e-420f08e502d6",
+    "atlas": "",
+    "rect": [
+      0,
+      0,
+      287,
+      288
+    ],
+    "offset": [
+      0,
+      0
+    ],
+    "originalSize": [
+      287,
+      288
+    ],
+    "capInsets": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}
