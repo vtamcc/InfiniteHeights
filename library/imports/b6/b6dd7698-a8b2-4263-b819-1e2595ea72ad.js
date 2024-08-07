@@ -36,44 +36,62 @@ var GameView = /** @class */ (function (_super) {
     function GameView() {
         var _this = _super !== null && _super.apply(this, arguments) || this;
         _this.nObstacle = null;
+        _this.nObstacle_2 = null;
         _this.listPrfObstacle = [];
-        _this.nbg1 = null;
-        _this.nbg2 = null;
+        _this.prfBackGround = null;
+        _this.nBgGame = null;
+        _this.isFirstTouch = false;
         return _this;
+        // genBackGround() {
+        //     console.log("sadasd");
+        //     let bg = cc.instantiate(this.prfBackGround).getComponent(BackGround).node
+        //     bg.y = 1900;
+        //     this.nBgGame.addChild(bg);
+        // }
     }
+    GameView_1 = GameView;
     // LIFE-CYCLE CALLBACKS:
     GameView.prototype.onLoad = function () {
+        GameView_1.instance = this;
         this.test();
+        this.genObstacle_2();
+        this.node.on(cc.Node.EventType.TOUCH_START, this.onTouchBegan, this);
     };
     GameView.prototype.start = function () {
     };
     GameView.prototype.test = function () {
-        var test = cc.instantiate(this.listPrfObstacle[0]).getComponent(InfiniteHeights_ObstacleManager_1.default);
-        this.nObstacle.addChild(test.node);
-    };
-    GameView.prototype.update = function (dt) {
-        this.nbg1.y = this.nbg1.y - 1;
-        this.nbg2.y = this.nbg2.y - 1;
-        if (this.nbg1.y <= -this.nbg1.height) {
-            this.nbg1.y = this.nbg2.y + this.nbg1.height;
-        }
-        if (this.nbg2.y <= -this.nbg1.height) {
-            this.nbg2.y = this.nbg1.y + this.nbg1.height;
+        for (var i = 0; i < 2; i++) {
+            var test = cc.instantiate(this.listPrfObstacle[i]).getComponent(InfiniteHeights_ObstacleManager_1.default).node;
+            test.y = 300 + i * 600;
+            this.nObstacle.addChild(test);
         }
     };
+    GameView.prototype.onTouchBegan = function () {
+        this.isFirstTouch = true;
+        console.log("sdasdasd");
+    };
+    GameView.prototype.genObstacle_2 = function () {
+        var obstracle = cc.instantiate(this.listPrfObstacle[5]).getComponent(InfiniteHeights_ObstacleManager_1.default).node;
+        this.nObstacle_2.addChild(obstracle);
+    };
+    var GameView_1;
+    GameView.instance = null;
     __decorate([
         property(cc.Node)
     ], GameView.prototype, "nObstacle", void 0);
     __decorate([
+        property(cc.Node)
+    ], GameView.prototype, "nObstacle_2", void 0);
+    __decorate([
         property(cc.Prefab)
     ], GameView.prototype, "listPrfObstacle", void 0);
     __decorate([
-        property(cc.Node)
-    ], GameView.prototype, "nbg1", void 0);
+        property(cc.Prefab)
+    ], GameView.prototype, "prfBackGround", void 0);
     __decorate([
         property(cc.Node)
-    ], GameView.prototype, "nbg2", void 0);
-    GameView = __decorate([
+    ], GameView.prototype, "nBgGame", void 0);
+    GameView = GameView_1 = __decorate([
         ccclass
     ], GameView);
     return GameView;

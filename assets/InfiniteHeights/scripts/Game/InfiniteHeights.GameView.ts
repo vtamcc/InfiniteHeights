@@ -5,48 +5,67 @@
 // Learn life-cycle callbacks:
 //  - https://docs.cocos.com/creator/manual/en/scripting/life-cycle-callbacks.html
 
+import BackGround from "./InfiniteHeights.BackGround";
 import obstacleManager from "./InfiniteHeights.ObstacleManager";
 
-const {ccclass, property} = cc._decorator;
+const { ccclass, property } = cc._decorator;
 
 @ccclass
 export default class GameView extends cc.Component {
 
+    public static instance: GameView = null;
     @property(cc.Node)
     nObstacle: cc.Node = null;
-
+    @property(cc.Node)
+    nObstacle_2: cc.Node = null;
     @property(cc.Prefab)
-    listPrfObstacle: cc.Prefab [] = [];
+    listPrfObstacle: cc.Prefab[] = [];
+    @property(cc.Prefab)
+    prfBackGround: cc.Prefab = null;
+    @property(cc.Node)
+    nBgGame: cc.Node = null;
 
-    @property(cc.Node)
-    nbg1: cc.Node = null;
- 
-    @property(cc.Node)
-    nbg2: cc.Node = null;
+    isFirstTouch = false;
     // LIFE-CYCLE CALLBACKS:
 
-    onLoad () {
+    onLoad() {
+        
+        GameView.instance = this;
         this.test();
+        this.genObstacle_2();
+        this.node.on(cc.Node.EventType.TOUCH_START,this.onTouchBegan, this);
+       
     }
 
-    start () {
+    start() {
 
     }
 
-    test(){
-        let test = cc.instantiate(this.listPrfObstacle[0]).getComponent(obstacleManager);
-        this.nObstacle.addChild(test.node);
-    }
-    update (dt) {
-        this.nbg1.y = this.nbg1.y - 1;
-        this.nbg2.y = this.nbg2.y - 1;
-        if(this.nbg1.y <= -this.nbg1.height) {
-            this.nbg1.y = this.nbg2.y + this.nbg1.height;
+    test() {
+        for(let i = 0; i < 2; i++) {
+            let test = cc.instantiate(this.listPrfObstacle[i]).getComponent(obstacleManager).node;
+            test.y = 300 + i * 600;
+            this.nObstacle.addChild(test);
         }
-
-        if(this.nbg2. y <= -this.nbg1.height) {
-            this.nbg2.y = this.nbg1.y + this.nbg1.height;
-        }
-
+        
     }
+
+    onTouchBegan() {
+        this.isFirstTouch = true;
+        console.log("sdasdasd")
+    }
+
+    genObstacle_2() {
+        let obstracle = cc.instantiate(this.listPrfObstacle[5]).getComponent(obstacleManager).node;
+        this.nObstacle_2.addChild(obstracle);
+    }
+
+    // genBackGround() {
+    //     console.log("sadasd");
+    //     let bg = cc.instantiate(this.prfBackGround).getComponent(BackGround).node
+    //     bg.y = 1900;
+
+    //     this.nBgGame.addChild(bg);
+
+    // }
 }
