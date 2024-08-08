@@ -37,12 +37,14 @@ var GameView = /** @class */ (function (_super) {
     function GameView() {
         var _this = _super !== null && _super.apply(this, arguments) || this;
         _this.nObstacle = null;
-        _this.nObstacle_2 = null;
+        // @property(cc.Node)
+        // nObstacle_2: cc.Node = null;
         _this.listPrfObstacle = [];
         _this.prfBackGround = null;
         _this.nBgGame = null;
         _this.prfBallon = null;
         _this.nBallon = null;
+        _this.listBg = [];
         _this.isFirstTouch = false;
         _this.ballon = null;
         return _this;
@@ -57,19 +59,31 @@ var GameView = /** @class */ (function (_super) {
     // LIFE-CYCLE CALLBACKS:
     GameView.prototype.onLoad = function () {
         GameView_1.instance = this;
-        this.test();
-        this.genObstacle_2();
+        //this.createObstacle();
+        //this.genObstacle_2();
         this.ballon = cc.instantiate(this.prfBallon).getComponent(InfiniteHeights_Ballon_1.default).node;
+        this.ballon.y = -500;
         this.nBallon.addChild(this.ballon);
+        this.genObstacle();
         this.node.on(cc.Node.EventType.TOUCH_START, this.onTouchStart, this);
     };
     GameView.prototype.start = function () {
     };
-    GameView.prototype.test = function () {
+    GameView.prototype.createObstacle = function (node) {
         for (var i = 0; i < 2; i++) {
-            var test = cc.instantiate(this.listPrfObstacle[i]).getComponent(InfiniteHeights_ObstacleManager_1.default).node;
-            test.y = 300 + i * 600;
-            this.nObstacle.addChild(test);
+            var index = Math.floor(Math.random() * this.listPrfObstacle.length);
+            var obstacle = cc.instantiate(this.listPrfObstacle[index]);
+            var obstacleComponent = obstacle.getComponent(InfiniteHeights_ObstacleManager_1.default);
+            if (obstacleComponent) {
+                obstacle = obstacleComponent.node;
+            }
+            obstacle.y = -340 + i * 680;
+            node.addChild(obstacle);
+        }
+    };
+    GameView.prototype.genObstacle = function () {
+        for (var i = 0; i < this.listBg.length; i++) {
+            this.createObstacle(this.listBg[i]);
         }
     };
     GameView.prototype.onTouchStart = function () {
@@ -89,10 +103,6 @@ var GameView = /** @class */ (function (_super) {
             .by(0.2, { y: -80 })
             .start();
     };
-    GameView.prototype.genObstacle_2 = function () {
-        var obstracle = cc.instantiate(this.listPrfObstacle[8]).getComponent(InfiniteHeights_ObstacleManager_1.default).node;
-        this.nObstacle_2.addChild(obstracle);
-    };
     GameView.prototype.gameOver = function () {
         console.log("Thua con me may roi ");
     };
@@ -106,9 +116,6 @@ var GameView = /** @class */ (function (_super) {
     __decorate([
         property(cc.Node)
     ], GameView.prototype, "nObstacle", void 0);
-    __decorate([
-        property(cc.Node)
-    ], GameView.prototype, "nObstacle_2", void 0);
     __decorate([
         property(cc.Prefab)
     ], GameView.prototype, "listPrfObstacle", void 0);
@@ -124,6 +131,9 @@ var GameView = /** @class */ (function (_super) {
     __decorate([
         property(cc.Node)
     ], GameView.prototype, "nBallon", void 0);
+    __decorate([
+        property(cc.Node)
+    ], GameView.prototype, "listBg", void 0);
     GameView = GameView_1 = __decorate([
         ccclass
     ], GameView);

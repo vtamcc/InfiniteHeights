@@ -24,10 +24,7 @@ export default class obstacleManager extends cc.Component {
     // LIFE-CYCLE CALLBACKS:
 
     onLoad() {
-        if (this.idPrf == 1) {
-            console.log("Node: ", this.listNode);
-        }
-
+        
     }
 
     start() {

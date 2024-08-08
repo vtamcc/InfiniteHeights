@@ -74,3 +74,5 @@
 2024-08-08T01:45:29.475Z - normal: Watching packages
 2024-08-08T01:45:29.716Z - normal: Run Application
 2024-08-08T01:45:35.252Z - success: cloud-function unloaded
+2024-08-08T09:08:16.740Z - info: Only the prefab node "obstacle_2" and its child nodes are saved.
+2024-08-08T09:09:57.407Z - info: Only the prefab node "obstacle_2" and its child nodes are saved.

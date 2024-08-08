@@ -25,27 +25,31 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 Object.defineProperty(exports, "__esModule", { value: true });
 var InfiniteHeights_GameView_1 = require("./InfiniteHeights.GameView");
 var _a = cc._decorator, ccclass = _a.ccclass, property = _a.property;
-var NewClass = /** @class */ (function (_super) {
-    __extends(NewClass, _super);
-    function NewClass() {
+var Collider = /** @class */ (function (_super) {
+    __extends(Collider, _super);
+    function Collider() {
         return _super !== null && _super.apply(this, arguments) || this;
     }
-    NewClass.prototype.onLoad = function () {
+    Collider.prototype.onLoad = function () {
         cc.director.getCollisionManager().enabled = true;
         cc.director.getCollisionManager().enabledDebugDraw = true;
     };
-    NewClass.prototype.start = function () {
+    Collider.prototype.start = function () {
     };
-    NewClass.prototype.onCollisionEnter = function (other, self) {
-        if (other.node.group === 'bongbay') {
-            InfiniteHeights_GameView_1.default.instance.gameOver(); // Gọi hàm gameOver từ GameView
+    Collider.prototype.onCollisionEnter = function (other, self) {
+        if (other.tag == 2) {
+            InfiniteHeights_GameView_1.default.instance.gameOver();
         }
+        // if(other.tag === 1) {
+        //     console.log("kim cuong")
+        //     other.node.destroy();
+        // } 
     };
-    NewClass = __decorate([
+    Collider = __decorate([
         ccclass
-    ], NewClass);
-    return NewClass;
+    ], Collider);
+    return Collider;
 }(cc.Component));
-exports.default = NewClass;
+exports.default = Collider;
 
 cc._RF.pop();

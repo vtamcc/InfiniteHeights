@@ -40,29 +40,32 @@ var BackGround = /** @class */ (function (_super) {
         return _this;
     }
     // LIFE-CYCLE CALLBACKS:
-    // onLoad () {}
+    BackGround.prototype.onLoad = function () {
+    };
     BackGround.prototype.start = function () {
     };
     BackGround.prototype.update = function (dt) {
         if (!InfiniteHeights_GameView_1.default.instance.isFirstTouch) {
             return;
         }
-        if (this.node.y <= -1600) {
+        if (this.node.y <= -1280) {
             this.resetPos();
+            this.destroyObstacle();
+            InfiniteHeights_GameView_1.default.instance.createObstacle(this.node);
             if (this.idBg == 3) {
                 this.node.destroy();
-            }
-        }
-        if (!this.isAdd) {
-            if (this.node.y === 640) {
-                console.log("sadasd");
-                this.isAdd = true;
             }
         }
         this.node.y -= 2;
     };
     BackGround.prototype.resetPos = function () {
-        this.node.y = 1280;
+        this.node.y = 2560;
+        this.isAdd = false;
+    };
+    BackGround.prototype.destroyObstacle = function () {
+        for (var i = 0; i < this.node.childrenCount; i++) {
+            this.node.children[i].destroy();
+        }
     };
     __decorate([
         property

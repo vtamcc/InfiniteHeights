@@ -44,9 +44,6 @@ var obstacleManager = /** @class */ (function (_super) {
     }
     // LIFE-CYCLE CALLBACKS:
     obstacleManager.prototype.onLoad = function () {
-        if (this.idPrf == 1) {
-            console.log("Node: ", this.listNode);
-        }
     };
     obstacleManager.prototype.start = function () {
     };

@@ -18,7 +18,9 @@ export default class BackGround extends cc.Component {
    idBg: number = 0;
     // LIFE-CYCLE CALLBACKS:
 
-    // onLoad () {}
+    onLoad () {
+        
+    }
 
     start () {
 
@@ -29,26 +31,30 @@ export default class BackGround extends cc.Component {
             return;
         }
             
-        if(this.node.y <= -1600) {
+        if(this.node.y <= -1280) {
             this.resetPos();
-
+         
+            this.destroyObstacle();
+            GameView.instance.createObstacle(this.node);
             if(this.idBg == 3) {
                 this.node.destroy();
             }
         }
 
 
-        if(!this.isAdd) {
-            if(this.node.y === 640) {
-                console.log("sadasd")
-                this.isAdd = true;
-            }
-        }
+       
 
         this.node.y -= 2;
     }
 
     resetPos() {
-        this.node.y = 1280;
+        this.node.y = 2560;
+        this.isAdd = false;
+    }
+
+    destroyObstacle() {
+        for(let i = 0; i < this.node.childrenCount; i++) {
+            this.node.children[i].destroy();
+        }
     }
 }

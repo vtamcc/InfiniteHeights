@@ -6,7 +6,9 @@
   "group-list": [
     "default",
     "vatcan",
-    "bongbay"
+    "bongbay",
+    "kimcuong",
+    ""
   ],
   "collision-matrix": [
     [
@@ -20,6 +22,20 @@
     [
       false,
       true,
+      false,
+      true
+    ],
+    [
+      false,
+      false,
+      true,
+      false
+    ],
+    [
+      false,
+      false,
+      false,
+      false,
       false
     ]
   ],
