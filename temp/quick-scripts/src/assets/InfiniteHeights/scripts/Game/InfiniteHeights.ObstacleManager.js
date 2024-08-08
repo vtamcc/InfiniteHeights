@@ -36,7 +36,7 @@ var obstacleManager = /** @class */ (function (_super) {
         var _this = _super !== null && _super.apply(this, arguments) || this;
         _this.idPrf = 0;
         _this.speed = 150;
-        _this.speedAngle = 100;
+        _this.speedAngle = 70;
         _this.listNode = [];
         _this.angle = 0;
         _this.isMovingRight = true;
@@ -103,7 +103,7 @@ var obstacleManager = /** @class */ (function (_super) {
                     }
                 }
                 break;
-            case 3:
+            case 2:
                 if (this.listNode.length >= 2) {
                     var node1 = this.listNode[0];
                     var node2 = this.listNode[1];
@@ -123,7 +123,7 @@ var obstacleManager = /** @class */ (function (_super) {
                     }
                 }
                 break;
-            case 4:
+            case 3:
                 if (this.listNode.length >= 3) {
                     var node1 = this.listNode[0];
                     var node2 = this.listNode[1];
@@ -146,7 +146,7 @@ var obstacleManager = /** @class */ (function (_super) {
                     }
                 }
                 break;
-            case 5:
+            case 4:
                 if (this.listNode.length) {
                     var node_1 = this.listNode[0];
                     if (node_1) {
@@ -165,7 +165,7 @@ var obstacleManager = /** @class */ (function (_super) {
                     }
                 }
                 break;
-            case 6:
+            case 5:
                 if (this.listNode.length >= 2) {
                     var node1 = this.listNode[0];
                     var node2 = this.listNode[1];
@@ -186,6 +186,24 @@ var obstacleManager = /** @class */ (function (_super) {
                     if (node2.angle < 0) {
                         node2.angle += 360;
                     }
+                }
+                break;
+            case 6:
+                if (this.listNode.length) {
+                    var node_2 = this.listNode[0];
+                    node_2.angle += this.speedAngle * dt;
+                }
+                break;
+            case 7:
+                if (this.listNode.length) {
+                    var node_3 = this.listNode[0];
+                    node_3.angle += this.speedAngle * dt;
+                }
+                break;
+            case 8:
+                if (this.listNode.length) {
+                    var node_4 = this.listNode[0];
+                    node_4.angle += this.speedAngle * dt;
                 }
                 break;
             default:

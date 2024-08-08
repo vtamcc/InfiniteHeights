@@ -5,6 +5,8 @@
 // Learn life-cycle callbacks:
 //  - https://docs.cocos.com/creator/manual/en/scripting/life-cycle-callbacks.html
 
+import GameView from "./InfiniteHeights.GameView";
+
 const { ccclass, property } = cc._decorator;
 
 @ccclass
@@ -13,7 +15,7 @@ export default class obstacleManager extends cc.Component {
     @property
     idPrf: number = 0;
     speed: number = 150;
-    speedAngle = 100
+    speedAngle = 70;
     @property(cc.Node)
     listNode: cc.Node[] = [];
     angle = 0;
@@ -25,6 +27,7 @@ export default class obstacleManager extends cc.Component {
         if (this.idPrf == 1) {
             console.log("Node: ", this.listNode);
         }
+
     }
 
     start() {
@@ -84,7 +87,7 @@ export default class obstacleManager extends cc.Component {
                     }
                 }
                 break;
-            case 3:
+            case 2:
                 if (this.listNode.length >= 2) {
                     let node1 = this.listNode[0];
                     let node2 = this.listNode[1];
@@ -104,7 +107,7 @@ export default class obstacleManager extends cc.Component {
                     }
                 }
                 break;
-            case 4:
+            case 3:
                 if (this.listNode.length >= 3) {
                     let node1 = this.listNode[0];
                     let node2 = this.listNode[1];
@@ -127,7 +130,7 @@ export default class obstacleManager extends cc.Component {
                     }
                 }
                 break;
-            case 5:
+            case 4:
                 if (this.listNode.length) {
                     let node = this.listNode[0];
                     if (node) {
@@ -147,17 +150,17 @@ export default class obstacleManager extends cc.Component {
 
                 }
                 break;
-            case 6:
+            case 5:
                 if (this.listNode.length >= 2) {
                     let node1 = this.listNode[0];
                     let node2 = this.listNode[1];
-    
+
                     // Tăng giá trị góc quay dựa trên thời gian và tốc độ
                     node1.angle += this.speedAngle * dt;
-    
+
                     // Giảm giá trị góc quay của node2 để nó quay ngược lại
                     node2.angle -= this.speedAngle * dt;
-    
+
                     // Giới hạn giá trị góc quay trong khoảng 0 đến 360 độ
                     if (node1.angle >= 360) {
                         node1.angle -= 360;
@@ -165,7 +168,7 @@ export default class obstacleManager extends cc.Component {
                     if (node2.angle >= 360) {
                         node2.angle -= 360;
                     }
-    
+
                     if (node1.angle < 0) {
                         node1.angle += 360;
                     }
@@ -174,7 +177,28 @@ export default class obstacleManager extends cc.Component {
                     }
                 }
                 break;
+
+            case 6:
+                if (this.listNode.length) {
+                    let node = this.listNode[0];
+                    node.angle += this.speedAngle * dt;
+                }
+                break;
+            case 7:
+                if (this.listNode.length) {
+                    let node = this.listNode[0];
+                    node.angle += this.speedAngle * dt;
+                }
+                break;
+
+            case 8:
+                if (this.listNode.length) {
+                    let node = this.listNode[0];
+                    node.angle += this.speedAngle * dt;
+                }
+                break;
             default:
+
                 break;
         }
     }

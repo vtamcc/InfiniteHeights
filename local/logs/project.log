@@ -1,107 +1,76 @@
-2024-08-07T06:39:23.980Z - success: protocol editor-framework registered
-2024-08-07T06:39:23.982Z - success: protocol app registered
-2024-08-07T06:39:23.982Z - success: protocol theme registered
-2024-08-07T06:39:23.982Z - success: protocol packages registered
-2024-08-07T06:39:24.003Z - normal: Load ~/.CocosCreator/settings.json
-2024-08-07T06:39:24.029Z - success: protocol uuid registerred
-2024-08-07T06:39:24.029Z - success: protocol db registerred
-2024-08-07T06:39:24.029Z - success: protocol thumbnail registerred
-2024-08-07T06:39:24.112Z - normal: Initializing Asset Database
-2024-08-07T06:39:24.115Z - normal: checking language setting...
-2024-08-07T06:39:24.115Z - normal: Language: en
-2024-08-07T06:39:24.118Z - success: protocol unpack registerred
-2024-08-07T06:39:24.118Z - success: protocol disable-commonjs registerred
-2024-08-07T06:39:27.342Z - normal: failed to connect login server due to request timeout
-2024-08-07T06:39:27.357Z - normal: Check project /Users/mac/Documents/WORK/MINIGAME/InfiniteHeights
-2024-08-07T06:39:27.360Z - normal: Initializing project /Users/mac/Documents/WORK/MINIGAME/InfiniteHeights
-2024-08-07T06:39:27.579Z - success: adapters loaded
-2024-08-07T06:39:27.583Z - success: asset-db-debugger loaded
-2024-08-07T06:39:27.654Z - success: fb-audience-network loaded
-2024-08-07T06:39:27.702Z - success: fb-live-stream loaded
-2024-08-07T06:39:27.706Z - success: google-play-instant loaded
-2024-08-07T06:39:27.706Z - success: jsb-adapter loaded
-2024-08-07T06:39:27.727Z - success: package-manager loaded
-2024-08-07T06:39:27.729Z - success: runtime-adapters loaded
-2024-08-07T06:39:27.733Z - success: runtime-dev-tools loaded
-2024-08-07T06:39:27.736Z - success: ui-kit-preview-extra loaded
-2024-08-07T06:39:27.738Z - success: ui-kit-preview loaded
-2024-08-07T06:39:28.584Z - success: alipay-minigame loaded
-2024-08-07T06:39:28.604Z - success: assets loaded
-2024-08-07T06:39:28.608Z - success: baidugame-opendata loaded
-2024-08-07T06:39:28.610Z - success: baidugame loaded
-2024-08-07T06:39:28.613Z - success: builder loaded
-2024-08-07T06:39:28.619Z - success: bytedance-opendata loaded
-2024-08-07T06:39:28.622Z - success: bytedance loaded
-2024-08-07T06:39:28.627Z - success: channel-upload-tools loaded
-2024-08-07T06:39:28.783Z - success: cloud-function loaded
-2024-08-07T06:39:29.013Z - success: cocos-services loaded
-2024-08-07T06:39:29.020Z - success: console loaded
-2024-08-07T06:39:29.022Z - success: curve-editor loaded
-2024-08-07T06:39:29.030Z - success: fb-instant-games loaded
-2024-08-07T06:39:29.033Z - success: game-window loaded
-2024-08-07T06:39:29.034Z - success: google-instant-games loaded
-2024-08-07T06:39:29.038Z - success: hierarchy loaded
-2024-08-07T06:39:29.041Z - success: huawei-agc loaded
-2024-08-07T06:39:29.045Z - success: huawei-runtime loaded
-2024-08-07T06:39:29.048Z - success: inspector loaded
-2024-08-07T06:39:29.068Z - success: cpk-publish loaded
-2024-08-07T06:39:29.070Z - success: keystore loaded
-2024-08-07T06:39:29.091Z - success: link-sure-runtime loaded
-2024-08-07T06:39:29.113Z - success: node-library loaded
-2024-08-07T06:39:29.114Z - success: open-recent-items loaded
-2024-08-07T06:39:29.117Z - success: oppo-runtime loaded
-2024-08-07T06:39:29.118Z - success: package-asset loaded
-2024-08-07T06:39:29.119Z - success: preferences loaded
-2024-08-07T06:39:29.123Z - success: project-importer loaded
-2024-08-07T06:39:29.126Z - success: project-settings loaded
-2024-08-07T06:39:29.139Z - success: qtt-runtime loaded
-2024-08-07T06:39:29.143Z - success: scene loaded
-2024-08-07T06:39:29.144Z - success: simulator-debugger loaded
-2024-08-07T06:39:29.145Z - success: sprite-editor loaded
-2024-08-07T06:39:29.216Z - success: store loaded
-2024-08-07T06:39:29.218Z - success: taobao-creativeapp loaded
-2024-08-07T06:39:29.221Z - success: timeline loaded
-2024-08-07T06:39:29.226Z - success: vivo-runtime loaded
-2024-08-07T06:39:29.228Z - success: wechatgame-opendata loaded
-2024-08-07T06:39:29.232Z - success: wechatgame loaded
-2024-08-07T06:39:29.236Z - success: xiaomi-runtime loaded
-2024-08-07T06:39:29.293Z - success: im-plugin loaded
-2024-08-07T06:39:29.294Z - success: preview server running at http://localhost:7456
-2024-08-07T06:39:31.410Z - normal: Initializing Cocos2d
-2024-08-07T06:39:31.694Z - normal: Initializing engine extends
-2024-08-07T06:39:32.571Z - info: Cocos Service load base data!
-2024-08-07T06:39:33.619Z - normal: Loading packages
-2024-08-07T06:39:33.623Z - normal: Watching packages
-2024-08-07T06:39:33.854Z - normal: Run Application
-2024-08-07T06:39:38.369Z - warn: The Asset used by component "InfiniteHeights.GameView" in prefab "GameView.prefab" is missing. Detailed information:
-Node path: "GameView"
-Asset url: "db://assets/InfiniteHeights/prefab/Game/GameView.prefab"
-Missing uuid: "bd483e17-5dd9-4822-991b-ae98a9aa8adf"
-
-2024-08-07T06:39:38.979Z - success: cloud-function unloaded
-2024-08-07T06:40:05.742Z - warn: The Asset used by component "InfiniteHeights.GameView" in prefab "GameView.prefab" is missing. Detailed information:
-Node path: "GameView"
-Asset url: "db://assets/InfiniteHeights/prefab/Game/GameView.prefab"
-Missing uuid: "bd483e17-5dd9-4822-991b-ae98a9aa8adf"
-
-2024-08-07T06:40:05.802Z - warn: The Asset used by component "InfiniteHeights.GameView" in prefab "GameView.prefab" is missing. Detailed information:
-Node path: "GameView"
-Asset url: "db://assets/InfiniteHeights/prefab/Game/GameView.prefab"
-Missing uuid: "bd483e17-5dd9-4822-991b-ae98a9aa8adf"
-
-2024-08-07T06:40:39.993Z - warn: The Asset used by component "InfiniteHeights.GameView" in prefab "GameView.prefab" is missing. Detailed information:
-Node path: "GameView"
-Asset url: "db://assets/InfiniteHeights/prefab/Game/GameView.prefab"
-Missing uuid: "bd483e17-5dd9-4822-991b-ae98a9aa8adf"
-
-2024-08-07T09:56:52.780Z - failed: [db-task][sync-changes] Exception  Error: ENOENT: no such file or directory, stat '/Users/mac/Documents/WORK/MINIGAME/InfiniteHeights/assets/InfiniteHeights/prefab/Game/obstacle/obstacle_2 - 001.prefab'
-    at statSync (fs.js:1020:3)
-    at Object.e.statSync (electron/js2c/asar_bundle.js:5:4260)
-    at Object.statSync (/Applications/Cocos/Creator/2.4.6/CocosCreator.app/Contents/Resources/app.asar/node_modules/graceful-fs/polyfills.js:312:16)
-    at Object.copySync (/Applications/Cocos/Creator/2.4.6/CocosCreator.app/Contents/Resources/app.asar/node_modules/fire-fs/node_modules/fs-extra/lib/copy-sync/copy-sync.js:21:84)
-    at g (/Applications/Cocos/Creator/2.4.6/CocosCreator.app/Contents/Resources/app.asar/asset-db/lib/tasks.ccc:1:1398)
-    at _ (/Applications/Cocos/Creator/2.4.6/CocosCreator.app/Contents/Resources/app.asar/asset-db/lib/tasks.ccc:1:2429)
-    at /Applications/Cocos/Creator/2.4.6/CocosCreator.app/Contents/Resources/app.asar/asset-db/lib/tasks.ccc:1:6778
-    at /Applications/Cocos/Creator/2.4.6/CocosCreator.app/Contents/Resources/app.asar/node_modules/async/dist/async.js:2158:44
-    at replenish (/Applications/Cocos/Creator/2.4.6/CocosCreator.app/Contents/Resources/app.asar/node_modules/async/dist/async.js:444:21)
-    at /Applications/Cocos/Creator/2.4.6/CocosCreator.app/Contents/Resources/app.asar/node_modules/async/dist/async.js:449:13
+2024-08-08T01:45:22.198Z - success: protocol editor-framework registered
+2024-08-08T01:45:22.200Z - success: protocol app registered
+2024-08-08T01:45:22.200Z - success: protocol theme registered
+2024-08-08T01:45:22.200Z - success: protocol packages registered
+2024-08-08T01:45:22.228Z - normal: Load ~/.CocosCreator/settings.json
+2024-08-08T01:45:22.269Z - success: protocol uuid registerred
+2024-08-08T01:45:22.269Z - success: protocol db registerred
+2024-08-08T01:45:22.269Z - success: protocol thumbnail registerred
+2024-08-08T01:45:22.351Z - normal: Initializing Asset Database
+2024-08-08T01:45:22.354Z - normal: checking language setting...
+2024-08-08T01:45:22.354Z - normal: Language: en
+2024-08-08T01:45:22.356Z - success: protocol unpack registerred
+2024-08-08T01:45:22.357Z - success: protocol disable-commonjs registerred
+2024-08-08T01:45:23.749Z - normal: connected!
+2024-08-08T01:45:24.298Z - normal: Check project /Users/mac/Documents/WORK/MINIGAME/InfiniteHeights
+2024-08-08T01:45:24.305Z - normal: Initializing project /Users/mac/Documents/WORK/MINIGAME/InfiniteHeights
+2024-08-08T01:45:24.541Z - success: adapters loaded
+2024-08-08T01:45:24.547Z - success: asset-db-debugger loaded
+2024-08-08T01:45:24.621Z - success: fb-audience-network loaded
+2024-08-08T01:45:24.673Z - success: fb-live-stream loaded
+2024-08-08T01:45:24.678Z - success: google-play-instant loaded
+2024-08-08T01:45:24.679Z - success: jsb-adapter loaded
+2024-08-08T01:45:24.703Z - success: package-manager loaded
+2024-08-08T01:45:24.704Z - success: runtime-adapters loaded
+2024-08-08T01:45:24.707Z - success: runtime-dev-tools loaded
+2024-08-08T01:45:24.709Z - success: ui-kit-preview-extra loaded
+2024-08-08T01:45:24.711Z - success: ui-kit-preview loaded
+2024-08-08T01:45:25.526Z - success: alipay-minigame loaded
+2024-08-08T01:45:25.544Z - success: assets loaded
+2024-08-08T01:45:25.547Z - success: baidugame-opendata loaded
+2024-08-08T01:45:25.549Z - success: baidugame loaded
+2024-08-08T01:45:25.552Z - success: builder loaded
+2024-08-08T01:45:25.555Z - success: bytedance-opendata loaded
+2024-08-08T01:45:25.558Z - success: bytedance loaded
+2024-08-08T01:45:25.562Z - success: channel-upload-tools loaded
+2024-08-08T01:45:25.710Z - success: cloud-function loaded
+2024-08-08T01:45:25.915Z - success: cocos-services loaded
+2024-08-08T01:45:25.922Z - success: console loaded
+2024-08-08T01:45:25.924Z - success: curve-editor loaded
+2024-08-08T01:45:25.932Z - success: fb-instant-games loaded
+2024-08-08T01:45:25.935Z - success: game-window loaded
+2024-08-08T01:45:25.936Z - success: google-instant-games loaded
+2024-08-08T01:45:25.941Z - success: hierarchy loaded
+2024-08-08T01:45:25.944Z - success: huawei-agc loaded
+2024-08-08T01:45:25.947Z - success: huawei-runtime loaded
+2024-08-08T01:45:25.950Z - success: inspector loaded
+2024-08-08T01:45:25.969Z - success: cpk-publish loaded
+2024-08-08T01:45:25.971Z - success: keystore loaded
+2024-08-08T01:45:25.991Z - success: link-sure-runtime loaded
+2024-08-08T01:45:26.012Z - success: node-library loaded
+2024-08-08T01:45:26.014Z - success: open-recent-items loaded
+2024-08-08T01:45:26.017Z - success: oppo-runtime loaded
+2024-08-08T01:45:26.019Z - success: package-asset loaded
+2024-08-08T01:45:26.020Z - success: preferences loaded
+2024-08-08T01:45:26.024Z - success: project-importer loaded
+2024-08-08T01:45:26.027Z - success: project-settings loaded
+2024-08-08T01:45:26.040Z - success: qtt-runtime loaded
+2024-08-08T01:45:26.044Z - success: scene loaded
+2024-08-08T01:45:26.045Z - success: simulator-debugger loaded
+2024-08-08T01:45:26.046Z - success: sprite-editor loaded
+2024-08-08T01:45:26.115Z - success: store loaded
+2024-08-08T01:45:26.117Z - success: taobao-creativeapp loaded
+2024-08-08T01:45:26.120Z - success: timeline loaded
+2024-08-08T01:45:26.127Z - success: vivo-runtime loaded
+2024-08-08T01:45:26.130Z - success: wechatgame-opendata loaded
+2024-08-08T01:45:26.134Z - success: wechatgame loaded
+2024-08-08T01:45:26.139Z - success: xiaomi-runtime loaded
+2024-08-08T01:45:26.196Z - success: im-plugin loaded
+2024-08-08T01:45:26.197Z - success: preview server running at http://localhost:7456
+2024-08-08T01:45:28.352Z - normal: Initializing Cocos2d
+2024-08-08T01:45:28.600Z - normal: Initializing engine extends
+2024-08-08T01:45:29.048Z - info: Cocos Service load base data!
+2024-08-08T01:45:29.472Z - normal: Loading packages
+2024-08-08T01:45:29.475Z - normal: Watching packages
+2024-08-08T01:45:29.716Z - normal: Run Application
+2024-08-08T01:45:35.252Z - success: cloud-function unloaded
