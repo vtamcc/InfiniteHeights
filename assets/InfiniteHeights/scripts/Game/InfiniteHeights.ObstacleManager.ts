@@ -33,6 +33,7 @@ export default class obstacleManager extends cc.Component {
 
 
     update(dt) {
+        if(GameView.instance.isGameOver) return;
         switch (this.idPrf) {
             case 0:
                 let node = this.listNode[0];

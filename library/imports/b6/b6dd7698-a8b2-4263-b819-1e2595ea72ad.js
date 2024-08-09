@@ -29,7 +29,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+var InfiniteHeights_Global_1 = require("../InfiniteHeights.Global");
 var InfiniteHeights_Ballon_1 = require("./InfiniteHeights.Ballon");
+var InfiniteHeights_GameOver_1 = require("./InfiniteHeights.GameOver");
 var InfiniteHeights_ObstacleManager_1 = require("./InfiniteHeights.ObstacleManager");
 var _a = cc._decorator, ccclass = _a.ccclass, property = _a.property;
 var GameView = /** @class */ (function (_super) {
@@ -45,7 +47,13 @@ var GameView = /** @class */ (function (_super) {
         _this.prfBallon = null;
         _this.nBallon = null;
         _this.listBg = [];
+        _this.lbDiamond = null;
+        _this.lbTime = null;
+        _this.lbScore = null;
+        _this.prfGameOver = null;
+        _this.time = 0;
         _this.isFirstTouch = false;
+        _this.isGameOver = false;
         _this.ballon = null;
         return _this;
         // genBackGround() {
@@ -82,7 +90,7 @@ var GameView = /** @class */ (function (_super) {
         }
     };
     GameView.prototype.genObstacle = function () {
-        for (var i = 0; i < this.listBg.length; i++) {
+        for (var i = 0; i < 3; i++) {
             this.createObstacle(this.listBg[i]);
         }
     };
@@ -92,6 +100,7 @@ var GameView = /** @class */ (function (_super) {
     GameView.prototype.startGame = function () {
         if (!this.isFirstTouch) {
             this.isFirstTouch = true;
+            this.schedule(this.updateTime, 1);
         }
         else {
             this.fall();
@@ -99,14 +108,75 @@ var GameView = /** @class */ (function (_super) {
     };
     GameView.prototype.fall = function () {
         // this.ballon.setPosition(this.ballon.position.x, this.ballon.position.y - 80,0);
+        if (this.isGameOver)
+            return;
         cc.tween(this.ballon)
             .by(0.2, { y: -80 })
             .start();
     };
+    GameView.prototype.updateTime = function () {
+        if (this.isFirstTouch && !this.isGameOver) {
+            this.time += 1;
+            this.updateLbTime(this.lbTime);
+            this.updateLbScore(this.lbScore);
+        }
+    };
+    GameView.prototype.updateLbDiamond = function (lbDiamond) {
+        //if (this.isGameOver) return;
+        lbDiamond.string = InfiniteHeights_Global_1.Global.diaMond + ' ';
+        this.updateLbScore(this.lbScore);
+    };
+    GameView.prototype.updateLbTime = function (lbTime) {
+        lbTime.string = this.time + ' ';
+    };
+    GameView.prototype.updateLbScore = function (lbScore) {
+        lbScore.string = this.time + InfiniteHeights_Global_1.Global.diaMond + ' ';
+    };
+    GameView.prototype.resetGame = function () {
+        InfiniteHeights_Global_1.Global.diaMond = 0;
+        InfiniteHeights_Global_1.Global.score = 0;
+        this.time = 0;
+        this.updateLbScore(this.lbScore);
+        this.updateLbTime(this.lbTime);
+        this.updateLbDiamond(this.lbDiamond);
+        this.ballon.y = -500;
+        cc.director.getCollisionManager().enabled = true;
+        this.isFirstTouch = false;
+        this.isGameOver = false;
+        this.listBg.forEach(function (value) {
+            value.removeAllChildren();
+        });
+        this.listBg[0].y = 3120;
+        this.listBg[1].y = 1840;
+        this.listBg[2].y = 560;
+        this.listBg[3].y = -720;
+        this.listBg[3].active = true;
+        this.genObstacle();
+        this.node.on(cc.Node.EventType.TOUCH_START, this.onTouchStart, this);
+    };
     GameView.prototype.gameOver = function () {
         console.log("Thua con me may roi ");
+        this.isGameOver = true;
+        var gameOver = cc.instantiate(this.prfGameOver).getComponent(InfiniteHeights_GameOver_1.default).node;
+        this.node.addChild(gameOver);
+        this.unschedule(this.updateTime);
+        cc.tween(this.ballon).stop();
+        this.node.off(cc.Node.EventType.TOUCH_START, this.onTouchStart, this);
+        cc.director.getCollisionManager().enabled = false;
+        var scores = this.time + InfiniteHeights_Global_1.Global.diaMond;
+        InfiniteHeights_Global_1.Global.dataScore.push(scores);
+        InfiniteHeights_Global_1.Global.dataScore.sort(function (a, b) {
+            return a > b ? -1 : 0;
+        });
+        cc.sys.localStorage.setItem('scores', JSON.stringify(InfiniteHeights_Global_1.Global.dataScore));
+        console.log("dasdasd ", InfiniteHeights_Global_1.Global.dataScore);
+    };
+    GameView.prototype.gameDestroy = function () {
+        this.node.destroy();
     };
     GameView.prototype.update = function (dt) {
+        if (this.isGameOver)
+            return;
         if (this.isFirstTouch) {
             this.ballon.setPosition(this.ballon.position.x, this.ballon.position.y + 180 * dt, 0);
         }
@@ -134,6 +204,18 @@ var GameView = /** @class */ (function (_super) {
     __decorate([
         property(cc.Node)
     ], GameView.prototype, "listBg", void 0);
+    __decorate([
+        property(cc.Label)
+    ], GameView.prototype, "lbDiamond", void 0);
+    __decorate([
+        property(cc.Label)
+    ], GameView.prototype, "lbTime", void 0);
+    __decorate([
+        property(cc.Label)
+    ], GameView.prototype, "lbScore", void 0);
+    __decorate([
+        property(cc.Prefab)
+    ], GameView.prototype, "prfGameOver", void 0);
     GameView = GameView_1 = __decorate([
         ccclass
     ], GameView);

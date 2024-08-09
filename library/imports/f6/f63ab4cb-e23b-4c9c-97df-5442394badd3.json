@@ -1,0 +1,28 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "btn_pause-sheet0",
+    "texture": "f4b98b91-ad05-4f7d-8a19-291a6ef89a63",
+    "atlas": "",
+    "rect": [
+      0,
+      0,
+      100,
+      100
+    ],
+    "offset": [
+      0,
+      0
+    ],
+    "originalSize": [
+      100,
+      100
+    ],
+    "capInsets": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}

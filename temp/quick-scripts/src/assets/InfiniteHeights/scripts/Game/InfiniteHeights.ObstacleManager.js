@@ -29,6 +29,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+var InfiniteHeights_GameView_1 = require("./InfiniteHeights.GameView");
 var _a = cc._decorator, ccclass = _a.ccclass, property = _a.property;
 var obstacleManager = /** @class */ (function (_super) {
     __extends(obstacleManager, _super);
@@ -48,6 +49,8 @@ var obstacleManager = /** @class */ (function (_super) {
     obstacleManager.prototype.start = function () {
     };
     obstacleManager.prototype.update = function (dt) {
+        if (InfiniteHeights_GameView_1.default.instance.isGameOver)
+            return;
         switch (this.idPrf) {
             case 0:
                 var node = this.listNode[0];

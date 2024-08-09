@@ -72,8 +72,8 @@
     "_skewX": 0,
     "_skewY": 0,
     "_is3DNode": false,
-    "_groupIndex": 1,
-    "groupIndex": 1,
+    "_groupIndex": 0,
+    "groupIndex": 0,
     "_id": ""
   },
   {
@@ -175,7 +175,7 @@
     "_contentSize": {
       "__type__": "cc.Size",
       "width": 21,
-      "height": 205
+      "height": 235
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -230,7 +230,7 @@
       "__uuid__": "5bd4ed36-5e03-4fe6-b2f6-14c61bf42828"
     },
     "_type": 0,
-    "_sizeMode": 1,
+    "_sizeMode": 0,
     "_fillType": 0,
     "_fillCenter": {
       "__type__": "cc.Vec2",
@@ -260,7 +260,7 @@
     "_size": {
       "__type__": "cc.Size",
       "width": 21,
-      "height": 205
+      "height": 235
     },
     "_id": ""
   },

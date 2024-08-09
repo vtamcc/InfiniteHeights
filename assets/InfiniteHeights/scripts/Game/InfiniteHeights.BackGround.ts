@@ -27,7 +27,7 @@ export default class BackGround extends cc.Component {
     }
 
     update(dt) {
-        if(!GameView.instance.isFirstTouch) {
+        if(!GameView.instance.isFirstTouch || GameView.instance.isGameOver) {
             return;
         }
             
@@ -37,7 +37,7 @@ export default class BackGround extends cc.Component {
             this.destroyObstacle();
             GameView.instance.createObstacle(this.node);
             if(this.idBg == 3) {
-                this.node.destroy();
+                this.node.active = false;
             }
         }
 

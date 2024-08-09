@@ -5,8 +5,10 @@
 // Learn life-cycle callbacks:
 //  - https://docs.cocos.com/creator/manual/en/scripting/life-cycle-callbacks.html
 
+import { Global } from "../InfiniteHeights.Global";
 import BackGround from "./InfiniteHeights.BackGround";
 import Ballon from "./InfiniteHeights.Ballon";
+import GameOver from "./InfiniteHeights.GameOver";
 import obstacleManager from "./InfiniteHeights.ObstacleManager";
 
 const { ccclass, property } = cc._decorator;
@@ -31,7 +33,20 @@ export default class GameView extends cc.Component {
     nBallon: cc.Node = null;
     @property(cc.Node)
     listBg: cc.Node[] = [];
+
+    @property(cc.Label)
+    lbDiamond: cc.Label = null;
+
+    @property(cc.Label)
+    lbTime: cc.Label = null;
+
+    @property(cc.Label)
+    lbScore: cc.Label = null;
+    @property(cc.Prefab)
+    prfGameOver: cc.Prefab = null;
+    time = 0;
     isFirstTouch = false;
+    isGameOver = false;
     ballon = null;
     // LIFE-CYCLE CALLBACKS:
 
@@ -68,7 +83,7 @@ export default class GameView extends cc.Component {
     }
 
     genObstacle() {
-        for(let i = 0; i < this.listBg.length; i++) {
+        for(let i = 0; i < 3; i++) {
             this.createObstacle(this.listBg[i]);
         }
     }
@@ -79,24 +94,92 @@ export default class GameView extends cc.Component {
     startGame() {
         if(!this.isFirstTouch) {
             this.isFirstTouch = true;
+            this.schedule(this.updateTime, 1);
         }else {
             this.fall();
+         
         }
     }
 
     fall() {
         // this.ballon.setPosition(this.ballon.position.x, this.ballon.position.y - 80,0);
+        if(this.isGameOver) return;
         cc.tween(this.ballon)
         .by(0.2, { y: -80})
         .start();
     }
    
 
-    gameOver() {
-        console.log("Thua con me may roi ");
+    updateTime() {
+        if(this.isFirstTouch && !this.isGameOver) {
+            this.time += 1;
+            this.updateLbTime(this.lbTime);
+            this.updateLbScore(this.lbScore);
+        }
+    }
+    updateLbDiamond(lbDiamond) {
+        //if (this.isGameOver) return;
+        lbDiamond.string = Global.diaMond + ' ';
+        this.updateLbScore(this.lbScore);
     }
 
+    updateLbTime(lbTime: cc.Label) {
+        lbTime.string = this.time + ' ';
+    }
+
+    updateLbScore(lbScore: cc.Label) {
+        lbScore.string = this.time + Global.diaMond + ' ';
+    }
+
+    resetGame() {
+        Global.diaMond = 0;
+        Global.score = 0;
+        this.time = 0;
+        this.updateLbScore(this.lbScore);
+        this.updateLbTime(this.lbTime);
+        this.updateLbDiamond(this.lbDiamond);
+        this.ballon.y = -500;
+        cc.director.getCollisionManager().enabled = true;
+        this.isFirstTouch = false;
+        this.isGameOver = false;
+        this.listBg.forEach(value => {
+            value.removeAllChildren();
+        })
+        this.listBg[0].y = 3120;
+        this.listBg[1].y = 1840;
+        this.listBg[2].y = 560;
+        this.listBg[3].y = -720;
+        this.listBg[3].active = true;
+        this.genObstacle();
+        this.node.on(cc.Node.EventType.TOUCH_START, this.onTouchStart, this);
+    }
+
+    gameOver() {
+        console.log("Thua con me may roi ");
+        this.isGameOver = true;
+        let gameOver = cc.instantiate(this.prfGameOver).getComponent(GameOver).node
+        this.node.addChild(gameOver);
+        this.unschedule(this.updateTime);
+        cc.tween(this.ballon).stop();
+        this.node.off(cc.Node.EventType.TOUCH_START, this.onTouchStart, this);
+        cc.director.getCollisionManager().enabled = false;
+        let scores = this.time + Global.diaMond;
+        Global.dataScore.push(scores);
+        Global.dataScore.sort((a,b) => {
+            return a > b ? - 1 : 0;
+        });
+        cc.sys.localStorage.setItem('scores', JSON.stringify(Global.dataScore));
+        console.log("dasdasd ",Global.dataScore);
+    }
+
+    gameDestroy() {
+        this.node.destroy();
+    }
     update(dt) {
+
+        if(this.isGameOver) return;
+
+
         if(this.isFirstTouch) {
             this.ballon.setPosition(this.ballon.position.x,this.ballon.position.y + 180 * dt,0);
         }

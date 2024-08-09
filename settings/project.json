@@ -5,8 +5,8 @@
   "start-scene": "e3c0235f-6a39-4870-b937-fcde423131d0",
   "group-list": [
     "default",
-    "vatcan",
     "bongbay",
+    "vatcan",
     "kimcuong",
     ""
   ],
@@ -17,18 +17,19 @@
     [
       false,
       false,
+      true,
       true
     ],
     [
       false,
       true,
       false,
-      true
+      false
     ],
     [
       false,
-      false,
       true,
+      false,
       false
     ],
     [

@@ -23,6 +23,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+var InfiniteHeights_Global_1 = require("../InfiniteHeights.Global");
 var InfiniteHeights_GameView_1 = require("./InfiniteHeights.GameView");
 var _a = cc._decorator, ccclass = _a.ccclass, property = _a.property;
 var Collider = /** @class */ (function (_super) {
@@ -32,7 +33,6 @@ var Collider = /** @class */ (function (_super) {
     }
     Collider.prototype.onLoad = function () {
         cc.director.getCollisionManager().enabled = true;
-        cc.director.getCollisionManager().enabledDebugDraw = true;
     };
     Collider.prototype.start = function () {
     };
@@ -40,10 +40,11 @@ var Collider = /** @class */ (function (_super) {
         if (other.tag == 2) {
             InfiniteHeights_GameView_1.default.instance.gameOver();
         }
-        // if(other.tag === 1) {
-        //     console.log("kim cuong")
-        //     other.node.destroy();
-        // } 
+        if (other.tag == 1) {
+            InfiniteHeights_Global_1.Global.diaMond++;
+            InfiniteHeights_GameView_1.default.instance.updateLbDiamond(InfiniteHeights_GameView_1.default.instance.lbDiamond);
+            other.node.destroy();
+        }
     };
     Collider = __decorate([
         ccclass

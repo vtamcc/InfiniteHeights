@@ -1,78 +1,328 @@
-2024-08-08T01:45:22.198Z - success: protocol editor-framework registered
-2024-08-08T01:45:22.200Z - success: protocol app registered
-2024-08-08T01:45:22.200Z - success: protocol theme registered
-2024-08-08T01:45:22.200Z - success: protocol packages registered
-2024-08-08T01:45:22.228Z - normal: Load ~/.CocosCreator/settings.json
-2024-08-08T01:45:22.269Z - success: protocol uuid registerred
-2024-08-08T01:45:22.269Z - success: protocol db registerred
-2024-08-08T01:45:22.269Z - success: protocol thumbnail registerred
-2024-08-08T01:45:22.351Z - normal: Initializing Asset Database
-2024-08-08T01:45:22.354Z - normal: checking language setting...
-2024-08-08T01:45:22.354Z - normal: Language: en
-2024-08-08T01:45:22.356Z - success: protocol unpack registerred
-2024-08-08T01:45:22.357Z - success: protocol disable-commonjs registerred
-2024-08-08T01:45:23.749Z - normal: connected!
-2024-08-08T01:45:24.298Z - normal: Check project /Users/mac/Documents/WORK/MINIGAME/InfiniteHeights
-2024-08-08T01:45:24.305Z - normal: Initializing project /Users/mac/Documents/WORK/MINIGAME/InfiniteHeights
-2024-08-08T01:45:24.541Z - success: adapters loaded
-2024-08-08T01:45:24.547Z - success: asset-db-debugger loaded
-2024-08-08T01:45:24.621Z - success: fb-audience-network loaded
-2024-08-08T01:45:24.673Z - success: fb-live-stream loaded
-2024-08-08T01:45:24.678Z - success: google-play-instant loaded
-2024-08-08T01:45:24.679Z - success: jsb-adapter loaded
-2024-08-08T01:45:24.703Z - success: package-manager loaded
-2024-08-08T01:45:24.704Z - success: runtime-adapters loaded
-2024-08-08T01:45:24.707Z - success: runtime-dev-tools loaded
-2024-08-08T01:45:24.709Z - success: ui-kit-preview-extra loaded
-2024-08-08T01:45:24.711Z - success: ui-kit-preview loaded
-2024-08-08T01:45:25.526Z - success: alipay-minigame loaded
-2024-08-08T01:45:25.544Z - success: assets loaded
-2024-08-08T01:45:25.547Z - success: baidugame-opendata loaded
-2024-08-08T01:45:25.549Z - success: baidugame loaded
-2024-08-08T01:45:25.552Z - success: builder loaded
-2024-08-08T01:45:25.555Z - success: bytedance-opendata loaded
-2024-08-08T01:45:25.558Z - success: bytedance loaded
-2024-08-08T01:45:25.562Z - success: channel-upload-tools loaded
-2024-08-08T01:45:25.710Z - success: cloud-function loaded
-2024-08-08T01:45:25.915Z - success: cocos-services loaded
-2024-08-08T01:45:25.922Z - success: console loaded
-2024-08-08T01:45:25.924Z - success: curve-editor loaded
-2024-08-08T01:45:25.932Z - success: fb-instant-games loaded
-2024-08-08T01:45:25.935Z - success: game-window loaded
-2024-08-08T01:45:25.936Z - success: google-instant-games loaded
-2024-08-08T01:45:25.941Z - success: hierarchy loaded
-2024-08-08T01:45:25.944Z - success: huawei-agc loaded
-2024-08-08T01:45:25.947Z - success: huawei-runtime loaded
-2024-08-08T01:45:25.950Z - success: inspector loaded
-2024-08-08T01:45:25.969Z - success: cpk-publish loaded
-2024-08-08T01:45:25.971Z - success: keystore loaded
-2024-08-08T01:45:25.991Z - success: link-sure-runtime loaded
-2024-08-08T01:45:26.012Z - success: node-library loaded
-2024-08-08T01:45:26.014Z - success: open-recent-items loaded
-2024-08-08T01:45:26.017Z - success: oppo-runtime loaded
-2024-08-08T01:45:26.019Z - success: package-asset loaded
-2024-08-08T01:45:26.020Z - success: preferences loaded
-2024-08-08T01:45:26.024Z - success: project-importer loaded
-2024-08-08T01:45:26.027Z - success: project-settings loaded
-2024-08-08T01:45:26.040Z - success: qtt-runtime loaded
-2024-08-08T01:45:26.044Z - success: scene loaded
-2024-08-08T01:45:26.045Z - success: simulator-debugger loaded
-2024-08-08T01:45:26.046Z - success: sprite-editor loaded
-2024-08-08T01:45:26.115Z - success: store loaded
-2024-08-08T01:45:26.117Z - success: taobao-creativeapp loaded
-2024-08-08T01:45:26.120Z - success: timeline loaded
-2024-08-08T01:45:26.127Z - success: vivo-runtime loaded
-2024-08-08T01:45:26.130Z - success: wechatgame-opendata loaded
-2024-08-08T01:45:26.134Z - success: wechatgame loaded
-2024-08-08T01:45:26.139Z - success: xiaomi-runtime loaded
-2024-08-08T01:45:26.196Z - success: im-plugin loaded
-2024-08-08T01:45:26.197Z - success: preview server running at http://localhost:7456
-2024-08-08T01:45:28.352Z - normal: Initializing Cocos2d
-2024-08-08T01:45:28.600Z - normal: Initializing engine extends
-2024-08-08T01:45:29.048Z - info: Cocos Service load base data!
-2024-08-08T01:45:29.472Z - normal: Loading packages
-2024-08-08T01:45:29.475Z - normal: Watching packages
-2024-08-08T01:45:29.716Z - normal: Run Application
-2024-08-08T01:45:35.252Z - success: cloud-function unloaded
-2024-08-08T09:08:16.740Z - info: Only the prefab node "obstacle_2" and its child nodes are saved.
-2024-08-08T09:09:57.407Z - info: Only the prefab node "obstacle_2" and its child nodes are saved.
+2024-08-09T02:03:12.605Z - success: protocol editor-framework registered
+2024-08-09T02:03:12.607Z - success: protocol app registered
+2024-08-09T02:03:12.607Z - success: protocol theme registered
+2024-08-09T02:03:12.607Z - success: protocol packages registered
+2024-08-09T02:03:12.631Z - normal: Load ~/.CocosCreator/settings.json
+2024-08-09T02:03:12.660Z - success: protocol uuid registerred
+2024-08-09T02:03:12.660Z - success: protocol db registerred
+2024-08-09T02:03:12.660Z - success: protocol thumbnail registerred
+2024-08-09T02:03:12.744Z - normal: Initializing Asset Database
+2024-08-09T02:03:12.747Z - normal: checking language setting...
+2024-08-09T02:03:12.747Z - normal: Language: en
+2024-08-09T02:03:12.749Z - success: protocol unpack registerred
+2024-08-09T02:03:12.750Z - success: protocol disable-commonjs registerred
+2024-08-09T02:03:14.275Z - normal: connected!
+2024-08-09T02:03:14.537Z - normal: Check project /Users/mac/Documents/WORK/MINIGAME/InfiniteHeights
+2024-08-09T02:03:14.542Z - normal: Initializing project /Users/mac/Documents/WORK/MINIGAME/InfiniteHeights
+2024-08-09T02:03:14.766Z - success: adapters loaded
+2024-08-09T02:03:14.771Z - success: asset-db-debugger loaded
+2024-08-09T02:03:14.842Z - success: fb-audience-network loaded
+2024-08-09T02:03:14.890Z - success: fb-live-stream loaded
+2024-08-09T02:03:14.896Z - success: google-play-instant loaded
+2024-08-09T02:03:14.897Z - success: jsb-adapter loaded
+2024-08-09T02:03:14.918Z - success: package-manager loaded
+2024-08-09T02:03:14.919Z - success: runtime-adapters loaded
+2024-08-09T02:03:14.921Z - success: runtime-dev-tools loaded
+2024-08-09T02:03:14.923Z - success: ui-kit-preview-extra loaded
+2024-08-09T02:03:14.925Z - success: ui-kit-preview loaded
+2024-08-09T02:03:15.750Z - success: alipay-minigame loaded
+2024-08-09T02:03:15.765Z - success: assets loaded
+2024-08-09T02:03:15.769Z - success: baidugame-opendata loaded
+2024-08-09T02:03:15.771Z - success: baidugame loaded
+2024-08-09T02:03:15.774Z - success: builder loaded
+2024-08-09T02:03:15.779Z - success: bytedance-opendata loaded
+2024-08-09T02:03:15.782Z - success: bytedance loaded
+2024-08-09T02:03:15.787Z - success: channel-upload-tools loaded
+2024-08-09T02:03:15.944Z - success: cloud-function loaded
+2024-08-09T02:03:16.166Z - success: cocos-services loaded
+2024-08-09T02:03:16.173Z - success: console loaded
+2024-08-09T02:03:16.176Z - success: curve-editor loaded
+2024-08-09T02:03:16.184Z - success: fb-instant-games loaded
+2024-08-09T02:03:16.187Z - success: game-window loaded
+2024-08-09T02:03:16.188Z - success: google-instant-games loaded
+2024-08-09T02:03:16.192Z - success: hierarchy loaded
+2024-08-09T02:03:16.195Z - success: huawei-agc loaded
+2024-08-09T02:03:16.198Z - success: huawei-runtime loaded
+2024-08-09T02:03:16.202Z - success: inspector loaded
+2024-08-09T02:03:16.223Z - success: cpk-publish loaded
+2024-08-09T02:03:16.226Z - success: keystore loaded
+2024-08-09T02:03:16.251Z - success: link-sure-runtime loaded
+2024-08-09T02:03:16.265Z - success: node-library loaded
+2024-08-09T02:03:16.266Z - success: open-recent-items loaded
+2024-08-09T02:03:16.269Z - success: oppo-runtime loaded
+2024-08-09T02:03:16.270Z - success: package-asset loaded
+2024-08-09T02:03:16.271Z - success: preferences loaded
+2024-08-09T02:03:16.275Z - success: project-importer loaded
+2024-08-09T02:03:16.278Z - success: project-settings loaded
+2024-08-09T02:03:16.291Z - success: qtt-runtime loaded
+2024-08-09T02:03:16.295Z - success: scene loaded
+2024-08-09T02:03:16.296Z - success: simulator-debugger loaded
+2024-08-09T02:03:16.297Z - success: sprite-editor loaded
+2024-08-09T02:03:16.366Z - success: store loaded
+2024-08-09T02:03:16.368Z - success: taobao-creativeapp loaded
+2024-08-09T02:03:16.372Z - success: timeline loaded
+2024-08-09T02:03:16.378Z - success: vivo-runtime loaded
+2024-08-09T02:03:16.380Z - success: wechatgame-opendata loaded
+2024-08-09T02:03:16.386Z - success: wechatgame loaded
+2024-08-09T02:03:16.390Z - success: xiaomi-runtime loaded
+2024-08-09T02:03:16.446Z - success: im-plugin loaded
+2024-08-09T02:03:16.448Z - success: preview server running at http://localhost:7456
+2024-08-09T02:03:18.532Z - normal: Initializing Cocos2d
+2024-08-09T02:03:18.804Z - normal: Initializing engine extends
+2024-08-09T02:03:19.667Z - normal: Loading packages
+2024-08-09T02:03:19.670Z - normal: Watching packages
+2024-08-09T02:03:19.776Z - info: Cocos Service load base data!
+2024-08-09T02:03:19.901Z - normal: Run Application
+2024-08-09T02:03:24.736Z - success: cloud-function unloaded
+2024-08-09T02:29:32.199Z - error: Error: Parsing file /Users/mac/Documents/WORK/MINIGAME/InfiniteHeights/temp/quick-scripts/src/assets/InfiniteHeights/scripts/Game/InfiniteHeights.GameView.js: Unexpected token (121:8)
+    at Deps.parseDeps (/Applications/Cocos/Creator/2.4.6/CocosCreator.app/Contents/Resources/app.asar/node_modules/module-deps/index.js:481:28)
+    at getDeps (/Applications/Cocos/Creator/2.4.6/CocosCreator.app/Contents/Resources/app.asar/node_modules/module-deps/index.js:414:40)
+    at /Applications/Cocos/Creator/2.4.6/CocosCreator.app/Contents/Resources/app.asar/node_modules/module-deps/index.js:398:32
+    at ConcatStream.<anonymous> (/Applications/Cocos/Creator/2.4.6/CocosCreator.app/Contents/Resources/app.asar/node_modules/concat-stream/index.js:36:43)
+    at ConcatStream.emit (events.js:327:22)
+    at ConcatStream.emit (domain.js:483:12)
+    at finishMaybe (/Applications/Cocos/Creator/2.4.6/CocosCreator.app/Contents/Resources/app.asar/node_modules/concat-stream/node_modules/readable-stream/lib/_stream_writable.js:475:14)
+    at endWritable (/Applications/Cocos/Creator/2.4.6/CocosCreator.app/Contents/Resources/app.asar/node_modules/concat-stream/node_modules/readable-stream/lib/_stream_writable.js:485:3)
+    at ConcatStream.end (/Applications/Cocos/Creator/2.4.6/CocosCreator.app/Contents/Resources/app.asar/node_modules/concat-stream/node_modules/readable-stream/lib/_stream_writable.js:455:41)
+    at DestroyableTransform.onend (/Applications/Cocos/Creator/2.4.6/CocosCreator.app/Contents/Resources/app.asar/node_modules/readable-stream/lib/_stream_readable.js:577:10)
+    at m._parseEntry (/Applications/Cocos/Creator/2.4.6/CocosCreator.app/Contents/Resources/app.asar/editor/share/quick-compile/index.ccc:1:6393)
+    at runMicrotasks (<anonymous>)
+    at processTicksAndRejections (internal/process/task_queues.js:97:5)
+    at async Promise.all (index 0)
+    at async m._compileScripts (/Applications/Cocos/Creator/2.4.6/CocosCreator.app/Contents/Resources/app.asar/editor/share/quick-compile/index.ccc:1:3491)
+2024-08-09T02:29:32.575Z - failed: load script [./InfiniteHeights.GameView] failed : /Users/mac/Documents/WORK/MINIGAME/InfiniteHeights/temp/quick-scripts/dst/assets/InfiniteHeights/scripts/Game/InfiniteHeights.GameView.js:121
+        ;
+        ^
+
+SyntaxError: Unexpected token ';'
+    at new Script (vm.js:88:7)
+    at createScript (vm.js:261:10)
+    at Object.runInThisContext (vm.js:309:10)
+    at wrapSafe (internal/modules/cjs/loader.js:1047:15)
+    at Module._compile (internal/modules/cjs/loader.js:1108:27)
+    at Object.f (/Applications/Cocos/Creator/2.4.6/CocosCreator.app/Contents/Resources/app.asar/editor-framework/lib/share/require.js:1:1993)
+    at Module.load (internal/modules/cjs/loader.js:992:32)
+    at Module._load (internal/modules/cjs/loader.js:885:14)
+    at Function.f._load (electron/js2c/asar_bundle.js:5:12734)
+    at Module.require [as __require] (internal/modules/cjs/loader.js:1032:19)
+2024-08-09T02:29:32.579Z - failed: load script [./assets/InfiniteHeights/scripts/Game/InfiniteHeights.GameView] failed : /Users/mac/Documents/WORK/MINIGAME/InfiniteHeights/temp/quick-scripts/dst/assets/InfiniteHeights/scripts/Game/InfiniteHeights.GameView.js:121
+        ;
+        ^
+
+SyntaxError: Unexpected token ';'
+    at new Script (vm.js:88:7)
+    at createScript (vm.js:261:10)
+    at Object.runInThisContext (vm.js:309:10)
+    at wrapSafe (internal/modules/cjs/loader.js:1047:15)
+    at Module._compile (internal/modules/cjs/loader.js:1108:27)
+    at Object.f (/Applications/Cocos/Creator/2.4.6/CocosCreator.app/Contents/Resources/app.asar/editor-framework/lib/share/require.js:1:1993)
+    at Module.load (internal/modules/cjs/loader.js:992:32)
+    at Module._load (internal/modules/cjs/loader.js:885:14)
+    at Function.f._load (electron/js2c/asar_bundle.js:5:12734)
+    at Module.require [as __require] (internal/modules/cjs/loader.js:1032:19)
+2024-08-09T02:29:32.784Z - warn: Script attached to "GameView" is missing or invalid. Detailed information:
+Node path: "GameView"
+Script UUID: "b6dd7698-a8b2-4263-b819-1e2595ea72ad"
+Class ID: "b6dd7aYqLJCY7gZHiWV6nKt"
+
+2024-08-09T02:29:40.744Z - failed: load script [./InfiniteHeights.GameView] failed : /Users/mac/Documents/WORK/MINIGAME/InfiniteHeights/temp/quick-scripts/dst/assets/InfiniteHeights/scripts/Game/InfiniteHeights.GameView.js:121
+        ;
+        ^
+
+SyntaxError: Unexpected token ';'
+    at new Script (vm.js:88:7)
+    at createScript (vm.js:261:10)
+    at Object.runInThisContext (vm.js:309:10)
+    at wrapSafe (internal/modules/cjs/loader.js:1047:15)
+    at Module._compile (internal/modules/cjs/loader.js:1108:27)
+    at Object.f (/Applications/Cocos/Creator/2.4.6/CocosCreator.app/Contents/Resources/app.asar/editor-framework/lib/share/require.js:1:1993)
+    at Module.load (internal/modules/cjs/loader.js:992:32)
+    at Module._load (internal/modules/cjs/loader.js:885:14)
+    at Function.f._load (electron/js2c/asar_bundle.js:5:12734)
+    at Module.require [as __require] (internal/modules/cjs/loader.js:1032:19)
+2024-08-09T02:29:40.746Z - failed: load script [./assets/InfiniteHeights/scripts/Game/InfiniteHeights.GameView] failed : /Users/mac/Documents/WORK/MINIGAME/InfiniteHeights/temp/quick-scripts/dst/assets/InfiniteHeights/scripts/Game/InfiniteHeights.GameView.js:121
+        ;
+        ^
+
+SyntaxError: Unexpected token ';'
+    at new Script (vm.js:88:7)
+    at createScript (vm.js:261:10)
+    at Object.runInThisContext (vm.js:309:10)
+    at wrapSafe (internal/modules/cjs/loader.js:1047:15)
+    at Module._compile (internal/modules/cjs/loader.js:1108:27)
+    at Object.f (/Applications/Cocos/Creator/2.4.6/CocosCreator.app/Contents/Resources/app.asar/editor-framework/lib/share/require.js:1:1993)
+    at Module.load (internal/modules/cjs/loader.js:992:32)
+    at Module._load (internal/modules/cjs/loader.js:885:14)
+    at Function.f._load (electron/js2c/asar_bundle.js:5:12734)
+    at Module.require [as __require] (internal/modules/cjs/loader.js:1032:19)
+2024-08-09T02:29:40.823Z - warn: Script attached to "GameView" is missing or invalid. Detailed information:
+Node path: "GameView"
+Script UUID: "b6dd7698-a8b2-4263-b819-1e2595ea72ad"
+Class ID: "b6dd7aYqLJCY7gZHiWV6nKt"
+
+2024-08-09T02:29:55.133Z - failed: load script [./InfiniteHeights.GameView] failed : /Users/mac/Documents/WORK/MINIGAME/InfiniteHeights/temp/quick-scripts/dst/assets/InfiniteHeights/scripts/Game/InfiniteHeights.GameView.js:121
+        ;
+        ^
+
+SyntaxError: Unexpected token ';'
+    at new Script (vm.js:88:7)
+    at createScript (vm.js:261:10)
+    at Object.runInThisContext (vm.js:309:10)
+    at wrapSafe (internal/modules/cjs/loader.js:1047:15)
+    at Module._compile (internal/modules/cjs/loader.js:1108:27)
+    at Object.f (/Applications/Cocos/Creator/2.4.6/CocosCreator.app/Contents/Resources/app.asar/editor-framework/lib/share/require.js:1:1993)
+    at Module.load (internal/modules/cjs/loader.js:992:32)
+    at Module._load (internal/modules/cjs/loader.js:885:14)
+    at Function.f._load (electron/js2c/asar_bundle.js:5:12734)
+    at Module.require [as __require] (internal/modules/cjs/loader.js:1032:19)
+2024-08-09T02:29:55.135Z - failed: load script [./assets/InfiniteHeights/scripts/Game/InfiniteHeights.GameView] failed : /Users/mac/Documents/WORK/MINIGAME/InfiniteHeights/temp/quick-scripts/dst/assets/InfiniteHeights/scripts/Game/InfiniteHeights.GameView.js:121
+        ;
+        ^
+
+SyntaxError: Unexpected token ';'
+    at new Script (vm.js:88:7)
+    at createScript (vm.js:261:10)
+    at Object.runInThisContext (vm.js:309:10)
+    at wrapSafe (internal/modules/cjs/loader.js:1047:15)
+    at Module._compile (internal/modules/cjs/loader.js:1108:27)
+    at Object.f (/Applications/Cocos/Creator/2.4.6/CocosCreator.app/Contents/Resources/app.asar/editor-framework/lib/share/require.js:1:1993)
+    at Module.load (internal/modules/cjs/loader.js:992:32)
+    at Module._load (internal/modules/cjs/loader.js:885:14)
+    at Function.f._load (electron/js2c/asar_bundle.js:5:12734)
+    at Module.require [as __require] (internal/modules/cjs/loader.js:1032:19)
+2024-08-09T02:29:55.232Z - warn: Script attached to "GameView" is missing or invalid. Detailed information:
+Node path: "GameView"
+Script UUID: "b6dd7698-a8b2-4263-b819-1e2595ea72ad"
+Class ID: "b6dd7aYqLJCY7gZHiWV6nKt"
+
+2024-08-09T02:31:13.187Z - failed: load script [./InfiniteHeights.GameView] failed : /Users/mac/Documents/WORK/MINIGAME/InfiniteHeights/temp/quick-scripts/dst/assets/InfiniteHeights/scripts/Game/InfiniteHeights.GameView.js:121
+        ;
+        ^
+
+SyntaxError: Unexpected token ';'
+    at new Script (vm.js:88:7)
+    at createScript (vm.js:261:10)
+    at Object.runInThisContext (vm.js:309:10)
+    at wrapSafe (internal/modules/cjs/loader.js:1047:15)
+    at Module._compile (internal/modules/cjs/loader.js:1108:27)
+    at Object.f (/Applications/Cocos/Creator/2.4.6/CocosCreator.app/Contents/Resources/app.asar/editor-framework/lib/share/require.js:1:1993)
+    at Module.load (internal/modules/cjs/loader.js:992:32)
+    at Module._load (internal/modules/cjs/loader.js:885:14)
+    at Function.f._load (electron/js2c/asar_bundle.js:5:12734)
+    at Module.require [as __require] (internal/modules/cjs/loader.js:1032:19)
+2024-08-09T02:31:13.190Z - failed: load script [./assets/InfiniteHeights/scripts/Game/InfiniteHeights.GameView] failed : /Users/mac/Documents/WORK/MINIGAME/InfiniteHeights/temp/quick-scripts/dst/assets/InfiniteHeights/scripts/Game/InfiniteHeights.GameView.js:121
+        ;
+        ^
+
+SyntaxError: Unexpected token ';'
+    at new Script (vm.js:88:7)
+    at createScript (vm.js:261:10)
+    at Object.runInThisContext (vm.js:309:10)
+    at wrapSafe (internal/modules/cjs/loader.js:1047:15)
+    at Module._compile (internal/modules/cjs/loader.js:1108:27)
+    at Object.f (/Applications/Cocos/Creator/2.4.6/CocosCreator.app/Contents/Resources/app.asar/editor-framework/lib/share/require.js:1:1993)
+    at Module.load (internal/modules/cjs/loader.js:992:32)
+    at Module._load (internal/modules/cjs/loader.js:885:14)
+    at Function.f._load (electron/js2c/asar_bundle.js:5:12734)
+    at Module.require [as __require] (internal/modules/cjs/loader.js:1032:19)
+2024-08-09T02:31:13.324Z - warn: Script attached to "GameView" is missing or invalid. Detailed information:
+Node path: "GameView"
+Script UUID: "b6dd7698-a8b2-4263-b819-1e2595ea72ad"
+Class ID: "b6dd7aYqLJCY7gZHiWV6nKt"
+
+2024-08-09T07:26:03.709Z - error: Error: Parsing file /Users/mac/Documents/WORK/MINIGAME/InfiniteHeights/temp/quick-scripts/src/assets/InfiniteHeights/scripts/Game/InfiniteHeights.GameView.js: Unexpected token (150:8)
+    at Deps.parseDeps (/Applications/Cocos/Creator/2.4.6/CocosCreator.app/Contents/Resources/app.asar/node_modules/module-deps/index.js:481:28)
+    at getDeps (/Applications/Cocos/Creator/2.4.6/CocosCreator.app/Contents/Resources/app.asar/node_modules/module-deps/index.js:414:40)
+    at /Applications/Cocos/Creator/2.4.6/CocosCreator.app/Contents/Resources/app.asar/node_modules/module-deps/index.js:398:32
+    at ConcatStream.<anonymous> (/Applications/Cocos/Creator/2.4.6/CocosCreator.app/Contents/Resources/app.asar/node_modules/concat-stream/index.js:36:43)
+    at ConcatStream.emit (events.js:327:22)
+    at ConcatStream.emit (domain.js:483:12)
+    at finishMaybe (/Applications/Cocos/Creator/2.4.6/CocosCreator.app/Contents/Resources/app.asar/node_modules/concat-stream/node_modules/readable-stream/lib/_stream_writable.js:475:14)
+    at endWritable (/Applications/Cocos/Creator/2.4.6/CocosCreator.app/Contents/Resources/app.asar/node_modules/concat-stream/node_modules/readable-stream/lib/_stream_writable.js:485:3)
+    at ConcatStream.end (/Applications/Cocos/Creator/2.4.6/CocosCreator.app/Contents/Resources/app.asar/node_modules/concat-stream/node_modules/readable-stream/lib/_stream_writable.js:455:41)
+    at DestroyableTransform.onend (/Applications/Cocos/Creator/2.4.6/CocosCreator.app/Contents/Resources/app.asar/node_modules/readable-stream/lib/_stream_readable.js:577:10)
+    at m._parseEntry (/Applications/Cocos/Creator/2.4.6/CocosCreator.app/Contents/Resources/app.asar/editor/share/quick-compile/index.ccc:1:6393)
+    at runMicrotasks (<anonymous>)
+    at processTicksAndRejections (internal/process/task_queues.js:97:5)
+    at async Promise.all (index 0)
+    at async m._compileScripts (/Applications/Cocos/Creator/2.4.6/CocosCreator.app/Contents/Resources/app.asar/editor/share/quick-compile/index.ccc:1:3491)
+2024-08-09T07:26:04.047Z - failed: load script [./InfiniteHeights.GameView] failed : /Users/mac/Documents/WORK/MINIGAME/InfiniteHeights/temp/quick-scripts/dst/assets/InfiniteHeights/scripts/Game/InfiniteHeights.GameView.js:150
+        ;
+        ^
+
+SyntaxError: Unexpected token ';'
+    at new Script (vm.js:88:7)
+    at createScript (vm.js:261:10)
+    at Object.runInThisContext (vm.js:309:10)
+    at wrapSafe (internal/modules/cjs/loader.js:1047:15)
+    at Module._compile (internal/modules/cjs/loader.js:1108:27)
+    at Object.f (/Applications/Cocos/Creator/2.4.6/CocosCreator.app/Contents/Resources/app.asar/editor-framework/lib/share/require.js:1:1993)
+    at Module.load (internal/modules/cjs/loader.js:992:32)
+    at Module._load (internal/modules/cjs/loader.js:885:14)
+    at Function.f._load (electron/js2c/asar_bundle.js:5:12734)
+    at Module.require [as __require] (internal/modules/cjs/loader.js:1032:19)
+2024-08-09T07:26:04.050Z - failed: load script [./InfiniteHeights.GameView] failed : /Users/mac/Documents/WORK/MINIGAME/InfiniteHeights/temp/quick-scripts/dst/assets/InfiniteHeights/scripts/Game/InfiniteHeights.GameView.js:150
+        ;
+        ^
+
+SyntaxError: Unexpected token ';'
+    at new Script (vm.js:88:7)
+    at createScript (vm.js:261:10)
+    at Object.runInThisContext (vm.js:309:10)
+    at wrapSafe (internal/modules/cjs/loader.js:1047:15)
+    at Module._compile (internal/modules/cjs/loader.js:1108:27)
+    at Object.f (/Applications/Cocos/Creator/2.4.6/CocosCreator.app/Contents/Resources/app.asar/editor-framework/lib/share/require.js:1:1993)
+    at Module.load (internal/modules/cjs/loader.js:992:32)
+    at Module._load (internal/modules/cjs/loader.js:885:14)
+    at Function.f._load (electron/js2c/asar_bundle.js:5:12734)
+    at Module.require [as __require] (internal/modules/cjs/loader.js:1032:19)
+2024-08-09T07:26:04.051Z - failed: load script [./InfiniteHeights.GameView] failed : /Users/mac/Documents/WORK/MINIGAME/InfiniteHeights/temp/quick-scripts/dst/assets/InfiniteHeights/scripts/Game/InfiniteHeights.GameView.js:150
+        ;
+        ^
+
+SyntaxError: Unexpected token ';'
+    at new Script (vm.js:88:7)
+    at createScript (vm.js:261:10)
+    at Object.runInThisContext (vm.js:309:10)
+    at wrapSafe (internal/modules/cjs/loader.js:1047:15)
+    at Module._compile (internal/modules/cjs/loader.js:1108:27)
+    at Object.f (/Applications/Cocos/Creator/2.4.6/CocosCreator.app/Contents/Resources/app.asar/editor-framework/lib/share/require.js:1:1993)
+    at Module.load (internal/modules/cjs/loader.js:992:32)
+    at Module._load (internal/modules/cjs/loader.js:885:14)
+    at Function.f._load (electron/js2c/asar_bundle.js:5:12734)
+    at Module.require [as __require] (internal/modules/cjs/loader.js:1032:19)
+2024-08-09T07:26:04.052Z - failed: load script [./assets/InfiniteHeights/scripts/Game/InfiniteHeights.GameView] failed : /Users/mac/Documents/WORK/MINIGAME/InfiniteHeights/temp/quick-scripts/dst/assets/InfiniteHeights/scripts/Game/InfiniteHeights.GameView.js:150
+        ;
+        ^
+
+SyntaxError: Unexpected token ';'
+    at new Script (vm.js:88:7)
+    at createScript (vm.js:261:10)
+    at Object.runInThisContext (vm.js:309:10)
+    at wrapSafe (internal/modules/cjs/loader.js:1047:15)
+    at Module._compile (internal/modules/cjs/loader.js:1108:27)
+    at Object.f (/Applications/Cocos/Creator/2.4.6/CocosCreator.app/Contents/Resources/app.asar/editor-framework/lib/share/require.js:1:1993)
+    at Module.load (internal/modules/cjs/loader.js:992:32)
+    at Module._load (internal/modules/cjs/loader.js:885:14)
+    at Function.f._load (electron/js2c/asar_bundle.js:5:12734)
+    at Module.require [as __require] (internal/modules/cjs/loader.js:1032:19)
+2024-08-09T07:26:04.052Z - failed: load script [./InfiniteHeights.GameView] failed : /Users/mac/Documents/WORK/MINIGAME/InfiniteHeights/temp/quick-scripts/dst/assets/InfiniteHeights/scripts/Game/InfiniteHeights.GameView.js:150
+        ;
+        ^
+
+SyntaxError: Unexpected token ';'
+    at new Script (vm.js:88:7)
+    at createScript (vm.js:261:10)
+    at Object.runInThisContext (vm.js:309:10)
+    at wrapSafe (internal/modules/cjs/loader.js:1047:15)
+    at Module._compile (internal/modules/cjs/loader.js:1108:27)
+    at Object.f (/Applications/Cocos/Creator/2.4.6/CocosCreator.app/Contents/Resources/app.asar/editor-framework/lib/share/require.js:1:1993)
+    at Module.load (internal/modules/cjs/loader.js:992:32)
+    at Module._load (internal/modules/cjs/loader.js:885:14)
+    at Function.f._load (electron/js2c/asar_bundle.js:5:12734)
+    at Module.require [as __require] (internal/modules/cjs/loader.js:1032:19)
+2024-08-09T07:26:04.110Z - warn: Script attached to "GameView" is missing or invalid. Detailed information:
+Node path: "GameView"
+Script UUID: "b6dd7698-a8b2-4263-b819-1e2595ea72ad"
+Class ID: "b6dd7aYqLJCY7gZHiWV6nKt"
+

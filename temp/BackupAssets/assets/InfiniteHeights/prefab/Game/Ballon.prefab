@@ -78,8 +78,8 @@
     "_skewX": 0,
     "_skewY": 0,
     "_is3DNode": false,
-    "_groupIndex": 2,
-    "groupIndex": 2,
+    "_groupIndex": 1,
+    "groupIndex": 1,
     "_id": ""
   },
   {
@@ -141,7 +141,7 @@
       "x": 0,
       "y": 8
     },
-    "_radius": 22,
+    "_radius": 50,
     "_id": ""
   },
   {

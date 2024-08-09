@@ -45,7 +45,7 @@ var BackGround = /** @class */ (function (_super) {
     BackGround.prototype.start = function () {
     };
     BackGround.prototype.update = function (dt) {
-        if (!InfiniteHeights_GameView_1.default.instance.isFirstTouch) {
+        if (!InfiniteHeights_GameView_1.default.instance.isFirstTouch || InfiniteHeights_GameView_1.default.instance.isGameOver) {
             return;
         }
         if (this.node.y <= -1280) {
@@ -53,7 +53,7 @@ var BackGround = /** @class */ (function (_super) {
             this.destroyObstacle();
             InfiniteHeights_GameView_1.default.instance.createObstacle(this.node);
             if (this.idBg == 3) {
-                this.node.destroy();
+                this.node.active = false;
             }
         }
         this.node.y -= 2;
