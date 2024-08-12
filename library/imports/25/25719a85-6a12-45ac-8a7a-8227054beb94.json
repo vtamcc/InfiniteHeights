@@ -1,7 +1,7 @@
 {
   "__type__": "cc.SpriteFrame",
   "content": {
-    "name": "left_button-sheet0",
+    "name": "btn_prev",
     "texture": "d6a03b82-9d98-4c37-8d98-5535fb286b4d",
     "atlas": "",
     "rect": [

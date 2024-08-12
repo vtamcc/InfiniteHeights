@@ -29,16 +29,19 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+var InfiniteHeights_GameManager_1 = require("../InfiniteHeights.GameManager");
 var _a = cc._decorator, ccclass = _a.ccclass, property = _a.property;
 var Ballon = /** @class */ (function (_super) {
     __extends(Ballon, _super);
     function Ballon() {
         var _this = _super !== null && _super.apply(this, arguments) || this;
         _this.spBallon = null;
+        _this.id = 0;
+        // LIFE-CYCLE CALLBACKS:
+        _this.isUnlock = false;
         return _this;
         // update (dt) {}
     }
-    // LIFE-CYCLE CALLBACKS:
     Ballon.prototype.onLoad = function () {
         this.EffectBallon();
     };
@@ -49,7 +52,16 @@ var Ballon = /** @class */ (function (_super) {
             .to(0.9, { angle: 10 })
             .start()).start();
     };
-    Ballon.prototype.setData = function () {
+    Ballon.prototype.setData = function (id, isUnlock) {
+        this.id = id;
+        this.isUnlock = isUnlock;
+        this.spBallon.spriteFrame = InfiniteHeights_GameManager_1.default.instance.listSpfBallon[this.id];
+        if (isUnlock) {
+            this.node.opacity = 255;
+        }
+        else {
+            this.node.opacity = 150;
+        }
     };
     Ballon.prototype.start = function () {
     };

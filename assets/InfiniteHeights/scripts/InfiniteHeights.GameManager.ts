@@ -5,9 +5,10 @@
 // Learn life-cycle callbacks:
 //  - https://docs.cocos.com/creator/manual/en/scripting/life-cycle-callbacks.html
 
+import Ballon from "./Game/InfiniteHeights.Ballon";
 import { Global } from "./InfiniteHeights.Global";
 
-const {ccclass, property} = cc._decorator;
+const { ccclass, property } = cc._decorator;
 
 @ccclass
 export default class GameManager extends cc.Component {
@@ -21,26 +22,49 @@ export default class GameManager extends cc.Component {
 
     @property(cc.Label)
     lbtest: cc.Label = null;
+
+    @property(cc.SpriteFrame)
+    listSpfBallon: cc.SpriteFrame[] = [];
+
+    @property(cc.PageView)
+    pageView: cc.PageView = null;
+
+    @property(cc.Prefab)
+    ballonPrefabs: cc.Prefab = null;
+
+    @property(cc.Node)
+    nListBallon: cc.Node[] = [];
+    indexBallon = 1;
     onLoad() {
-      GameManager.instance = this;
-      this.updateRank(this.nListNodeRank);
+        GameManager.instance = this;
+        this.updateRank(this.nListNodeRank);
+        //this.updateActive(Global.score);
+        
     }
-    start () {
+    start() {
+
+    }
+    populatePages() {
+
+        //this.updatePageView();
 
     }
 
+    onNextPage() {
+
+    }
     updateRank(listNodeLabel: cc.Node[]) {
-        Global.dataScore = JSON.parse(cc.sys.localStorage.getItem("score")) || Global.dataScore;
+        Global.dataScore = JSON.parse(cc.sys.localStorage.getItem("scores")) || [];
         console.log("Diem luu ne ", Global.dataScore);
         if (Global.dataScore.length === 0) {
             console.log("Mảng scores rỗng, ẩn tất cả các node.");
             listNodeLabel.forEach(node => {
                 node.active = false;
             });
-        }else {
+        } else {
             listNodeLabel.forEach((node, index) => {
-                console.log("index ", index);
-                console.log("diem ", Global.dataScore)
+                //console.log("index ", index);
+                //console.log("diem ", Global.dataScore)
                 if (index < Global.dataScore.length) {
                     node.active = true;
                     node.getComponent(cc.Label).string = Global.dataScore[index] + ' ';
@@ -49,9 +73,14 @@ export default class GameManager extends cc.Component {
                 }
             });
         }
-    
-        
+
+
     }
+
+    removeCache() {
+        cc.sys.localStorage.clear();
+    }
+
 
     clickPlay() {
         let gameView = cc.instantiate(this.prfGameView)

@@ -26,6 +26,7 @@ export default class GameOver extends cc.Component {
     // LIFE-CYCLE CALLBACKS:
 
     onLoad () {
+        cc.sys.localStorage.setItem("scores", JSON.stringify(Global.dataScore));
         GameView.instance.updateLbTime(this.lbTime);
         GameView.instance.updateLbDiamond(this.lbDiamond);
         GameView.instance.updateLbScore(this.lbScore);
@@ -37,7 +38,6 @@ export default class GameOver extends cc.Component {
     }
 
     onHome() {
-        cc.sys.localStorage.setItem("score", JSON.stringify(Global.dataScore));
         GameView.instance.gameDestroy();
         GameManager.instance.updateRank(GameManager.instance.nListNodeRank);
         this.node.destroy();

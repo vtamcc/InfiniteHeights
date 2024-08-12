@@ -45,6 +45,7 @@ var GameOver = /** @class */ (function (_super) {
     }
     // LIFE-CYCLE CALLBACKS:
     GameOver.prototype.onLoad = function () {
+        cc.sys.localStorage.setItem("scores", JSON.stringify(InfiniteHeights_Global_1.Global.dataScore));
         InfiniteHeights_GameView_1.default.instance.updateLbTime(this.lbTime);
         InfiniteHeights_GameView_1.default.instance.updateLbDiamond(this.lbDiamond);
         InfiniteHeights_GameView_1.default.instance.updateLbScore(this.lbScore);
@@ -54,7 +55,6 @@ var GameOver = /** @class */ (function (_super) {
         this.node.destroy();
     };
     GameOver.prototype.onHome = function () {
-        cc.sys.localStorage.setItem("score", JSON.stringify(InfiniteHeights_Global_1.Global.dataScore));
         InfiniteHeights_GameView_1.default.instance.gameDestroy();
         InfiniteHeights_GameManager_1.default.instance.updateRank(InfiniteHeights_GameManager_1.default.instance.nListNodeRank);
         this.node.destroy();

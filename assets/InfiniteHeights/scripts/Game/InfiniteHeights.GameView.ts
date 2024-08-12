@@ -5,6 +5,7 @@
 // Learn life-cycle callbacks:
 //  - https://docs.cocos.com/creator/manual/en/scripting/life-cycle-callbacks.html
 
+import GameManager from "../InfiniteHeights.GameManager";
 import { Global } from "../InfiniteHeights.Global";
 import BackGround from "./InfiniteHeights.BackGround";
 import Ballon from "./InfiniteHeights.Ballon";
@@ -60,7 +61,8 @@ export default class GameView extends cc.Component {
         this.nBallon.addChild(this.ballon);
         this.genObstacle();
         this.node.on(cc.Node.EventType.TOUCH_START,this.onTouchStart, this);
-
+        
+        this.resetGame();
        
     }
 
@@ -155,7 +157,6 @@ export default class GameView extends cc.Component {
     }
 
     gameOver() {
-        console.log("Thua con me may roi ");
         this.isGameOver = true;
         let gameOver = cc.instantiate(this.prfGameOver).getComponent(GameOver).node
         this.node.addChild(gameOver);
@@ -168,8 +169,18 @@ export default class GameView extends cc.Component {
         Global.dataScore.sort((a,b) => {
             return a > b ? - 1 : 0;
         });
-        cc.sys.localStorage.setItem('scores', JSON.stringify(Global.dataScore));
-        console.log("dasdasd ",Global.dataScore);
+        console.log('save',Global.dataScore)
+        cc.sys.localStorage.setItem('scores', JSON.stringify(Global.dataScore));    
+        if(scores >= Global.dataBallon[GameManager.instance.indexBallon].score) {
+            Global.dataBallon[GameManager.instance.indexBallon].isUnlock = true;
+            cc.sys.localStorage.setItem('dataBallon', JSON.stringify(Global.dataBallon));
+            cc.sys.localStorage.setItem('indexBallon', GameManager.instance.indexBallon.toString());
+            GameManager.instance.indexBallon++;
+            
+        }
+       
+
+        //Global.ballon.forEach()
     }
 
     gameDestroy() {

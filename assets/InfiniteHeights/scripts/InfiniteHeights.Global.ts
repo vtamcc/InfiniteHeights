@@ -9,4 +9,15 @@ export class Global{
     static diaMond = 0;
     static score = 0;
     static dataScore = [];
+    static dataBallon = [
+        {score: 20, isUnlock: true},
+        {score: 10, isUnlock: false},
+        {score: 12, isUnlock: false},
+        {score: 14, isUnlock: false},
+        {score: 16, isUnlock: false},
+        {score: 18, isUnlock: false},
+        {score: 20, isUnlock: false},
+        {score: 22, isUnlock: false},
+        {score: 24, isUnlock: false},
+    ]
 }

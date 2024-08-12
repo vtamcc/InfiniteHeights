@@ -29,6 +29,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+var InfiniteHeights_GameManager_1 = require("../InfiniteHeights.GameManager");
 var InfiniteHeights_Global_1 = require("../InfiniteHeights.Global");
 var InfiniteHeights_Ballon_1 = require("./InfiniteHeights.Ballon");
 var InfiniteHeights_GameOver_1 = require("./InfiniteHeights.GameOver");
@@ -74,6 +75,7 @@ var GameView = /** @class */ (function (_super) {
         this.nBallon.addChild(this.ballon);
         this.genObstacle();
         this.node.on(cc.Node.EventType.TOUCH_START, this.onTouchStart, this);
+        this.resetGame();
     };
     GameView.prototype.start = function () {
     };
@@ -155,7 +157,6 @@ var GameView = /** @class */ (function (_super) {
         this.node.on(cc.Node.EventType.TOUCH_START, this.onTouchStart, this);
     };
     GameView.prototype.gameOver = function () {
-        console.log("Thua con me may roi ");
         this.isGameOver = true;
         var gameOver = cc.instantiate(this.prfGameOver).getComponent(InfiniteHeights_GameOver_1.default).node;
         this.node.addChild(gameOver);
@@ -168,8 +169,15 @@ var GameView = /** @class */ (function (_super) {
         InfiniteHeights_Global_1.Global.dataScore.sort(function (a, b) {
             return a > b ? -1 : 0;
         });
+        console.log('save', InfiniteHeights_Global_1.Global.dataScore);
         cc.sys.localStorage.setItem('scores', JSON.stringify(InfiniteHeights_Global_1.Global.dataScore));
-        console.log("dasdasd ", InfiniteHeights_Global_1.Global.dataScore);
+        if (scores >= InfiniteHeights_Global_1.Global.dataBallon[InfiniteHeights_GameManager_1.default.instance.indexBallon].score) {
+            InfiniteHeights_Global_1.Global.dataBallon[InfiniteHeights_GameManager_1.default.instance.indexBallon].isUnlock = true;
+            cc.sys.localStorage.setItem('dataBallon', JSON.stringify(InfiniteHeights_Global_1.Global.dataBallon));
+            cc.sys.localStorage.setItem('indexBallon', InfiniteHeights_GameManager_1.default.instance.indexBallon.toString());
+            InfiniteHeights_GameManager_1.default.instance.indexBallon++;
+        }
+        //Global.ballon.forEach()
     };
     GameView.prototype.gameDestroy = function () {
         this.node.destroy();

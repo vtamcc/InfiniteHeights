@@ -38,6 +38,11 @@ var GameManager = /** @class */ (function (_super) {
         _this.prfGameView = null;
         _this.nListNodeRank = [];
         _this.lbtest = null;
+        _this.listSpfBallon = [];
+        _this.pageView = null;
+        _this.ballonPrefabs = null;
+        _this.nListBallon = [];
+        _this.indexBallon = 1;
         return _this;
         // update (dt) {}
     }
@@ -45,11 +50,17 @@ var GameManager = /** @class */ (function (_super) {
     GameManager.prototype.onLoad = function () {
         GameManager_1.instance = this;
         this.updateRank(this.nListNodeRank);
+        //this.updateActive(Global.score);
     };
     GameManager.prototype.start = function () {
     };
+    GameManager.prototype.populatePages = function () {
+        //this.updatePageView();
+    };
+    GameManager.prototype.onNextPage = function () {
+    };
     GameManager.prototype.updateRank = function (listNodeLabel) {
-        InfiniteHeights_Global_1.Global.dataScore = JSON.parse(cc.sys.localStorage.getItem("score")) || InfiniteHeights_Global_1.Global.dataScore;
+        InfiniteHeights_Global_1.Global.dataScore = JSON.parse(cc.sys.localStorage.getItem("scores")) || [];
         console.log("Diem luu ne ", InfiniteHeights_Global_1.Global.dataScore);
         if (InfiniteHeights_Global_1.Global.dataScore.length === 0) {
             console.log("Mảng scores rỗng, ẩn tất cả các node.");
@@ -59,8 +70,8 @@ var GameManager = /** @class */ (function (_super) {
         }
         else {
             listNodeLabel.forEach(function (node, index) {
-                console.log("index ", index);
-                console.log("diem ", InfiniteHeights_Global_1.Global.dataScore);
+                //console.log("index ", index);
+                //console.log("diem ", Global.dataScore)
                 if (index < InfiniteHeights_Global_1.Global.dataScore.length) {
                     node.active = true;
                     node.getComponent(cc.Label).string = InfiniteHeights_Global_1.Global.dataScore[index] + ' ';
@@ -70,6 +81,9 @@ var GameManager = /** @class */ (function (_super) {
                 }
             });
         }
+    };
+    GameManager.prototype.removeCache = function () {
+        cc.sys.localStorage.clear();
     };
     GameManager.prototype.clickPlay = function () {
         var gameView = cc.instantiate(this.prfGameView);
@@ -86,6 +100,18 @@ var GameManager = /** @class */ (function (_super) {
     __decorate([
         property(cc.Label)
     ], GameManager.prototype, "lbtest", void 0);
+    __decorate([
+        property(cc.SpriteFrame)
+    ], GameManager.prototype, "listSpfBallon", void 0);
+    __decorate([
+        property(cc.PageView)
+    ], GameManager.prototype, "pageView", void 0);
+    __decorate([
+        property(cc.Prefab)
+    ], GameManager.prototype, "ballonPrefabs", void 0);
+    __decorate([
+        property(cc.Node)
+    ], GameManager.prototype, "nListBallon", void 0);
     GameManager = GameManager_1 = __decorate([
         ccclass
     ], GameManager);

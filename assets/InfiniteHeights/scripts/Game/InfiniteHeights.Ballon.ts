@@ -5,6 +5,8 @@
 // Learn life-cycle callbacks:
 //  - https://docs.cocos.com/creator/manual/en/scripting/life-cycle-callbacks.html
 
+import GameManager from "../InfiniteHeights.GameManager";
+
 const {ccclass, property} = cc._decorator;
 
 @ccclass
@@ -12,9 +14,9 @@ export default class Ballon extends cc.Component {
 
     @property(cc.Sprite)
     spBallon: cc.Sprite = null;
-
+    id = 0;
     // LIFE-CYCLE CALLBACKS:
-
+    isUnlock = false;
     onLoad () {
         this.EffectBallon();
     }
@@ -28,9 +30,19 @@ export default class Ballon extends cc.Component {
             .start()
         ).start()
     }
-    setData() {
-        
+
+    setData(id,isUnlock) {
+        this.id = id;
+        this.isUnlock = isUnlock;
+        this.spBallon.spriteFrame = GameManager.instance.listSpfBallon[this.id];
+
+        if(isUnlock) {
+            this.node.opacity = 255;
+        }else {
+            this.node.opacity = 150;
+        }
     }
+
     start () {
 
     }
