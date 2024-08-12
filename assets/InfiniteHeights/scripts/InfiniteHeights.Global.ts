@@ -20,4 +20,5 @@ export class Global{
         {score: 22, isUnlock: false},
         {score: 24, isUnlock: false},
     ]
+    static currentIndex = 0;
 }

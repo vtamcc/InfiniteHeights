@@ -61,7 +61,8 @@ export default class GameView extends cc.Component {
         this.nBallon.addChild(this.ballon);
         this.genObstacle();
         this.node.on(cc.Node.EventType.TOUCH_START,this.onTouchStart, this);
-        
+        Global.currentIndex = JSON.parse(cc.sys.localStorage.getItem("indexBallon")) || 1;
+        console.log("index ", Global.currentIndex);
         this.resetGame();
        
     }
@@ -171,18 +172,34 @@ export default class GameView extends cc.Component {
         });
         console.log('save',Global.dataScore)
         cc.sys.localStorage.setItem('scores', JSON.stringify(Global.dataScore));    
-        if(scores >= Global.dataBallon[GameManager.instance.indexBallon].score) {
-            Global.dataBallon[GameManager.instance.indexBallon].isUnlock = true;
-            cc.sys.localStorage.setItem('dataBallon', JSON.stringify(Global.dataBallon));
-            cc.sys.localStorage.setItem('indexBallon', GameManager.instance.indexBallon.toString());
-            GameManager.instance.indexBallon++;
-            
+        //this.checkAndUnlockBalloons(scores);
+        if(Global.currentIndex < Global.dataBallon.length) {
+            if(scores >= Global.dataBallon[Global.currentIndex].score) {
+                Global.dataBallon[Global.currentIndex].isUnlock = true;
+                cc.sys.localStorage.setItem('dataBallons', JSON.stringify(Global.dataBallon));
+                
+                Global.currentIndex++;
+                cc.sys.localStorage.setItem('indexBallon', JSON.stringify(Global.currentIndex));
+               
+                console.log("indexxxx ", Global.currentIndex);
+            }
         }
        
 
         //Global.ballon.forEach()
     }
 
+    // checkAndUnlockBalloons(scores: number) {
+    //     for (let i = Global.currentIndex; i < Global.dataBallon.length; i++) {
+    //         if (scores >= Global.dataBallon[i].score && !Global.dataBallon[i].isUnlock) {
+    //             Global.dataBallon[i].isUnlock = true;
+    //             Global.currentIndex = i + 1;
+    //             cc.sys.localStorage.setItem('dataBallon', JSON.stringify(Global.dataBallon));
+    //             cc.sys.localStorage.setItem('currentIndex', Global.currentIndex.toString());
+    //             break;
+    //         }
+    //     }
+    // }
     gameDestroy() {
         this.node.destroy();
     }

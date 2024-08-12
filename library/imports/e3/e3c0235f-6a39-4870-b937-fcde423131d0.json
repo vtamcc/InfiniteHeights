@@ -1242,7 +1242,7 @@
       "__id__": 22
     },
     "_children": [],
-    "_active": true,
+    "_active": false,
     "_components": [
       {
         "__id__": 26
@@ -1343,7 +1343,7 @@
       }
     ],
     "_prefab": null,
-    "_opacity": 135,
+    "_opacity": 255,
     "_color": {
       "__type__": "cc.Color",
       "r": 255,

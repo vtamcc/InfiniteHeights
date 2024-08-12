@@ -50,20 +50,41 @@ var GameManager = /** @class */ (function (_super) {
     GameManager.prototype.onLoad = function () {
         GameManager_1.instance = this;
         this.updateRank(this.nListNodeRank);
-        //this.updateActive(Global.score);
+        InfiniteHeights_Global_1.Global.dataBallon = JSON.parse(cc.sys.localStorage.getItem('dataBallons')) || InfiniteHeights_Global_1.Global.dataBallon;
+        InfiniteHeights_Global_1.Global.currentIndex = JSON.parse(cc.sys.localStorage.getItem('indexBallon')) || 1;
+        this.updateBallon();
+        console.log("currentIndex", InfiniteHeights_Global_1.Global.currentIndex);
+        console.log("data ", InfiniteHeights_Global_1.Global.dataBallon);
     };
     GameManager.prototype.start = function () {
     };
-    GameManager.prototype.populatePages = function () {
-        //this.updatePageView();
-    };
-    GameManager.prototype.onNextPage = function () {
+    GameManager.prototype.updateBallon = function () {
+        this.nListBallon[1].active = true;
+        this.nListBallon[1].getComponent(cc.Sprite).spriteFrame = this.listSpfBallon[0];
+        var leftIndex = (InfiniteHeights_Global_1.Global.currentIndex + 2) % InfiniteHeights_Global_1.Global.dataBallon.length;
+        if (leftIndex !== InfiniteHeights_Global_1.Global.currentIndex && InfiniteHeights_Global_1.Global.dataBallon[leftIndex].isUnlock) {
+            this.nListBallon[0].active = true;
+            this.nListBallon[0].getComponent(cc.Sprite).spriteFrame = this.listSpfBallon[leftIndex];
+        }
+        else {
+            this.nListBallon[0].active = false;
+        }
+        var rightIndex = (InfiniteHeights_Global_1.Global.currentIndex) % InfiniteHeights_Global_1.Global.dataBallon.length;
+        console.log("rightIndex ", rightIndex);
+        console.log("rightData", InfiniteHeights_Global_1.Global.dataBallon[rightIndex]);
+        if (InfiniteHeights_Global_1.Global.dataBallon[rightIndex].isUnlock) {
+            this.nListBallon[2].active = true;
+            this.nListBallon[2].getComponent(cc.Sprite).spriteFrame = this.listSpfBallon[rightIndex];
+        }
+        else {
+            this.nListBallon[2].active = false;
+        }
     };
     GameManager.prototype.updateRank = function (listNodeLabel) {
         InfiniteHeights_Global_1.Global.dataScore = JSON.parse(cc.sys.localStorage.getItem("scores")) || [];
         console.log("Diem luu ne ", InfiniteHeights_Global_1.Global.dataScore);
         if (InfiniteHeights_Global_1.Global.dataScore.length === 0) {
-            console.log("Mảng scores rỗng, ẩn tất cả các node.");
+            //console.log("Mảng scores rỗng, ẩn tất cả các node.");
             listNodeLabel.forEach(function (node) {
                 node.active = false;
             });

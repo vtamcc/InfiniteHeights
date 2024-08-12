@@ -28,6 +28,7 @@ var Global = /** @class */ (function () {
         { score: 22, isUnlock: false },
         { score: 24, isUnlock: false },
     ];
+    Global.currentIndex = 0;
     return Global;
 }());
 exports.Global = Global;
