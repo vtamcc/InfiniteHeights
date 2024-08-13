@@ -52,16 +52,9 @@ var Ballon = /** @class */ (function (_super) {
             .to(0.9, { angle: 10 })
             .start()).start();
     };
-    Ballon.prototype.setData = function (id, isUnlock) {
+    Ballon.prototype.setData = function (id) {
         this.id = id;
-        this.isUnlock = isUnlock;
         this.spBallon.spriteFrame = InfiniteHeights_GameManager_1.default.instance.listSpfBallon[this.id];
-        if (isUnlock) {
-            this.node.opacity = 255;
-        }
-        else {
-            this.node.opacity = 150;
-        }
     };
     Ballon.prototype.start = function () {
     };

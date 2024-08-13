@@ -10,8 +10,9 @@ import { Global } from "../InfiniteHeights.Global";
 const { ccclass, property } = cc._decorator;
 
 @ccclass
-export default class NameGame_Shop extends cc.Component {
+export default class Shop extends cc.Component {
 
+    public static instance: Shop = null;
     @property(cc.SpriteFrame)
     listSpfBallon: cc.SpriteFrame[] = [];
 
@@ -31,13 +32,10 @@ export default class NameGame_Shop extends cc.Component {
     nPrev: cc.Node = null;
 
     onLoad() {
-        // index ballon hien thi
-        // index ballon dc mo khoa
-        // Global.currentIndexBallon = JSON.parse(cc.sys.localStorage.getItem('currentIndex')) || Global.currentIndexBallon;
+        Shop.instance = this;
         Global.unlockIndexBallon = JSON.parse(cc.sys.localStorage.getItem('unlockIndexBallon')) || Global.unlockIndexBallon;
-
-        // console.log("currentIndexBallon ", Global.currentIndexBallon);
         console.log("unLockIndex ", Global.unlockIndexBallon);
+        console.log("indexBallon", Global.currentIndexBallon);
         this.updateShop()
     }
 
@@ -45,21 +43,42 @@ export default class NameGame_Shop extends cc.Component {
 
     }
 
+    // onNext() {
+    //     Global.currentIndexBallon++;
+    //     console.log("OnNext ", Global.currentIndexBallon);
+    //     if (Global.currentIndexBallon > Global.unlockIndexBallon)
+    //         Global.currentIndexBallon = Global.unlockIndexBallon;
+    //     this.updateShop()
+    // }
+
+    // onPrev() {
+    //     Global.currentIndexBallon--;
+    //     console.log("OnPrev ", Global.currentIndexBallon);
+    //     if (Global.currentIndexBallon < 0)
+    //         Global.currentIndexBallon = 0;
+
+    //     this.updateShop()
+    // }
+
     onNext() {
-        Global.currentIndexBallon++;
-        console.log("OnNext ", Global.currentIndexBallon);
-        if (Global.currentIndexBallon > Global.unlockIndexBallon)
-            Global.currentIndexBallon = Global.unlockIndexBallon;
-        this.updateShop()
+        if (Global.currentIndexBallon < Global.unlockPoints.length - 1) {
+            Global.currentIndexBallon++;
+            this.updateShop();
+            console.log("OnNext ", Global.currentIndexBallon);
+            cc.sys.localStorage.setItem('currentIndexBallon', Global.currentIndexBallon);
+        }else {
+            this.nNext.active = false;
+            console.log("sdasd")
+        }
     }
-
+    
     onPrev() {
-        Global.currentIndexBallon--;
-        console.log("OnPrev ", Global.currentIndexBallon);
-        if (Global.currentIndexBallon < 0)
-            Global.currentIndexBallon = 0;
-
-        this.updateShop()
+        if (Global.currentIndexBallon > 0) {
+            Global.currentIndexBallon--;
+            this.updateShop();
+            console.log("OnPrev ", Global.currentIndexBallon);
+            cc.sys.localStorage.setItem('currentIndexBallon', Global.currentIndexBallon);
+        }
     }
 
     updateShop() {
@@ -68,30 +87,41 @@ export default class NameGame_Shop extends cc.Component {
         // neu currentIndexBallon == unlockIndexBallon =>an button Next, Ballon 2
 
         this.nBallon_1.spriteFrame = this.listSpfBallon[Global.currentIndexBallon]
-
         if (Global.currentIndexBallon === 0) {
             this.nPrev.active = false;
-            this.nBallon_0.node.active = false;
-            console.log("if 1")
-        }
-
-        if (Global.currentIndexBallon > 0 && Global.currentIndexBallon < Global.unlockIndexBallon ) {
-            this.nPrev.active = true;
-            this.nBallon_0.node.active = true;
             this.nNext.active = true;
-            this.nBallon_2.node.active = true;
+            this.nBallon_0.node.active = false; 
+    
+            if (Global.unlockIndexBallon > 0) {
+                this.nBallon_2.node.active = true;
+                this.nBallon_2.spriteFrame = this.listSpfBallon[Global.currentIndexBallon + 1];
+            } else {
+                this.nBallon_2.node.active = false;
+            }
+        } 
 
-            this.nBallon_0.spriteFrame = this.listSpfBallon[Global.currentIndexBallon - 1]
-            this.nBallon_2.spriteFrame = this.listSpfBallon[Global.currentIndexBallon + 1]
-            console.log("if 2")
-        }
 
-        if (Global.currentIndexBallon === Global.unlockIndexBallon ) {
+        else if (Global.currentIndexBallon === Global.unlockIndexBallon) {
+            this.nPrev.active = true;   
             this.nNext.active = false;
+            this.nBallon_0.node.active = true;
+            this.nBallon_0.spriteFrame = this.listSpfBallon[Global.currentIndexBallon - 1];
             this.nBallon_2.node.active = false;
-            console.log("if 3")
+        } 
+        else if (Global.currentIndexBallon > 0 && Global.currentIndexBallon < Global.unlockIndexBallon) {
+            this.nPrev.active = true; 
+            this.nNext.active = true;   
+            this.nBallon_0.node.active = true;
+            this.nBallon_2.node.active = true;
+            this.nBallon_0.spriteFrame = this.listSpfBallon[Global.currentIndexBallon - 1];
+            this.nBallon_2.spriteFrame = this.listSpfBallon[Global.currentIndexBallon + 1];
         }
-
+    
+    
+        if (Global.currentIndexBallon > Global.unlockIndexBallon) {
+            Global.currentIndexBallon = Global.unlockIndexBallon;
+            this.updateShop();
+        }
     }
     // update (dt) {}
 }

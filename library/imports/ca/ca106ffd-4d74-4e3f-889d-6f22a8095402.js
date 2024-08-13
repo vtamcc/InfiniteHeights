@@ -31,9 +31,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 Object.defineProperty(exports, "__esModule", { value: true });
 var InfiniteHeights_Global_1 = require("../InfiniteHeights.Global");
 var _a = cc._decorator, ccclass = _a.ccclass, property = _a.property;
-var NameGame_Shop = /** @class */ (function (_super) {
-    __extends(NameGame_Shop, _super);
-    function NameGame_Shop() {
+var Shop = /** @class */ (function (_super) {
+    __extends(Shop, _super);
+    function Shop() {
         var _this = _super !== null && _super.apply(this, arguments) || this;
         _this.listSpfBallon = [];
         _this.nBallon_0 = null;
@@ -44,79 +44,112 @@ var NameGame_Shop = /** @class */ (function (_super) {
         return _this;
         // update (dt) {}
     }
-    NameGame_Shop.prototype.onLoad = function () {
-        // index ballon hien thi
-        // index ballon dc mo khoa
-        // Global.currentIndexBallon = JSON.parse(cc.sys.localStorage.getItem('currentIndex')) || Global.currentIndexBallon;
+    Shop_1 = Shop;
+    Shop.prototype.onLoad = function () {
+        Shop_1.instance = this;
         InfiniteHeights_Global_1.Global.unlockIndexBallon = JSON.parse(cc.sys.localStorage.getItem('unlockIndexBallon')) || InfiniteHeights_Global_1.Global.unlockIndexBallon;
-        // console.log("currentIndexBallon ", Global.currentIndexBallon);
         console.log("unLockIndex ", InfiniteHeights_Global_1.Global.unlockIndexBallon);
+        console.log("indexBallon", InfiniteHeights_Global_1.Global.currentIndexBallon);
         this.updateShop();
     };
-    NameGame_Shop.prototype.start = function () {
+    Shop.prototype.start = function () {
     };
-    NameGame_Shop.prototype.onNext = function () {
-        InfiniteHeights_Global_1.Global.currentIndexBallon++;
-        console.log("OnNext ", InfiniteHeights_Global_1.Global.currentIndexBallon);
-        if (InfiniteHeights_Global_1.Global.currentIndexBallon > InfiniteHeights_Global_1.Global.unlockIndexBallon)
-            InfiniteHeights_Global_1.Global.currentIndexBallon = InfiniteHeights_Global_1.Global.unlockIndexBallon;
-        this.updateShop();
+    // onNext() {
+    //     Global.currentIndexBallon++;
+    //     console.log("OnNext ", Global.currentIndexBallon);
+    //     if (Global.currentIndexBallon > Global.unlockIndexBallon)
+    //         Global.currentIndexBallon = Global.unlockIndexBallon;
+    //     this.updateShop()
+    // }
+    // onPrev() {
+    //     Global.currentIndexBallon--;
+    //     console.log("OnPrev ", Global.currentIndexBallon);
+    //     if (Global.currentIndexBallon < 0)
+    //         Global.currentIndexBallon = 0;
+    //     this.updateShop()
+    // }
+    Shop.prototype.onNext = function () {
+        if (InfiniteHeights_Global_1.Global.currentIndexBallon < InfiniteHeights_Global_1.Global.unlockPoints.length - 1) {
+            InfiniteHeights_Global_1.Global.currentIndexBallon++;
+            this.updateShop();
+            console.log("OnNext ", InfiniteHeights_Global_1.Global.currentIndexBallon);
+            cc.sys.localStorage.setItem('currentIndexBallon', InfiniteHeights_Global_1.Global.currentIndexBallon);
+        }
+        else {
+            this.nNext.active = false;
+            console.log("sdasd");
+        }
     };
-    NameGame_Shop.prototype.onPrev = function () {
-        InfiniteHeights_Global_1.Global.currentIndexBallon--;
-        console.log("OnPrev ", InfiniteHeights_Global_1.Global.currentIndexBallon);
-        if (InfiniteHeights_Global_1.Global.currentIndexBallon < 0)
-            InfiniteHeights_Global_1.Global.currentIndexBallon = 0;
-        this.updateShop();
+    Shop.prototype.onPrev = function () {
+        if (InfiniteHeights_Global_1.Global.currentIndexBallon > 0) {
+            InfiniteHeights_Global_1.Global.currentIndexBallon--;
+            this.updateShop();
+            console.log("OnPrev ", InfiniteHeights_Global_1.Global.currentIndexBallon);
+            cc.sys.localStorage.setItem('currentIndexBallon', InfiniteHeights_Global_1.Global.currentIndexBallon);
+        }
     };
-    NameGame_Shop.prototype.updateShop = function () {
+    Shop.prototype.updateShop = function () {
         // neu currentIndexBallon == 0 => an button Previous, Ballon 0
         // neu currentIndexBallon > 0 && < unlockIndexBallon => xu ly gi
         // neu currentIndexBallon == unlockIndexBallon =>an button Next, Ballon 2
         this.nBallon_1.spriteFrame = this.listSpfBallon[InfiniteHeights_Global_1.Global.currentIndexBallon];
         if (InfiniteHeights_Global_1.Global.currentIndexBallon === 0) {
             this.nPrev.active = false;
-            this.nBallon_0.node.active = false;
-            console.log("if 1");
-        }
-        if (InfiniteHeights_Global_1.Global.currentIndexBallon > 0 && InfiniteHeights_Global_1.Global.currentIndexBallon < InfiniteHeights_Global_1.Global.unlockIndexBallon) {
-            this.nPrev.active = true;
-            this.nBallon_0.node.active = true;
             this.nNext.active = true;
+            this.nBallon_0.node.active = false;
+            if (InfiniteHeights_Global_1.Global.unlockIndexBallon > 0) {
+                this.nBallon_2.node.active = true;
+                this.nBallon_2.spriteFrame = this.listSpfBallon[InfiniteHeights_Global_1.Global.currentIndexBallon + 1];
+            }
+            else {
+                this.nBallon_2.node.active = false;
+            }
+        }
+        else if (InfiniteHeights_Global_1.Global.currentIndexBallon === InfiniteHeights_Global_1.Global.unlockIndexBallon) {
+            this.nPrev.active = true;
+            this.nNext.active = false;
+            this.nBallon_0.node.active = true;
+            this.nBallon_0.spriteFrame = this.listSpfBallon[InfiniteHeights_Global_1.Global.currentIndexBallon - 1];
+            this.nBallon_2.node.active = false;
+        }
+        else if (InfiniteHeights_Global_1.Global.currentIndexBallon > 0 && InfiniteHeights_Global_1.Global.currentIndexBallon < InfiniteHeights_Global_1.Global.unlockIndexBallon) {
+            this.nPrev.active = true;
+            this.nNext.active = true;
+            this.nBallon_0.node.active = true;
             this.nBallon_2.node.active = true;
             this.nBallon_0.spriteFrame = this.listSpfBallon[InfiniteHeights_Global_1.Global.currentIndexBallon - 1];
             this.nBallon_2.spriteFrame = this.listSpfBallon[InfiniteHeights_Global_1.Global.currentIndexBallon + 1];
-            console.log("if 2");
         }
-        if (InfiniteHeights_Global_1.Global.currentIndexBallon === InfiniteHeights_Global_1.Global.unlockIndexBallon) {
-            this.nNext.active = false;
-            this.nBallon_2.node.active = false;
-            console.log("if 3");
+        if (InfiniteHeights_Global_1.Global.currentIndexBallon > InfiniteHeights_Global_1.Global.unlockIndexBallon) {
+            InfiniteHeights_Global_1.Global.currentIndexBallon = InfiniteHeights_Global_1.Global.unlockIndexBallon;
+            this.updateShop();
         }
     };
+    var Shop_1;
+    Shop.instance = null;
     __decorate([
         property(cc.SpriteFrame)
-    ], NameGame_Shop.prototype, "listSpfBallon", void 0);
+    ], Shop.prototype, "listSpfBallon", void 0);
     __decorate([
         property(cc.Sprite)
-    ], NameGame_Shop.prototype, "nBallon_0", void 0);
+    ], Shop.prototype, "nBallon_0", void 0);
     __decorate([
         property(cc.Sprite)
-    ], NameGame_Shop.prototype, "nBallon_1", void 0);
+    ], Shop.prototype, "nBallon_1", void 0);
     __decorate([
         property(cc.Sprite)
-    ], NameGame_Shop.prototype, "nBallon_2", void 0);
+    ], Shop.prototype, "nBallon_2", void 0);
     __decorate([
         property(cc.Node)
-    ], NameGame_Shop.prototype, "nNext", void 0);
+    ], Shop.prototype, "nNext", void 0);
     __decorate([
         property(cc.Node)
-    ], NameGame_Shop.prototype, "nPrev", void 0);
-    NameGame_Shop = __decorate([
+    ], Shop.prototype, "nPrev", void 0);
+    Shop = Shop_1 = __decorate([
         ccclass
-    ], NameGame_Shop);
-    return NameGame_Shop;
+    ], Shop);
+    return Shop;
 }(cc.Component));
-exports.default = NameGame_Shop;
+exports.default = Shop;
 
 cc._RF.pop();

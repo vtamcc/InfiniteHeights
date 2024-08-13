@@ -7,7 +7,9 @@
 
 import GameManager from "../InfiniteHeights.GameManager";
 import { Global } from "../InfiniteHeights.Global";
+import Ballon from "./InfiniteHeights.Ballon";
 import GameView from "./InfiniteHeights.GameView";
+import Shop from "./InfiniteHeights.Shop";
 
 const {ccclass, property} = cc._decorator;
 
@@ -23,13 +25,22 @@ export default class GameOver extends cc.Component {
    @property(cc.Label)
    lbTime: cc.Label = null;
 
+   @property(Ballon)
+   nBallon: Ballon = null;
+
+   @property(cc.Node)
+   nUnLockBallon: cc.Node = null;
+   index = 0;
     // LIFE-CYCLE CALLBACKS:
 
     onLoad () {
+        //Global.unlockIndexBallon = JSON.parse(cc.sys.localStorage.getItem('unlockIndexBallon')) || Global.unlockIndexBallon;
         cc.sys.localStorage.setItem("scores", JSON.stringify(Global.dataScore));
+        console.log("Global ", Global.unlockIndexBallon);
         GameView.instance.updateLbTime(this.lbTime);
         GameView.instance.updateLbDiamond(this.lbDiamond);
         GameView.instance.updateLbScore(this.lbScore);
+        this.checkUnlockBallon();
     }
 
     onReplay() {
@@ -39,8 +50,22 @@ export default class GameOver extends cc.Component {
 
     onHome() {
         GameView.instance.gameDestroy();
+        cc.sys.localStorage.removeItem('selectedBallonIndex');
+        Shop.instance.updateShop();
         GameManager.instance.updateRank(GameManager.instance.nListNodeRank);
         this.node.destroy();
+    }
+
+    checkUnlockBallon() {
+        const previousUnlockIndex = JSON.parse(cc.sys.localStorage.getItem('unlockIndexBallon')) || 0;
+    
+        if (Global.unlockIndexBallon > previousUnlockIndex) {
+            this.nUnLockBallon.active = true;
+            this.nBallon.setData(Global.unlockIndexBallon);
+            cc.sys.localStorage.setItem('unlockIndexBallon', Global.unlockIndexBallon);
+        } else {
+            this.nUnLockBallon.active = false;
+        }
     }
     start () {
 

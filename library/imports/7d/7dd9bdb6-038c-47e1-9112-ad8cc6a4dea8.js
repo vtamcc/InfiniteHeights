@@ -31,7 +31,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 Object.defineProperty(exports, "__esModule", { value: true });
 var InfiniteHeights_GameManager_1 = require("../InfiniteHeights.GameManager");
 var InfiniteHeights_Global_1 = require("../InfiniteHeights.Global");
+var InfiniteHeights_Ballon_1 = require("./InfiniteHeights.Ballon");
 var InfiniteHeights_GameView_1 = require("./InfiniteHeights.GameView");
+var InfiniteHeights_Shop_1 = require("./InfiniteHeights.Shop");
 var _a = cc._decorator, ccclass = _a.ccclass, property = _a.property;
 var GameOver = /** @class */ (function (_super) {
     __extends(GameOver, _super);
@@ -40,15 +42,21 @@ var GameOver = /** @class */ (function (_super) {
         _this.lbScore = null;
         _this.lbDiamond = null;
         _this.lbTime = null;
+        _this.nBallon = null;
+        _this.nUnLockBallon = null;
+        _this.index = 0;
         return _this;
         // update (dt) {}
     }
     // LIFE-CYCLE CALLBACKS:
     GameOver.prototype.onLoad = function () {
+        //Global.unlockIndexBallon = JSON.parse(cc.sys.localStorage.getItem('unlockIndexBallon')) || Global.unlockIndexBallon;
         cc.sys.localStorage.setItem("scores", JSON.stringify(InfiniteHeights_Global_1.Global.dataScore));
+        console.log("Global ", InfiniteHeights_Global_1.Global.unlockIndexBallon);
         InfiniteHeights_GameView_1.default.instance.updateLbTime(this.lbTime);
         InfiniteHeights_GameView_1.default.instance.updateLbDiamond(this.lbDiamond);
         InfiniteHeights_GameView_1.default.instance.updateLbScore(this.lbScore);
+        this.checkUnlockBallon();
     };
     GameOver.prototype.onReplay = function () {
         InfiniteHeights_GameView_1.default.instance.resetGame();
@@ -56,8 +64,21 @@ var GameOver = /** @class */ (function (_super) {
     };
     GameOver.prototype.onHome = function () {
         InfiniteHeights_GameView_1.default.instance.gameDestroy();
+        cc.sys.localStorage.removeItem('selectedBallonIndex');
+        InfiniteHeights_Shop_1.default.instance.updateShop();
         InfiniteHeights_GameManager_1.default.instance.updateRank(InfiniteHeights_GameManager_1.default.instance.nListNodeRank);
         this.node.destroy();
+    };
+    GameOver.prototype.checkUnlockBallon = function () {
+        var previousUnlockIndex = JSON.parse(cc.sys.localStorage.getItem('unlockIndexBallon')) || 0;
+        if (InfiniteHeights_Global_1.Global.unlockIndexBallon > previousUnlockIndex) {
+            this.nUnLockBallon.active = true;
+            this.nBallon.setData(InfiniteHeights_Global_1.Global.unlockIndexBallon);
+            cc.sys.localStorage.setItem('unlockIndexBallon', InfiniteHeights_Global_1.Global.unlockIndexBallon);
+        }
+        else {
+            this.nUnLockBallon.active = false;
+        }
     };
     GameOver.prototype.start = function () {
     };
@@ -70,6 +91,12 @@ var GameOver = /** @class */ (function (_super) {
     __decorate([
         property(cc.Label)
     ], GameOver.prototype, "lbTime", void 0);
+    __decorate([
+        property(InfiniteHeights_Ballon_1.default)
+    ], GameOver.prototype, "nBallon", void 0);
+    __decorate([
+        property(cc.Node)
+    ], GameOver.prototype, "nUnLockBallon", void 0);
     GameOver = __decorate([
         ccclass
     ], GameOver);

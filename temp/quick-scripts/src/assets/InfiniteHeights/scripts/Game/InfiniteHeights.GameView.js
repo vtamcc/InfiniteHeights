@@ -69,13 +69,15 @@ var GameView = /** @class */ (function (_super) {
         GameView_1.instance = this;
         //this.createObstacle();
         //this.genObstacle_2();
-        this.ballon = cc.instantiate(this.prfBallon).getComponent(InfiniteHeights_Ballon_1.default).node;
-        this.ballon.y = -500;
-        this.nBallon.addChild(this.ballon);
+        InfiniteHeights_Global_1.Global.unlockIndexBallon = JSON.parse(cc.sys.localStorage.getItem('unlockIndexBallon')) || InfiniteHeights_Global_1.Global.unlockIndexBallon;
+        console.log("index ", InfiniteHeights_Global_1.Global.unlockIndexBallon);
+        InfiniteHeights_Global_1.Global.currentIndexBallon = JSON.parse(cc.sys.localStorage.getItem('currentIndexBallon')) || 0;
+        this.ballon = cc.instantiate(this.prfBallon).getComponent(InfiniteHeights_Ballon_1.default);
+        this.ballon.node.y = -500;
+        this.ballon.setData(InfiniteHeights_Global_1.Global.currentIndexBallon);
+        this.nBallon.addChild(this.ballon.node);
         this.genObstacle();
         this.node.on(cc.Node.EventType.TOUCH_START, this.onTouchStart, this);
-        InfiniteHeights_Global_1.Global.unlockIndexBallon = JSON.parse(cc.sys.localStorage.getItem("unLockIndex")) || 0;
-        console.log("index ", InfiniteHeights_Global_1.Global.unlockIndexBallon);
         this.resetGame();
     };
     GameView.prototype.start = function () {
@@ -113,7 +115,7 @@ var GameView = /** @class */ (function (_super) {
         // this.ballon.setPosition(this.ballon.position.x, this.ballon.position.y - 80,0);
         if (this.isGameOver)
             return;
-        cc.tween(this.ballon)
+        cc.tween(this.ballon.node)
             .by(0.2, { y: -80 })
             .start();
     };
@@ -142,7 +144,7 @@ var GameView = /** @class */ (function (_super) {
         this.updateLbScore(this.lbScore);
         this.updateLbTime(this.lbTime);
         this.updateLbDiamond(this.lbDiamond);
-        this.ballon.y = -500;
+        this.ballon.node.y = -500;
         cc.director.getCollisionManager().enabled = true;
         this.isFirstTouch = false;
         this.isGameOver = false;
@@ -175,6 +177,7 @@ var GameView = /** @class */ (function (_super) {
         if (scores >= InfiniteHeights_Global_1.Global.unlockPoints[InfiniteHeights_Global_1.Global.unlockIndexBallon + 1]) {
             InfiniteHeights_Global_1.Global.unlockIndexBallon++;
             cc.sys.localStorage.setItem('unlockIndexBallon', InfiniteHeights_Global_1.Global.unlockIndexBallon);
+            console.log("unLockIndex ", InfiniteHeights_Global_1.Global.unlockIndexBallon);
         }
         //Global.ballon.forEach()
     };
@@ -196,7 +199,7 @@ var GameView = /** @class */ (function (_super) {
         if (this.isGameOver)
             return;
         if (this.isFirstTouch) {
-            this.ballon.setPosition(this.ballon.position.x, this.ballon.position.y + 180 * dt, 0);
+            this.ballon.node.setPosition(this.ballon.node.position.x, this.ballon.node.position.y + 180 * dt, 0);
         }
     };
     var GameView_1;

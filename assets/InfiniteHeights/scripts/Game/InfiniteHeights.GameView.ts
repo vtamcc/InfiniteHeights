@@ -56,13 +56,16 @@ export default class GameView extends cc.Component {
         GameView.instance = this;
         //this.createObstacle();
         //this.genObstacle_2();
-        this.ballon = cc.instantiate(this.prfBallon).getComponent(Ballon).node
-        this.ballon.y = -500;
-        this.nBallon.addChild(this.ballon);
+        Global.unlockIndexBallon = JSON.parse(cc.sys.localStorage.getItem('unlockIndexBallon')) || Global.unlockIndexBallon;
+        console.log("index ", Global.unlockIndexBallon);
+        Global.currentIndexBallon = JSON.parse(cc.sys.localStorage.getItem('currentIndexBallon')) || 0 ;
+        this.ballon = cc.instantiate(this.prfBallon).getComponent(Ballon)
+        this.ballon.node.y = -500;
+        this.ballon.setData(Global.currentIndexBallon)
+        this.nBallon.addChild(this.ballon.node);
         this.genObstacle();
         this.node.on(cc.Node.EventType.TOUCH_START, this.onTouchStart, this);
-        Global.unlockIndexBallon = JSON.parse(cc.sys.localStorage.getItem("unLockIndex")) || 0;
-        console.log("index ", Global.unlockIndexBallon);
+       
         this.resetGame();
 
     }
@@ -107,7 +110,7 @@ export default class GameView extends cc.Component {
     fall() {
         // this.ballon.setPosition(this.ballon.position.x, this.ballon.position.y - 80,0);
         if (this.isGameOver) return;
-        cc.tween(this.ballon)
+        cc.tween(this.ballon.node)
             .by(0.2, { y: -80 })
             .start();
     }
@@ -141,7 +144,7 @@ export default class GameView extends cc.Component {
         this.updateLbScore(this.lbScore);
         this.updateLbTime(this.lbTime);
         this.updateLbDiamond(this.lbDiamond);
-        this.ballon.y = -500;
+        this.ballon.node.y = -500;
         cc.director.getCollisionManager().enabled = true;
         this.isFirstTouch = false;
         this.isGameOver = false;
@@ -173,11 +176,12 @@ export default class GameView extends cc.Component {
         console.log('save', Global.dataScore)
         cc.sys.localStorage.setItem('scores', JSON.stringify(Global.dataScore));
 
-        if (scores >=Global.unlockPoints[Global.unlockIndexBallon + 1]) {
+        if (scores >= Global.unlockPoints[Global.unlockIndexBallon + 1]) {
             Global.unlockIndexBallon++;
             cc.sys.localStorage.setItem('unlockIndexBallon', Global.unlockIndexBallon);
+            console.log("unLockIndex ", Global.unlockIndexBallon);
         }
-        
+
 
 
         //Global.ballon.forEach()
@@ -203,7 +207,7 @@ export default class GameView extends cc.Component {
 
 
         if (this.isFirstTouch) {
-            this.ballon.setPosition(this.ballon.position.x, this.ballon.position.y + 180 * dt, 0);
+            this.ballon.node.setPosition(this.ballon.node.position.x, this.ballon.node.position.y + 180 * dt, 0);
         }
     }
     // genBackGround() {

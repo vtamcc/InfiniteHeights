@@ -17,7 +17,7 @@ var Global = /** @class */ (function () {
     Global.diaMond = 0;
     Global.score = 0;
     Global.dataScore = [];
-    Global.unlockPoints = [0, 10, 20, 30, 40];
+    Global.unlockPoints = [0, 10, 20, 30, 40, 50, 60, 70, 80];
     Global.currentIndexBallon = 0;
     Global.unlockIndexBallon = 0;
     return Global;

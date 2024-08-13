@@ -31,16 +31,9 @@ export default class Ballon extends cc.Component {
         ).start()
     }
 
-    setData(id,isUnlock) {
+    setData(id) {
         this.id = id;
-        this.isUnlock = isUnlock;
         this.spBallon.spriteFrame = GameManager.instance.listSpfBallon[this.id];
-
-        if(isUnlock) {
-            this.node.opacity = 255;
-        }else {
-            this.node.opacity = 150;
-        }
     }
 
     start () {
