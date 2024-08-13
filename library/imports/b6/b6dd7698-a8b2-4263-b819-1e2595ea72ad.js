@@ -74,8 +74,8 @@ var GameView = /** @class */ (function (_super) {
         this.nBallon.addChild(this.ballon);
         this.genObstacle();
         this.node.on(cc.Node.EventType.TOUCH_START, this.onTouchStart, this);
-        InfiniteHeights_Global_1.Global.currentIndex = JSON.parse(cc.sys.localStorage.getItem("indexBallon")) || 1;
-        console.log("index ", InfiniteHeights_Global_1.Global.currentIndex);
+        InfiniteHeights_Global_1.Global.unlockIndexBallon = JSON.parse(cc.sys.localStorage.getItem("unLockIndex")) || 0;
+        console.log("index ", InfiniteHeights_Global_1.Global.unlockIndexBallon);
         this.resetGame();
     };
     GameView.prototype.start = function () {
@@ -172,15 +172,9 @@ var GameView = /** @class */ (function (_super) {
         });
         console.log('save', InfiniteHeights_Global_1.Global.dataScore);
         cc.sys.localStorage.setItem('scores', JSON.stringify(InfiniteHeights_Global_1.Global.dataScore));
-        //this.checkAndUnlockBalloons(scores);
-        if (InfiniteHeights_Global_1.Global.currentIndex < InfiniteHeights_Global_1.Global.dataBallon.length) {
-            if (scores >= InfiniteHeights_Global_1.Global.dataBallon[InfiniteHeights_Global_1.Global.currentIndex].score) {
-                InfiniteHeights_Global_1.Global.dataBallon[InfiniteHeights_Global_1.Global.currentIndex].isUnlock = true;
-                cc.sys.localStorage.setItem('dataBallons', JSON.stringify(InfiniteHeights_Global_1.Global.dataBallon));
-                InfiniteHeights_Global_1.Global.currentIndex++;
-                cc.sys.localStorage.setItem('indexBallon', JSON.stringify(InfiniteHeights_Global_1.Global.currentIndex));
-                console.log("indexxxx ", InfiniteHeights_Global_1.Global.currentIndex);
-            }
+        if (scores >= InfiniteHeights_Global_1.Global.unlockPoints[InfiniteHeights_Global_1.Global.unlockIndexBallon + 1]) {
+            InfiniteHeights_Global_1.Global.unlockIndexBallon++;
+            cc.sys.localStorage.setItem('unlockIndexBallon', InfiniteHeights_Global_1.Global.unlockIndexBallon);
         }
         //Global.ballon.forEach()
     };

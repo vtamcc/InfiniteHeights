@@ -52,7 +52,7 @@ export default class GameView extends cc.Component {
     // LIFE-CYCLE CALLBACKS:
 
     onLoad() {
-        
+
         GameView.instance = this;
         //this.createObstacle();
         //this.genObstacle_2();
@@ -60,11 +60,11 @@ export default class GameView extends cc.Component {
         this.ballon.y = -500;
         this.nBallon.addChild(this.ballon);
         this.genObstacle();
-        this.node.on(cc.Node.EventType.TOUCH_START,this.onTouchStart, this);
-        Global.currentIndex = JSON.parse(cc.sys.localStorage.getItem("indexBallon")) || 1;
-        console.log("index ", Global.currentIndex);
+        this.node.on(cc.Node.EventType.TOUCH_START, this.onTouchStart, this);
+        Global.unlockIndexBallon = JSON.parse(cc.sys.localStorage.getItem("unLockIndex")) || 0;
+        console.log("index ", Global.unlockIndexBallon);
         this.resetGame();
-       
+
     }
 
     start() {
@@ -86,7 +86,7 @@ export default class GameView extends cc.Component {
     }
 
     genObstacle() {
-        for(let i = 0; i < 3; i++) {
+        for (let i = 0; i < 3; i++) {
             this.createObstacle(this.listBg[i]);
         }
     }
@@ -95,26 +95,26 @@ export default class GameView extends cc.Component {
     }
 
     startGame() {
-        if(!this.isFirstTouch) {
+        if (!this.isFirstTouch) {
             this.isFirstTouch = true;
             this.schedule(this.updateTime, 1);
-        }else {
+        } else {
             this.fall();
-         
+
         }
     }
 
     fall() {
         // this.ballon.setPosition(this.ballon.position.x, this.ballon.position.y - 80,0);
-        if(this.isGameOver) return;
+        if (this.isGameOver) return;
         cc.tween(this.ballon)
-        .by(0.2, { y: -80})
-        .start();
+            .by(0.2, { y: -80 })
+            .start();
     }
-   
+
 
     updateTime() {
-        if(this.isFirstTouch && !this.isGameOver) {
+        if (this.isFirstTouch && !this.isGameOver) {
             this.time += 1;
             this.updateLbTime(this.lbTime);
             this.updateLbScore(this.lbScore);
@@ -167,24 +167,18 @@ export default class GameView extends cc.Component {
         cc.director.getCollisionManager().enabled = false;
         let scores = this.time + Global.diaMond;
         Global.dataScore.push(scores);
-        Global.dataScore.sort((a,b) => {
+        Global.dataScore.sort((a, b) => {
             return a > b ? - 1 : 0;
         });
-        console.log('save',Global.dataScore)
-        cc.sys.localStorage.setItem('scores', JSON.stringify(Global.dataScore));    
-        //this.checkAndUnlockBalloons(scores);
-        if(Global.currentIndex < Global.dataBallon.length) {
-            if(scores >= Global.dataBallon[Global.currentIndex].score) {
-                Global.dataBallon[Global.currentIndex].isUnlock = true;
-                cc.sys.localStorage.setItem('dataBallons', JSON.stringify(Global.dataBallon));
-                
-                Global.currentIndex++;
-                cc.sys.localStorage.setItem('indexBallon', JSON.stringify(Global.currentIndex));
-               
-                console.log("indexxxx ", Global.currentIndex);
-            }
+        console.log('save', Global.dataScore)
+        cc.sys.localStorage.setItem('scores', JSON.stringify(Global.dataScore));
+
+        if (scores >=Global.unlockPoints[Global.unlockIndexBallon + 1]) {
+            Global.unlockIndexBallon++;
+            cc.sys.localStorage.setItem('unlockIndexBallon', Global.unlockIndexBallon);
         }
-       
+        
+
 
         //Global.ballon.forEach()
     }
@@ -205,11 +199,11 @@ export default class GameView extends cc.Component {
     }
     update(dt) {
 
-        if(this.isGameOver) return;
+        if (this.isGameOver) return;
 
 
-        if(this.isFirstTouch) {
-            this.ballon.setPosition(this.ballon.position.x,this.ballon.position.y + 180 * dt,0);
+        if (this.isFirstTouch) {
+            this.ballon.setPosition(this.ballon.position.x, this.ballon.position.y + 180 * dt, 0);
         }
     }
     // genBackGround() {

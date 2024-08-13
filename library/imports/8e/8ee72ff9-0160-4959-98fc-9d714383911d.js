@@ -17,18 +17,9 @@ var Global = /** @class */ (function () {
     Global.diaMond = 0;
     Global.score = 0;
     Global.dataScore = [];
-    Global.dataBallon = [
-        { score: 20, isUnlock: true },
-        { score: 10, isUnlock: false },
-        { score: 12, isUnlock: false },
-        { score: 14, isUnlock: false },
-        { score: 16, isUnlock: false },
-        { score: 18, isUnlock: false },
-        { score: 20, isUnlock: false },
-        { score: 22, isUnlock: false },
-        { score: 24, isUnlock: false },
-    ];
-    Global.currentIndex = 0;
+    Global.unlockPoints = [0, 10, 20, 30, 40];
+    Global.currentIndexBallon = 0;
+    Global.unlockIndexBallon = 0;
     return Global;
 }());
 exports.Global = Global;

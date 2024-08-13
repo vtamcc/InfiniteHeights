@@ -35,54 +35,26 @@ export default class GameManager extends cc.Component {
     @property(cc.Node)
     nListBallon: cc.Node[] = [];
     indexBallon = 1;
+    isClickNext = 0;
     onLoad() {
         GameManager.instance = this;
         this.updateRank(this.nListNodeRank);
-        Global.dataBallon = JSON.parse(cc.sys.localStorage.getItem('dataBallons')) || Global.dataBallon;
-        Global.currentIndex = JSON.parse(cc.sys.localStorage.getItem('indexBallon')) || 1;
-        this.updateBallon();
-        console.log("currentIndex", Global.currentIndex);
-        console.log("data ", Global.dataBallon);
     }
     start() {
 
     }
 
-
-    updateBallon() {
-        this.nListBallon[1].active = true;
-        this.nListBallon[1].getComponent(cc.Sprite).spriteFrame = this.listSpfBallon[0];
-        let leftIndex = (Global.currentIndex + 2) % Global.dataBallon.length;
-        if (leftIndex !== Global.currentIndex && Global.dataBallon[leftIndex].isUnlock) {
-            this.nListBallon[0].active = true;
-            this.nListBallon[0].getComponent(cc.Sprite).spriteFrame = this.listSpfBallon[leftIndex];
-        } else {
-            this.nListBallon[0].active = false;
-        }
-        let rightIndex = (Global.currentIndex) % Global.dataBallon.length;
-        console.log("rightIndex ", rightIndex);
-        console.log("rightData", Global.dataBallon[rightIndex]);
-        if (Global.dataBallon[rightIndex].isUnlock) {
-            this.nListBallon[2].active = true;
-            this.nListBallon[2].getComponent(cc.Sprite).spriteFrame = this.listSpfBallon[rightIndex];
-        } else {
-            this.nListBallon[2].active = false;
-        }
-    }
-
-
+ 
     updateRank(listNodeLabel: cc.Node[]) {
         Global.dataScore = JSON.parse(cc.sys.localStorage.getItem("scores")) || [];
         console.log("Diem luu ne ", Global.dataScore);
         if (Global.dataScore.length === 0) {
-            //console.log("Mảng scores rỗng, ẩn tất cả các node.");
             listNodeLabel.forEach(node => {
                 node.active = false;
             });
         } else {
             listNodeLabel.forEach((node, index) => {
-                //console.log("index ", index);
-                //console.log("diem ", Global.dataScore)
+             
                 if (index < Global.dataScore.length) {
                     node.active = true;
                     node.getComponent(cc.Label).string = Global.dataScore[index] + ' ';
