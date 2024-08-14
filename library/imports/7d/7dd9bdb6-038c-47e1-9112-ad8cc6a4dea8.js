@@ -50,7 +50,7 @@ var GameOver = /** @class */ (function (_super) {
     }
     // LIFE-CYCLE CALLBACKS:
     GameOver.prototype.onLoad = function () {
-        //Global.unlockIndexBallon = JSON.parse(cc.sys.localStorage.getItem('unlockIndexBallon')) || Global.unlockIndexBallon;
+        InfiniteHeights_Global_1.Global.unlockIndexBallon = JSON.parse(cc.sys.localStorage.getItem('unlockIndexBallon')) || InfiniteHeights_Global_1.Global.unlockIndexBallon;
         cc.sys.localStorage.setItem("scores", JSON.stringify(InfiniteHeights_Global_1.Global.dataScore));
         console.log("Global ", InfiniteHeights_Global_1.Global.unlockIndexBallon);
         InfiniteHeights_GameView_1.default.instance.updateLbTime(this.lbTime);
@@ -70,8 +70,7 @@ var GameOver = /** @class */ (function (_super) {
         this.node.destroy();
     };
     GameOver.prototype.checkUnlockBallon = function () {
-        var previousUnlockIndex = JSON.parse(cc.sys.localStorage.getItem('unlockIndexBallon')) || 0;
-        if (InfiniteHeights_Global_1.Global.unlockIndexBallon > previousUnlockIndex) {
+        if (InfiniteHeights_GameView_1.default.instance.unLockBallon) {
             this.nUnLockBallon.active = true;
             this.nBallon.setData(InfiniteHeights_Global_1.Global.unlockIndexBallon);
             cc.sys.localStorage.setItem('unlockIndexBallon', InfiniteHeights_Global_1.Global.unlockIndexBallon);

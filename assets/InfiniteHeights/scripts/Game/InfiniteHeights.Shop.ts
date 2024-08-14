@@ -33,7 +33,12 @@ export default class Shop extends cc.Component {
 
     onLoad() {
         Shop.instance = this;
+        Global.currentIndexBallon = JSON.parse(cc.sys.localStorage.getItem('currentIndexBallon')) || 0 ;
+        console.log("currentIndexBallon ", Global.currentIndexBallon);
         Global.unlockIndexBallon = JSON.parse(cc.sys.localStorage.getItem('unlockIndexBallon')) || Global.unlockIndexBallon;
+        this.effectBallon(this.nBallon_0.node)
+        this.effectBallon(this.nBallon_1.node)
+        this.effectBallon(this.nBallon_2.node)
         console.log("unLockIndex ", Global.unlockIndexBallon);
         console.log("indexBallon", Global.currentIndexBallon);
         this.updateShop()
@@ -43,23 +48,16 @@ export default class Shop extends cc.Component {
 
     }
 
-    // onNext() {
-    //     Global.currentIndexBallon++;
-    //     console.log("OnNext ", Global.currentIndexBallon);
-    //     if (Global.currentIndexBallon > Global.unlockIndexBallon)
-    //         Global.currentIndexBallon = Global.unlockIndexBallon;
-    //     this.updateShop()
-    // }
-
-    // onPrev() {
-    //     Global.currentIndexBallon--;
-    //     console.log("OnPrev ", Global.currentIndexBallon);
-    //     if (Global.currentIndexBallon < 0)
-    //         Global.currentIndexBallon = 0;
-
-    //     this.updateShop()
-    // }
-
+   
+    effectBallon(node: cc.Node) {
+        cc.tween(node)
+        .repeatForever(
+            cc.tween()
+            .to(0.8, {angle:-10})
+            .to(0.9, {angle: 10})
+            .start()
+        ).start()
+    }
     onNext() {
         if (Global.currentIndexBallon < Global.unlockPoints.length - 1) {
             Global.currentIndexBallon++;
@@ -89,11 +87,12 @@ export default class Shop extends cc.Component {
         this.nBallon_1.spriteFrame = this.listSpfBallon[Global.currentIndexBallon]
         if (Global.currentIndexBallon === 0) {
             this.nPrev.active = false;
-            this.nNext.active = true;
+            this.nNext.active = false;
             this.nBallon_0.node.active = false; 
     
             if (Global.unlockIndexBallon > 0) {
                 this.nBallon_2.node.active = true;
+                this.nNext.active = true;
                 this.nBallon_2.spriteFrame = this.listSpfBallon[Global.currentIndexBallon + 1];
             } else {
                 this.nBallon_2.node.active = false;

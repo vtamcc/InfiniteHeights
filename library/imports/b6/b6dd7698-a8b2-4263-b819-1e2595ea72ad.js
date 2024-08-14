@@ -55,13 +55,9 @@ var GameView = /** @class */ (function (_super) {
         _this.isFirstTouch = false;
         _this.isGameOver = false;
         _this.ballon = null;
+        _this.unLockBallon = false;
+        _this.isScoreAdded = false;
         return _this;
-        // genBackGround() {
-        //     console.log("sadasd");
-        //     let bg = cc.instantiate(this.prfBackGround).getComponent(BackGround).node
-        //     bg.y = 1900;
-        //     this.nBgGame.addChild(bg);
-        // }
     }
     GameView_1 = GameView;
     // LIFE-CYCLE CALLBACKS:
@@ -112,7 +108,6 @@ var GameView = /** @class */ (function (_super) {
         }
     };
     GameView.prototype.fall = function () {
-        // this.ballon.setPosition(this.ballon.position.x, this.ballon.position.y - 80,0);
         if (this.isGameOver)
             return;
         cc.tween(this.ballon.node)
@@ -127,7 +122,6 @@ var GameView = /** @class */ (function (_super) {
         }
     };
     GameView.prototype.updateLbDiamond = function (lbDiamond) {
-        //if (this.isGameOver) return;
         lbDiamond.string = InfiniteHeights_Global_1.Global.diaMond + ' ';
         this.updateLbScore(this.lbScore);
     };
@@ -138,12 +132,14 @@ var GameView = /** @class */ (function (_super) {
         lbScore.string = this.time + InfiniteHeights_Global_1.Global.diaMond + ' ';
     };
     GameView.prototype.resetGame = function () {
+        this.isScoreAdded = false;
         InfiniteHeights_Global_1.Global.diaMond = 0;
         InfiniteHeights_Global_1.Global.score = 0;
         this.time = 0;
         this.updateLbScore(this.lbScore);
         this.updateLbTime(this.lbTime);
         this.updateLbDiamond(this.lbDiamond);
+        this.ballon.node.active = true;
         this.ballon.node.y = -500;
         cc.director.getCollisionManager().enabled = true;
         this.isFirstTouch = false;
@@ -160,38 +156,41 @@ var GameView = /** @class */ (function (_super) {
         this.node.on(cc.Node.EventType.TOUCH_START, this.onTouchStart, this);
     };
     GameView.prototype.gameOver = function () {
+        var _this = this;
+        if (this.isScoreAdded) {
+            return;
+        }
         this.isGameOver = true;
         var gameOver = cc.instantiate(this.prfGameOver).getComponent(InfiniteHeights_GameOver_1.default).node;
-        this.node.addChild(gameOver);
         this.unschedule(this.updateTime);
         cc.tween(this.ballon).stop();
         this.node.off(cc.Node.EventType.TOUCH_START, this.onTouchStart, this);
         cc.director.getCollisionManager().enabled = false;
         var scores = this.time + InfiniteHeights_Global_1.Global.diaMond;
+        this.unLockBallon = false;
+        InfiniteHeights_Global_1.Global.dataScore.push(scores);
+        var MAX_SCORES = 10;
         InfiniteHeights_Global_1.Global.dataScore.push(scores);
         InfiniteHeights_Global_1.Global.dataScore.sort(function (a, b) {
-            return a > b ? -1 : 0;
+            return a > b ? -1 : 1;
         });
+        if (InfiniteHeights_Global_1.Global.dataScore.length > MAX_SCORES) {
+            InfiniteHeights_Global_1.Global.dataScore = InfiniteHeights_Global_1.Global.dataScore.slice(0, MAX_SCORES);
+        }
         console.log('save', InfiniteHeights_Global_1.Global.dataScore);
         cc.sys.localStorage.setItem('scores', JSON.stringify(InfiniteHeights_Global_1.Global.dataScore));
         if (scores >= InfiniteHeights_Global_1.Global.unlockPoints[InfiniteHeights_Global_1.Global.unlockIndexBallon + 1]) {
             InfiniteHeights_Global_1.Global.unlockIndexBallon++;
+            this.unLockBallon = true;
             cc.sys.localStorage.setItem('unlockIndexBallon', InfiniteHeights_Global_1.Global.unlockIndexBallon);
             console.log("unLockIndex ", InfiniteHeights_Global_1.Global.unlockIndexBallon);
         }
-        //Global.ballon.forEach()
+        this.isScoreAdded = true;
+        this.ballon.node.active = false;
+        this.scheduleOnce(function () {
+            _this.node.addChild(gameOver);
+        }, 0.3);
     };
-    // checkAndUnlockBalloons(scores: number) {
-    //     for (let i = Global.currentIndex; i < Global.dataBallon.length; i++) {
-    //         if (scores >= Global.dataBallon[i].score && !Global.dataBallon[i].isUnlock) {
-    //             Global.dataBallon[i].isUnlock = true;
-    //             Global.currentIndex = i + 1;
-    //             cc.sys.localStorage.setItem('dataBallon', JSON.stringify(Global.dataBallon));
-    //             cc.sys.localStorage.setItem('currentIndex', Global.currentIndex.toString());
-    //             break;
-    //         }
-    //     }
-    // }
     GameView.prototype.gameDestroy = function () {
         this.node.destroy();
     };

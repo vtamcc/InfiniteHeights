@@ -47,27 +47,25 @@ var Shop = /** @class */ (function (_super) {
     Shop_1 = Shop;
     Shop.prototype.onLoad = function () {
         Shop_1.instance = this;
+        InfiniteHeights_Global_1.Global.currentIndexBallon = JSON.parse(cc.sys.localStorage.getItem('currentIndexBallon')) || 0;
+        console.log("currentIndexBallon ", InfiniteHeights_Global_1.Global.currentIndexBallon);
         InfiniteHeights_Global_1.Global.unlockIndexBallon = JSON.parse(cc.sys.localStorage.getItem('unlockIndexBallon')) || InfiniteHeights_Global_1.Global.unlockIndexBallon;
+        this.effectBallon(this.nBallon_0.node);
+        this.effectBallon(this.nBallon_1.node);
+        this.effectBallon(this.nBallon_2.node);
         console.log("unLockIndex ", InfiniteHeights_Global_1.Global.unlockIndexBallon);
         console.log("indexBallon", InfiniteHeights_Global_1.Global.currentIndexBallon);
         this.updateShop();
     };
     Shop.prototype.start = function () {
     };
-    // onNext() {
-    //     Global.currentIndexBallon++;
-    //     console.log("OnNext ", Global.currentIndexBallon);
-    //     if (Global.currentIndexBallon > Global.unlockIndexBallon)
-    //         Global.currentIndexBallon = Global.unlockIndexBallon;
-    //     this.updateShop()
-    // }
-    // onPrev() {
-    //     Global.currentIndexBallon--;
-    //     console.log("OnPrev ", Global.currentIndexBallon);
-    //     if (Global.currentIndexBallon < 0)
-    //         Global.currentIndexBallon = 0;
-    //     this.updateShop()
-    // }
+    Shop.prototype.effectBallon = function (node) {
+        cc.tween(node)
+            .repeatForever(cc.tween()
+            .to(0.8, { angle: -10 })
+            .to(0.9, { angle: 10 })
+            .start()).start();
+    };
     Shop.prototype.onNext = function () {
         if (InfiniteHeights_Global_1.Global.currentIndexBallon < InfiniteHeights_Global_1.Global.unlockPoints.length - 1) {
             InfiniteHeights_Global_1.Global.currentIndexBallon++;
@@ -95,10 +93,11 @@ var Shop = /** @class */ (function (_super) {
         this.nBallon_1.spriteFrame = this.listSpfBallon[InfiniteHeights_Global_1.Global.currentIndexBallon];
         if (InfiniteHeights_Global_1.Global.currentIndexBallon === 0) {
             this.nPrev.active = false;
-            this.nNext.active = true;
+            this.nNext.active = false;
             this.nBallon_0.node.active = false;
             if (InfiniteHeights_Global_1.Global.unlockIndexBallon > 0) {
                 this.nBallon_2.node.active = true;
+                this.nNext.active = true;
                 this.nBallon_2.spriteFrame = this.listSpfBallon[InfiniteHeights_Global_1.Global.currentIndexBallon + 1];
             }
             else {

@@ -49,6 +49,8 @@ export default class GameView extends cc.Component {
     isFirstTouch = false;
     isGameOver = false;
     ballon = null;
+    unLockBallon = false
+    isScoreAdded = false
     // LIFE-CYCLE CALLBACKS:
 
     onLoad() {
@@ -58,14 +60,13 @@ export default class GameView extends cc.Component {
         //this.genObstacle_2();
         Global.unlockIndexBallon = JSON.parse(cc.sys.localStorage.getItem('unlockIndexBallon')) || Global.unlockIndexBallon;
         console.log("index ", Global.unlockIndexBallon);
-        Global.currentIndexBallon = JSON.parse(cc.sys.localStorage.getItem('currentIndexBallon')) || 0 ;
+        Global.currentIndexBallon = JSON.parse(cc.sys.localStorage.getItem('currentIndexBallon')) || 0;
         this.ballon = cc.instantiate(this.prfBallon).getComponent(Ballon)
         this.ballon.node.y = -500;
         this.ballon.setData(Global.currentIndexBallon)
         this.nBallon.addChild(this.ballon.node);
         this.genObstacle();
         this.node.on(cc.Node.EventType.TOUCH_START, this.onTouchStart, this);
-       
         this.resetGame();
 
     }
@@ -108,7 +109,6 @@ export default class GameView extends cc.Component {
     }
 
     fall() {
-        // this.ballon.setPosition(this.ballon.position.x, this.ballon.position.y - 80,0);
         if (this.isGameOver) return;
         cc.tween(this.ballon.node)
             .by(0.2, { y: -80 })
@@ -124,7 +124,6 @@ export default class GameView extends cc.Component {
         }
     }
     updateLbDiamond(lbDiamond) {
-        //if (this.isGameOver) return;
         lbDiamond.string = Global.diaMond + ' ';
         this.updateLbScore(this.lbScore);
     }
@@ -138,12 +137,14 @@ export default class GameView extends cc.Component {
     }
 
     resetGame() {
+        this.isScoreAdded = false;
         Global.diaMond = 0;
         Global.score = 0;
         this.time = 0;
         this.updateLbScore(this.lbScore);
         this.updateLbTime(this.lbTime);
         this.updateLbDiamond(this.lbDiamond);
+        this.ballon.node.active = true;
         this.ballon.node.y = -500;
         cc.director.getCollisionManager().enabled = true;
         this.isFirstTouch = false;
@@ -161,61 +162,53 @@ export default class GameView extends cc.Component {
     }
 
     gameOver() {
+        if (this.isScoreAdded) {
+            return;
+        }
         this.isGameOver = true;
         let gameOver = cc.instantiate(this.prfGameOver).getComponent(GameOver).node
-        this.node.addChild(gameOver);
         this.unschedule(this.updateTime);
         cc.tween(this.ballon).stop();
         this.node.off(cc.Node.EventType.TOUCH_START, this.onTouchStart, this);
         cc.director.getCollisionManager().enabled = false;
         let scores = this.time + Global.diaMond;
+        this.unLockBallon = false
         Global.dataScore.push(scores);
+        let MAX_SCORES = 10;
+
+        Global.dataScore.push(scores);
+
         Global.dataScore.sort((a, b) => {
-            return a > b ? - 1 : 0;
+            return a > b ? -1 : 1;
         });
+
+        if (Global.dataScore.length > MAX_SCORES) {
+            Global.dataScore = Global.dataScore.slice(0, MAX_SCORES);
+        }
         console.log('save', Global.dataScore)
         cc.sys.localStorage.setItem('scores', JSON.stringify(Global.dataScore));
-
         if (scores >= Global.unlockPoints[Global.unlockIndexBallon + 1]) {
             Global.unlockIndexBallon++;
+            this.unLockBallon = true;
             cc.sys.localStorage.setItem('unlockIndexBallon', Global.unlockIndexBallon);
             console.log("unLockIndex ", Global.unlockIndexBallon);
         }
+        this.isScoreAdded = true; 
+        this.ballon.node.active = false;
+        this.scheduleOnce(() => {
+            this.node.addChild(gameOver);
+        }, 0.3)
 
 
-
-        //Global.ballon.forEach()
     }
 
-    // checkAndUnlockBalloons(scores: number) {
-    //     for (let i = Global.currentIndex; i < Global.dataBallon.length; i++) {
-    //         if (scores >= Global.dataBallon[i].score && !Global.dataBallon[i].isUnlock) {
-    //             Global.dataBallon[i].isUnlock = true;
-    //             Global.currentIndex = i + 1;
-    //             cc.sys.localStorage.setItem('dataBallon', JSON.stringify(Global.dataBallon));
-    //             cc.sys.localStorage.setItem('currentIndex', Global.currentIndex.toString());
-    //             break;
-    //         }
-    //     }
-    // }
     gameDestroy() {
         this.node.destroy();
     }
     update(dt) {
-
         if (this.isGameOver) return;
-
-
         if (this.isFirstTouch) {
             this.ballon.node.setPosition(this.ballon.node.position.x, this.ballon.node.position.y + 180 * dt, 0);
         }
     }
-    // genBackGround() {
-    //     console.log("sadasd");
-    //     let bg = cc.instantiate(this.prfBackGround).getComponent(BackGround).node
-    //     bg.y = 1900;
-
-    //     this.nBgGame.addChild(bg);
-
-    // }
 }

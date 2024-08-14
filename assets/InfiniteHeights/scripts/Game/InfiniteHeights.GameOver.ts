@@ -34,7 +34,7 @@ export default class GameOver extends cc.Component {
     // LIFE-CYCLE CALLBACKS:
 
     onLoad () {
-        //Global.unlockIndexBallon = JSON.parse(cc.sys.localStorage.getItem('unlockIndexBallon')) || Global.unlockIndexBallon;
+        Global.unlockIndexBallon = JSON.parse(cc.sys.localStorage.getItem('unlockIndexBallon')) || Global.unlockIndexBallon;
         cc.sys.localStorage.setItem("scores", JSON.stringify(Global.dataScore));
         console.log("Global ", Global.unlockIndexBallon);
         GameView.instance.updateLbTime(this.lbTime);
@@ -57,9 +57,8 @@ export default class GameOver extends cc.Component {
     }
 
     checkUnlockBallon() {
-        const previousUnlockIndex = JSON.parse(cc.sys.localStorage.getItem('unlockIndexBallon')) || 0;
     
-        if (Global.unlockIndexBallon > previousUnlockIndex) {
+        if (GameView.instance.unLockBallon) {
             this.nUnLockBallon.active = true;
             this.nBallon.setData(Global.unlockIndexBallon);
             cc.sys.localStorage.setItem('unlockIndexBallon', Global.unlockIndexBallon);

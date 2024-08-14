@@ -17,6 +17,7 @@ export default class Collider extends cc.Component {
     onCollisionEnter(other, self) {
         if (other.tag == 2) {
             GameView.instance.gameOver();
+            
         }
     
         if (other.tag == 1 ) {
