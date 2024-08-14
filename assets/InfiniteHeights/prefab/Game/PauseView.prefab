@@ -13,7 +13,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "GameOver",
+    "_name": "PauseGame",
     "_objFlags": 0,
     "_parent": null,
     "_children": [
@@ -48,9 +48,9 @@
     "_opacity": 255,
     "_color": {
       "__type__": "cc.Color",
-      "r": 255,
-      "g": 255,
-      "b": 255,
+      "r": 12,
+      "g": 11,
+      "b": 11,
       "a": 255
     },
     "_contentSize": {

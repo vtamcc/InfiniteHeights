@@ -87,19 +87,27 @@ export default class GameView extends cc.Component {
     }
 
     startTimeResume() {
+        this.timeResume = 4;
         this.lbTimeResume.node.active = true;
         this.isCountDown = true;
+        console.log("Starting countdown with timeResume:", this.time)
         this.schedule(this.updateTimeResume,1);
+
+        
     }
 
     updateTimeResume() {
         if(this.timeResume > 0) {
             this.timeResume--;
             this.lbTimeResume.string = this.timeResume + " ";
+            console.log("Time remaining:", this.timeResume); 
         }else {
-            this.isCountDown = false;
             this.isGameOver = false;
+            this.isCountDown = false;
+            this.handsDestroy();
             this.lbTimeResume.node.active = false;
+            this.unschedule(this.updateTimeResume);
+            console.log('chay', this.isGameOver)
         }
     }
     
@@ -141,10 +149,10 @@ export default class GameView extends cc.Component {
         if (!this.isFirstTouch) return;
 
         this.scheduleOnce(() => {
-            if (!this.isGameOver) { // Chỉ thực hiện khi game không bị tạm dừng
+            if (!this.isGameOver) {
                 this.hands.active = false;
             }
-        }, 3.5);
+        }, 2.5);
     }
 
     fall() {
@@ -183,7 +191,7 @@ export default class GameView extends cc.Component {
         this.updateLbTime(this.lbTime);
         this.updateLbDiamond(this.lbDiamond);
         this.ballon.node.active = true;
-        this.ballon.node.y = -420;
+        this.ballon.node.y = -480;
         cc.director.getCollisionManager().enabled = true;
         this.isFirstTouch = false;
         this.isGameOver = false;
@@ -239,6 +247,7 @@ export default class GameView extends cc.Component {
 
     pauseGame() {
         this.isGameOver = true;
+        console.log('dung', this.isGameOver)
         let pauseGame = cc.instantiate(this.prfPause).getComponent(Pause)
         this.node.addChild(pauseGame.node);
     }

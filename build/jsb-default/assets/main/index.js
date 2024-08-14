@@ -1,16 +1,16 @@
 window.__require = function t(e, n, o) {
-function i(a, r) {
+function i(a, s) {
 if (!n[a]) {
 if (!e[a]) {
-var c = a.split("/");
-c = c[c.length - 1];
-if (!e[c]) {
-var s = "function" == typeof __require && __require;
-if (!r && s) return s(c, !0);
-if (l) return l(c, !0);
+var r = a.split("/");
+r = r[r.length - 1];
+if (!e[r]) {
+var c = "function" == typeof __require && __require;
+if (!s && c) return c(r, !0);
+if (l) return l(r, !0);
 throw new Error("Cannot find module '" + a + "'");
 }
-a = c;
+a = r;
 }
 var p = n[a] = {
 exports: {}
@@ -43,13 +43,13 @@ this.constructor = t;
 t.prototype = null === e ? Object.create(e) : (n.prototype = e.prototype, new n());
 }), l = this && this.__decorate || function(t, e, n, o) {
 var i, l = arguments.length, a = l < 3 ? e : null === o ? o = Object.getOwnPropertyDescriptor(e, n) : o;
-if ("object" == typeof Reflect && "function" == typeof Reflect.decorate) a = Reflect.decorate(t, e, n, o); else for (var r = t.length - 1; r >= 0; r--) (i = t[r]) && (a = (l < 3 ? i(a) : l > 3 ? i(e, n, a) : i(e, n)) || a);
+if ("object" == typeof Reflect && "function" == typeof Reflect.decorate) a = Reflect.decorate(t, e, n, o); else for (var s = t.length - 1; s >= 0; s--) (i = t[s]) && (a = (l < 3 ? i(a) : l > 3 ? i(e, n, a) : i(e, n)) || a);
 return l > 3 && a && Object.defineProperty(e, n, a), a;
 };
 Object.defineProperty(n, "__esModule", {
 value: !0
 });
-var a = t("./InfiniteHeights.GameView"), r = cc._decorator, c = r.ccclass, s = r.property, p = function(t) {
+var a = t("./InfiniteHeights.GameView"), s = cc._decorator, r = s.ccclass, c = s.property, p = function(t) {
 i(e, t);
 function e() {
 var e = null !== t && t.apply(this, arguments) || this;
@@ -77,8 +77,8 @@ this.isAdd = !1;
 e.prototype.destroyObstacle = function() {
 for (var t = 0; t < this.node.childrenCount; t++) this.node.children[t].destroy();
 };
-l([ s ], e.prototype, "idBg", void 0);
-return l([ c ], e);
+l([ c ], e.prototype, "idBg", void 0);
+return l([ r ], e);
 }(cc.Component);
 n.default = p;
 cc._RF.pop();
@@ -104,13 +104,13 @@ this.constructor = t;
 t.prototype = null === e ? Object.create(e) : (n.prototype = e.prototype, new n());
 }), l = this && this.__decorate || function(t, e, n, o) {
 var i, l = arguments.length, a = l < 3 ? e : null === o ? o = Object.getOwnPropertyDescriptor(e, n) : o;
-if ("object" == typeof Reflect && "function" == typeof Reflect.decorate) a = Reflect.decorate(t, e, n, o); else for (var r = t.length - 1; r >= 0; r--) (i = t[r]) && (a = (l < 3 ? i(a) : l > 3 ? i(e, n, a) : i(e, n)) || a);
+if ("object" == typeof Reflect && "function" == typeof Reflect.decorate) a = Reflect.decorate(t, e, n, o); else for (var s = t.length - 1; s >= 0; s--) (i = t[s]) && (a = (l < 3 ? i(a) : l > 3 ? i(e, n, a) : i(e, n)) || a);
 return l > 3 && a && Object.defineProperty(e, n, a), a;
 };
 Object.defineProperty(n, "__esModule", {
 value: !0
 });
-var a = t("../InfiniteHeights.GameManager"), r = cc._decorator, c = r.ccclass, s = r.property, p = function(t) {
+var a = t("../InfiniteHeights.GameManager"), s = cc._decorator, r = s.ccclass, c = s.property, p = function(t) {
 i(e, t);
 function e() {
 var e = null !== t && t.apply(this, arguments) || this;
@@ -134,8 +134,8 @@ this.id = t;
 this.spBallon.spriteFrame = a.default.instance.listSpfBallon[this.id];
 };
 e.prototype.start = function() {};
-l([ s(cc.Sprite) ], e.prototype, "spBallon", void 0);
-return l([ c ], e);
+l([ c(cc.Sprite) ], e.prototype, "spBallon", void 0);
+return l([ r ], e);
 }(cc.Component);
 n.default = p;
 cc._RF.pop();
@@ -161,13 +161,13 @@ this.constructor = t;
 t.prototype = null === e ? Object.create(e) : (n.prototype = e.prototype, new n());
 }), l = this && this.__decorate || function(t, e, n, o) {
 var i, l = arguments.length, a = l < 3 ? e : null === o ? o = Object.getOwnPropertyDescriptor(e, n) : o;
-if ("object" == typeof Reflect && "function" == typeof Reflect.decorate) a = Reflect.decorate(t, e, n, o); else for (var r = t.length - 1; r >= 0; r--) (i = t[r]) && (a = (l < 3 ? i(a) : l > 3 ? i(e, n, a) : i(e, n)) || a);
+if ("object" == typeof Reflect && "function" == typeof Reflect.decorate) a = Reflect.decorate(t, e, n, o); else for (var s = t.length - 1; s >= 0; s--) (i = t[s]) && (a = (l < 3 ? i(a) : l > 3 ? i(e, n, a) : i(e, n)) || a);
 return l > 3 && a && Object.defineProperty(e, n, a), a;
 };
 Object.defineProperty(n, "__esModule", {
 value: !0
 });
-var a = t("../InfiniteHeights.Global"), r = t("./InfiniteHeights.GameView"), c = cc._decorator, s = c.ccclass, p = (c.property, 
+var a = t("../InfiniteHeights.Global"), s = t("./InfiniteHeights.GameView"), r = cc._decorator, c = r.ccclass, p = (r.property, 
 function(t) {
 i(e, t);
 function e() {
@@ -178,14 +178,14 @@ cc.director.getCollisionManager().enabled = !0;
 };
 e.prototype.start = function() {};
 e.prototype.onCollisionEnter = function(t) {
-2 == t.tag && r.default.instance.gameOver();
+2 == t.tag && s.default.instance.gameOver();
 if (1 == t.tag) {
 a.Global.diaMond++;
-r.default.instance.updateLbDiamond(r.default.instance.lbDiamond);
+s.default.instance.updateLbDiamond(s.default.instance.lbDiamond);
 t.node.destroy();
 }
 };
-return l([ s ], e);
+return l([ c ], e);
 }(cc.Component));
 n.default = p;
 cc._RF.pop();
@@ -212,13 +212,13 @@ this.constructor = t;
 t.prototype = null === e ? Object.create(e) : (n.prototype = e.prototype, new n());
 }), l = this && this.__decorate || function(t, e, n, o) {
 var i, l = arguments.length, a = l < 3 ? e : null === o ? o = Object.getOwnPropertyDescriptor(e, n) : o;
-if ("object" == typeof Reflect && "function" == typeof Reflect.decorate) a = Reflect.decorate(t, e, n, o); else for (var r = t.length - 1; r >= 0; r--) (i = t[r]) && (a = (l < 3 ? i(a) : l > 3 ? i(e, n, a) : i(e, n)) || a);
+if ("object" == typeof Reflect && "function" == typeof Reflect.decorate) a = Reflect.decorate(t, e, n, o); else for (var s = t.length - 1; s >= 0; s--) (i = t[s]) && (a = (l < 3 ? i(a) : l > 3 ? i(e, n, a) : i(e, n)) || a);
 return l > 3 && a && Object.defineProperty(e, n, a), a;
 };
 Object.defineProperty(n, "__esModule", {
 value: !0
 });
-var a = t("./InfiniteHeights.Global"), r = cc._decorator, c = r.ccclass, s = r.property, p = function(t) {
+var a = t("./InfiniteHeights.Global"), s = cc._decorator, r = s.ccclass, c = s.property, p = function(t) {
 i(e, t);
 function e() {
 var e = null !== t && t.apply(this, arguments) || this;
@@ -260,14 +260,14 @@ this.node.addChild(t);
 };
 var n;
 e.instance = null;
-l([ s(cc.Prefab) ], e.prototype, "prfGameView", void 0);
-l([ s(cc.Node) ], e.prototype, "nListNodeRank", void 0);
-l([ s(cc.Label) ], e.prototype, "lbtest", void 0);
-l([ s(cc.SpriteFrame) ], e.prototype, "listSpfBallon", void 0);
-l([ s(cc.PageView) ], e.prototype, "pageView", void 0);
-l([ s(cc.Prefab) ], e.prototype, "ballonPrefabs", void 0);
-l([ s(cc.Node) ], e.prototype, "nListBallon", void 0);
-return n = l([ c ], e);
+l([ c(cc.Prefab) ], e.prototype, "prfGameView", void 0);
+l([ c(cc.Node) ], e.prototype, "nListNodeRank", void 0);
+l([ c(cc.Label) ], e.prototype, "lbtest", void 0);
+l([ c(cc.SpriteFrame) ], e.prototype, "listSpfBallon", void 0);
+l([ c(cc.PageView) ], e.prototype, "pageView", void 0);
+l([ c(cc.Prefab) ], e.prototype, "ballonPrefabs", void 0);
+l([ c(cc.Node) ], e.prototype, "nListBallon", void 0);
+return n = l([ r ], e);
 }(cc.Component);
 n.default = p;
 cc._RF.pop();
@@ -293,13 +293,13 @@ this.constructor = t;
 t.prototype = null === e ? Object.create(e) : (n.prototype = e.prototype, new n());
 }), l = this && this.__decorate || function(t, e, n, o) {
 var i, l = arguments.length, a = l < 3 ? e : null === o ? o = Object.getOwnPropertyDescriptor(e, n) : o;
-if ("object" == typeof Reflect && "function" == typeof Reflect.decorate) a = Reflect.decorate(t, e, n, o); else for (var r = t.length - 1; r >= 0; r--) (i = t[r]) && (a = (l < 3 ? i(a) : l > 3 ? i(e, n, a) : i(e, n)) || a);
+if ("object" == typeof Reflect && "function" == typeof Reflect.decorate) a = Reflect.decorate(t, e, n, o); else for (var s = t.length - 1; s >= 0; s--) (i = t[s]) && (a = (l < 3 ? i(a) : l > 3 ? i(e, n, a) : i(e, n)) || a);
 return l > 3 && a && Object.defineProperty(e, n, a), a;
 };
 Object.defineProperty(n, "__esModule", {
 value: !0
 });
-var a = t("../InfiniteHeights.GameManager"), r = t("../InfiniteHeights.Global"), c = t("./InfiniteHeights.Ballon"), s = t("./InfiniteHeights.GameView"), p = t("./InfiniteHeights.Shop"), f = cc._decorator, h = f.ccclass, u = f.property, d = function(t) {
+var a = t("../InfiniteHeights.GameManager"), s = t("../InfiniteHeights.Global"), r = t("./InfiniteHeights.Ballon"), c = t("./InfiniteHeights.GameView"), p = t("./InfiniteHeights.Shop"), h = cc._decorator, u = h.ccclass, f = h.property, d = function(t) {
 i(e, t);
 function e() {
 var e = null !== t && t.apply(this, arguments) || this;
@@ -312,39 +312,39 @@ e.index = 0;
 return e;
 }
 e.prototype.onLoad = function() {
-r.Global.unlockIndexBallon = JSON.parse(cc.sys.localStorage.getItem("unlockIndexBallon")) || r.Global.unlockIndexBallon;
-cc.sys.localStorage.setItem("scores", JSON.stringify(r.Global.dataScore));
-console.log("Global ", r.Global.unlockIndexBallon);
-s.default.instance.updateLbTime(this.lbTime);
-s.default.instance.updateLbDiamond(this.lbDiamond);
-s.default.instance.updateLbScore(this.lbScore);
+s.Global.unlockIndexBallon = JSON.parse(cc.sys.localStorage.getItem("unlockIndexBallon")) || s.Global.unlockIndexBallon;
+cc.sys.localStorage.setItem("scores", JSON.stringify(s.Global.dataScore));
+console.log("Global ", s.Global.unlockIndexBallon);
+c.default.instance.updateLbTime(this.lbTime);
+c.default.instance.updateLbDiamond(this.lbDiamond);
+c.default.instance.updateLbScore(this.lbScore);
 this.checkUnlockBallon();
 };
 e.prototype.onReplay = function() {
-s.default.instance.resetGame();
+c.default.instance.resetGame();
 this.node.destroy();
 };
 e.prototype.onHome = function() {
-s.default.instance.gameDestroy();
+c.default.instance.gameDestroy();
 cc.sys.localStorage.removeItem("selectedBallonIndex");
 p.default.instance.updateShop();
 a.default.instance.updateRank(a.default.instance.nListNodeRank);
 this.node.destroy();
 };
 e.prototype.checkUnlockBallon = function() {
-if (s.default.instance.unLockBallon) {
+if (c.default.instance.unLockBallon) {
 this.nUnLockBallon.active = !0;
-this.nBallon.setData(r.Global.unlockIndexBallon);
-cc.sys.localStorage.setItem("unlockIndexBallon", r.Global.unlockIndexBallon);
+this.nBallon.setData(s.Global.unlockIndexBallon);
+cc.sys.localStorage.setItem("unlockIndexBallon", s.Global.unlockIndexBallon);
 } else this.nUnLockBallon.active = !1;
 };
 e.prototype.start = function() {};
-l([ u(cc.Label) ], e.prototype, "lbScore", void 0);
-l([ u(cc.Label) ], e.prototype, "lbDiamond", void 0);
-l([ u(cc.Label) ], e.prototype, "lbTime", void 0);
-l([ u(c.default) ], e.prototype, "nBallon", void 0);
-l([ u(cc.Node) ], e.prototype, "nUnLockBallon", void 0);
-return l([ h ], e);
+l([ f(cc.Label) ], e.prototype, "lbScore", void 0);
+l([ f(cc.Label) ], e.prototype, "lbDiamond", void 0);
+l([ f(cc.Label) ], e.prototype, "lbTime", void 0);
+l([ f(r.default) ], e.prototype, "nBallon", void 0);
+l([ f(cc.Node) ], e.prototype, "nUnLockBallon", void 0);
+return l([ u ], e);
 }(cc.Component);
 n.default = d;
 cc._RF.pop();
@@ -374,13 +374,13 @@ this.constructor = t;
 t.prototype = null === e ? Object.create(e) : (n.prototype = e.prototype, new n());
 }), l = this && this.__decorate || function(t, e, n, o) {
 var i, l = arguments.length, a = l < 3 ? e : null === o ? o = Object.getOwnPropertyDescriptor(e, n) : o;
-if ("object" == typeof Reflect && "function" == typeof Reflect.decorate) a = Reflect.decorate(t, e, n, o); else for (var r = t.length - 1; r >= 0; r--) (i = t[r]) && (a = (l < 3 ? i(a) : l > 3 ? i(e, n, a) : i(e, n)) || a);
+if ("object" == typeof Reflect && "function" == typeof Reflect.decorate) a = Reflect.decorate(t, e, n, o); else for (var s = t.length - 1; s >= 0; s--) (i = t[s]) && (a = (l < 3 ? i(a) : l > 3 ? i(e, n, a) : i(e, n)) || a);
 return l > 3 && a && Object.defineProperty(e, n, a), a;
 };
 Object.defineProperty(n, "__esModule", {
 value: !0
 });
-var a = t("../InfiniteHeights.Global"), r = t("./InfiniteHeights.Ballon"), c = t("./InfiniteHeights.GameOver"), s = t("./InfiniteHeights.ObstacleManager"), p = t("./InfiniteHeights.Pause"), f = cc._decorator, h = f.ccclass, u = f.property, d = function(t) {
+var a = t("../InfiniteHeights.Global"), s = t("./InfiniteHeights.Ballon"), r = t("./InfiniteHeights.GameOver"), c = t("./InfiniteHeights.ObstacleManager"), p = t("./InfiniteHeights.Pause"), h = cc._decorator, u = h.ccclass, f = h.property, d = function(t) {
 i(e, t);
 function e() {
 var e = null !== t && t.apply(this, arguments) || this;
@@ -396,11 +396,15 @@ e.lbTime = null;
 e.lbScore = null;
 e.prfGameOver = null;
 e.prfPause = null;
+e.hands = null;
+e.lbTimeResume = null;
 e.time = 0;
+e.timeResume = 4;
 e.isFirstTouch = !1;
 e.isGameOver = !1;
 e.ballon = null;
 e.unLockBallon = !1;
+e.isCountDown = !1;
 return e;
 }
 n = e;
@@ -409,18 +413,34 @@ n.instance = this;
 a.Global.unlockIndexBallon = JSON.parse(cc.sys.localStorage.getItem("unlockIndexBallon")) || a.Global.unlockIndexBallon;
 console.log("index ", a.Global.unlockIndexBallon);
 a.Global.currentIndexBallon = JSON.parse(cc.sys.localStorage.getItem("currentIndexBallon")) || 0;
-this.ballon = cc.instantiate(this.prfBallon).getComponent(r.default);
-this.ballon.node.y = -500;
+this.ballon = cc.instantiate(this.prfBallon).getComponent(s.default);
+this.ballon.node.y = -420;
 this.ballon.setData(a.Global.currentIndexBallon);
 this.nBallon.addChild(this.ballon.node);
 this.genObstacle();
 this.node.on(cc.Node.EventType.TOUCH_START, this.onTouchStart, this);
+this.handsDestroy();
 this.resetGame();
 };
 e.prototype.start = function() {};
+e.prototype.startTimeResume = function() {
+this.lbTimeResume.node.active = !0;
+this.isCountDown = !0;
+this.schedule(this.updateTimeResume, 1);
+};
+e.prototype.updateTimeResume = function() {
+if (this.timeResume > 0) {
+this.timeResume--;
+this.lbTimeResume.string = this.timeResume + " ";
+} else {
+this.isCountDown = !1;
+this.isGameOver = !1;
+this.lbTimeResume.node.active = !1;
+}
+};
 e.prototype.createObstacle = function(t) {
 for (var e = 0; e < 2; e++) {
-var n = Math.floor(Math.random() * this.listPrfObstacle.length), o = cc.instantiate(this.listPrfObstacle[n]), i = o.getComponent(s.default);
+var n = Math.floor(Math.random() * this.listPrfObstacle.length), o = cc.instantiate(this.listPrfObstacle[n]), i = o.getComponent(c.default);
 i && (o = i.node);
 o.y = 680 * e - 340;
 t.addChild(o);
@@ -436,7 +456,14 @@ e.prototype.startGame = function() {
 if (this.isFirstTouch) this.fall(); else {
 this.isFirstTouch = !0;
 this.schedule(this.updateTime, 1);
+this.handsDestroy();
 }
+};
+e.prototype.handsDestroy = function() {
+var t = this;
+this.isFirstTouch && this.scheduleOnce(function() {
+t.isGameOver || (t.hands.active = !1);
+}, 3.5);
 };
 e.prototype.fall = function() {
 this.isGameOver || cc.tween(this.ballon.node).by(.2, {
@@ -468,13 +495,14 @@ this.updateLbScore(this.lbScore);
 this.updateLbTime(this.lbTime);
 this.updateLbDiamond(this.lbDiamond);
 this.ballon.node.active = !0;
-this.ballon.node.y = -500;
+this.ballon.node.y = -420;
 cc.director.getCollisionManager().enabled = !0;
 this.isFirstTouch = !1;
 this.isGameOver = !1;
 this.listBg.forEach(function(t) {
 t.removeAllChildren();
 });
+this.hands.active = !0;
 this.listBg[0].y = 3120;
 this.listBg[1].y = 1840;
 this.listBg[2].y = 560;
@@ -486,7 +514,8 @@ this.node.on(cc.Node.EventType.TOUCH_START, this.onTouchStart, this);
 e.prototype.gameOver = function() {
 var t = this;
 this.isGameOver = !0;
-var e = cc.instantiate(this.prfGameOver).getComponent(c.default).node;
+this.hands.active = !1;
+var e = cc.instantiate(this.prfGameOver).getComponent(r.default).node;
 this.unschedule(this.updateTime);
 cc.tween(this.ballon).stop();
 this.node.off(cc.Node.EventType.TOUCH_START, this.onTouchStart, this);
@@ -512,6 +541,7 @@ t.node.addChild(e);
 }, .3);
 };
 e.prototype.pauseGame = function() {
+this.isGameOver = !0;
 var t = cc.instantiate(this.prfPause).getComponent(p.default);
 this.node.addChild(t.node);
 };
@@ -523,19 +553,21 @@ this.isGameOver || this.isFirstTouch && this.ballon.node.setPosition(this.ballon
 };
 var n;
 e.instance = null;
-l([ u(cc.Node) ], e.prototype, "nObstacle", void 0);
-l([ u(cc.Prefab) ], e.prototype, "listPrfObstacle", void 0);
-l([ u(cc.Prefab) ], e.prototype, "prfBackGround", void 0);
-l([ u(cc.Node) ], e.prototype, "nBgGame", void 0);
-l([ u(cc.Prefab) ], e.prototype, "prfBallon", void 0);
-l([ u(cc.Node) ], e.prototype, "nBallon", void 0);
-l([ u(cc.Node) ], e.prototype, "listBg", void 0);
-l([ u(cc.Label) ], e.prototype, "lbDiamond", void 0);
-l([ u(cc.Label) ], e.prototype, "lbTime", void 0);
-l([ u(cc.Label) ], e.prototype, "lbScore", void 0);
-l([ u(cc.Prefab) ], e.prototype, "prfGameOver", void 0);
-l([ u(cc.Prefab) ], e.prototype, "prfPause", void 0);
-return n = l([ h ], e);
+l([ f(cc.Node) ], e.prototype, "nObstacle", void 0);
+l([ f(cc.Prefab) ], e.prototype, "listPrfObstacle", void 0);
+l([ f(cc.Prefab) ], e.prototype, "prfBackGround", void 0);
+l([ f(cc.Node) ], e.prototype, "nBgGame", void 0);
+l([ f(cc.Prefab) ], e.prototype, "prfBallon", void 0);
+l([ f(cc.Node) ], e.prototype, "nBallon", void 0);
+l([ f(cc.Node) ], e.prototype, "listBg", void 0);
+l([ f(cc.Label) ], e.prototype, "lbDiamond", void 0);
+l([ f(cc.Label) ], e.prototype, "lbTime", void 0);
+l([ f(cc.Label) ], e.prototype, "lbScore", void 0);
+l([ f(cc.Prefab) ], e.prototype, "prfGameOver", void 0);
+l([ f(cc.Prefab) ], e.prototype, "prfPause", void 0);
+l([ f(cc.Node) ], e.prototype, "hands", void 0);
+l([ f(cc.Label) ], e.prototype, "lbTimeResume", void 0);
+return n = l([ u ], e);
 }(cc.Component);
 n.default = d;
 cc._RF.pop();
@@ -585,13 +617,13 @@ this.constructor = t;
 t.prototype = null === e ? Object.create(e) : (n.prototype = e.prototype, new n());
 }), l = this && this.__decorate || function(t, e, n, o) {
 var i, l = arguments.length, a = l < 3 ? e : null === o ? o = Object.getOwnPropertyDescriptor(e, n) : o;
-if ("object" == typeof Reflect && "function" == typeof Reflect.decorate) a = Reflect.decorate(t, e, n, o); else for (var r = t.length - 1; r >= 0; r--) (i = t[r]) && (a = (l < 3 ? i(a) : l > 3 ? i(e, n, a) : i(e, n)) || a);
+if ("object" == typeof Reflect && "function" == typeof Reflect.decorate) a = Reflect.decorate(t, e, n, o); else for (var s = t.length - 1; s >= 0; s--) (i = t[s]) && (a = (l < 3 ? i(a) : l > 3 ? i(e, n, a) : i(e, n)) || a);
 return l > 3 && a && Object.defineProperty(e, n, a), a;
 };
 Object.defineProperty(n, "__esModule", {
 value: !0
 });
-var a = t("./InfiniteHeights.GameView"), r = cc._decorator, c = r.ccclass, s = r.property, p = function(t) {
+var a = t("./InfiniteHeights.GameView"), s = cc._decorator, r = s.ccclass, c = s.property, p = function(t) {
 i(e, t);
 function e() {
 var e = null !== t && t.apply(this, arguments) || this;
@@ -705,9 +737,9 @@ case 8:
 this.listNode.length && (this.listNode[0].angle += this.speedAngle * t);
 }
 };
-l([ s ], e.prototype, "idPrf", void 0);
-l([ s(cc.Node) ], e.prototype, "listNode", void 0);
-return l([ c ], e);
+l([ c ], e.prototype, "idPrf", void 0);
+l([ c(cc.Node) ], e.prototype, "listNode", void 0);
+return l([ r ], e);
 }(cc.Component);
 n.default = p;
 cc._RF.pop();
@@ -733,23 +765,39 @@ this.constructor = t;
 t.prototype = null === e ? Object.create(e) : (n.prototype = e.prototype, new n());
 }), l = this && this.__decorate || function(t, e, n, o) {
 var i, l = arguments.length, a = l < 3 ? e : null === o ? o = Object.getOwnPropertyDescriptor(e, n) : o;
-if ("object" == typeof Reflect && "function" == typeof Reflect.decorate) a = Reflect.decorate(t, e, n, o); else for (var r = t.length - 1; r >= 0; r--) (i = t[r]) && (a = (l < 3 ? i(a) : l > 3 ? i(e, n, a) : i(e, n)) || a);
+if ("object" == typeof Reflect && "function" == typeof Reflect.decorate) a = Reflect.decorate(t, e, n, o); else for (var s = t.length - 1; s >= 0; s--) (i = t[s]) && (a = (l < 3 ? i(a) : l > 3 ? i(e, n, a) : i(e, n)) || a);
 return l > 3 && a && Object.defineProperty(e, n, a), a;
 };
 Object.defineProperty(n, "__esModule", {
 value: !0
 });
-var a = cc._decorator, r = a.ccclass, c = (a.property, function(t) {
+var a = t("./InfiniteHeights.GameView"), s = cc._decorator, r = s.ccclass, c = (s.property, 
+function(t) {
 i(e, t);
 function e() {
 return null !== t && t.apply(this, arguments) || this;
 }
+e.prototype.onLoad = function() {};
 e.prototype.start = function() {};
+e.prototype.onResumeGame = function() {
+a.default.instance.startTimeResume();
+this.node.destroy();
+};
+e.prototype.onHome = function() {
+a.default.instance.gameDestroy();
+this.node.destroy();
+};
+e.prototype.onReset = function() {
+a.default.instance.resetGame();
+this.node.destroy();
+};
 return l([ r ], e);
 }(cc.Component));
 n.default = c;
 cc._RF.pop();
-}, {} ],
+}, {
+"./InfiniteHeights.GameView": "InfiniteHeights.GameView"
+} ],
 "InfiniteHeights.Shop": [ function(t, e, n) {
 "use strict";
 cc._RF.push(e, "ca106/9TXROP4idbyKoCVQC", "InfiniteHeights.Shop");
@@ -769,13 +817,13 @@ this.constructor = t;
 t.prototype = null === e ? Object.create(e) : (n.prototype = e.prototype, new n());
 }), l = this && this.__decorate || function(t, e, n, o) {
 var i, l = arguments.length, a = l < 3 ? e : null === o ? o = Object.getOwnPropertyDescriptor(e, n) : o;
-if ("object" == typeof Reflect && "function" == typeof Reflect.decorate) a = Reflect.decorate(t, e, n, o); else for (var r = t.length - 1; r >= 0; r--) (i = t[r]) && (a = (l < 3 ? i(a) : l > 3 ? i(e, n, a) : i(e, n)) || a);
+if ("object" == typeof Reflect && "function" == typeof Reflect.decorate) a = Reflect.decorate(t, e, n, o); else for (var s = t.length - 1; s >= 0; s--) (i = t[s]) && (a = (l < 3 ? i(a) : l > 3 ? i(e, n, a) : i(e, n)) || a);
 return l > 3 && a && Object.defineProperty(e, n, a), a;
 };
 Object.defineProperty(n, "__esModule", {
 value: !0
 });
-var a = t("../InfiniteHeights.Global"), r = cc._decorator, c = r.ccclass, s = r.property, p = function(t) {
+var a = t("../InfiniteHeights.Global"), s = cc._decorator, r = s.ccclass, c = s.property, p = function(t) {
 i(e, t);
 function e() {
 var e = null !== t && t.apply(this, arguments) || this;
@@ -859,13 +907,13 @@ this.updateShop();
 };
 var n;
 e.instance = null;
-l([ s(cc.SpriteFrame) ], e.prototype, "listSpfBallon", void 0);
-l([ s(cc.Sprite) ], e.prototype, "nBallon_0", void 0);
-l([ s(cc.Sprite) ], e.prototype, "nBallon_1", void 0);
-l([ s(cc.Sprite) ], e.prototype, "nBallon_2", void 0);
-l([ s(cc.Node) ], e.prototype, "nNext", void 0);
-l([ s(cc.Node) ], e.prototype, "nPrev", void 0);
-return n = l([ c ], e);
+l([ c(cc.SpriteFrame) ], e.prototype, "listSpfBallon", void 0);
+l([ c(cc.Sprite) ], e.prototype, "nBallon_0", void 0);
+l([ c(cc.Sprite) ], e.prototype, "nBallon_1", void 0);
+l([ c(cc.Sprite) ], e.prototype, "nBallon_2", void 0);
+l([ c(cc.Node) ], e.prototype, "nNext", void 0);
+l([ c(cc.Node) ], e.prototype, "nPrev", void 0);
+return n = l([ r ], e);
 }(cc.Component);
 n.default = p;
 cc._RF.pop();

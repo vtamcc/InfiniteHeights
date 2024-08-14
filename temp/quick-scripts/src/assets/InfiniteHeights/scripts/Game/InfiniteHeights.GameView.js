@@ -85,19 +85,25 @@ var GameView = /** @class */ (function (_super) {
     GameView.prototype.start = function () {
     };
     GameView.prototype.startTimeResume = function () {
+        this.timeResume = 4;
         this.lbTimeResume.node.active = true;
         this.isCountDown = true;
+        console.log("Starting countdown with timeResume:", this.time);
         this.schedule(this.updateTimeResume, 1);
     };
     GameView.prototype.updateTimeResume = function () {
         if (this.timeResume > 0) {
             this.timeResume--;
             this.lbTimeResume.string = this.timeResume + " ";
+            console.log("Time remaining:", this.timeResume);
         }
         else {
-            this.isCountDown = false;
             this.isGameOver = false;
+            this.isCountDown = false;
+            this.handsDestroy();
             this.lbTimeResume.node.active = false;
+            this.unschedule(this.updateTimeResume);
+            console.log('chay', this.isGameOver);
         }
     };
     GameView.prototype.createObstacle = function (node) {
@@ -135,10 +141,10 @@ var GameView = /** @class */ (function (_super) {
         if (!this.isFirstTouch)
             return;
         this.scheduleOnce(function () {
-            if (!_this.isGameOver) { // Chỉ thực hiện khi game không bị tạm dừng
+            if (!_this.isGameOver) {
                 _this.hands.active = false;
             }
-        }, 3.5);
+        }, 2.5);
     };
     GameView.prototype.fall = function () {
         if (this.isGameOver)
@@ -172,7 +178,7 @@ var GameView = /** @class */ (function (_super) {
         this.updateLbTime(this.lbTime);
         this.updateLbDiamond(this.lbDiamond);
         this.ballon.node.active = true;
-        this.ballon.node.y = -420;
+        this.ballon.node.y = -480;
         cc.director.getCollisionManager().enabled = true;
         this.isFirstTouch = false;
         this.isGameOver = false;
@@ -222,6 +228,7 @@ var GameView = /** @class */ (function (_super) {
     };
     GameView.prototype.pauseGame = function () {
         this.isGameOver = true;
+        console.log('dung', this.isGameOver);
         var pauseGame = cc.instantiate(this.prfPause).getComponent(InfiniteHeights_Pause_1.default);
         this.node.addChild(pauseGame.node);
     };
