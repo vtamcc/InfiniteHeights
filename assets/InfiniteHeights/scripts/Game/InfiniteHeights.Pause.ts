@@ -5,24 +5,37 @@
 // Learn life-cycle callbacks:
 //  - https://docs.cocos.com/creator/manual/en/scripting/life-cycle-callbacks.html
 
+import GameView from "./InfiniteHeights.GameView";
+
 const {ccclass, property} = cc._decorator;
 
 @ccclass
-export default class NewClass extends cc.Component {
+export default class Pause extends cc.Component {
 
-    @property(cc.Label)
-    label: cc.Label = null;
-
-    @property
-    text: string = 'hello';
 
     // LIFE-CYCLE CALLBACKS:
 
-    // onLoad () {}
+    onLoad () {
+        
+    }
 
     start () {
 
     }
 
+    onResumeGame() {
+        GameView.instance.startTimeResume();
+        this.node.destroy();
+    }
+
+    onHome() {
+        GameView.instance.gameDestroy();
+        this.node.destroy();
+    }
+
+    onReset() {
+        GameView.instance.resetGame();
+        this.node.destroy();
+    }
     // update (dt) {}
 }

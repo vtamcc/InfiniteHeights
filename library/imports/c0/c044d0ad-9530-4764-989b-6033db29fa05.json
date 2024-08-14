@@ -1,0 +1,28 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "tuto_tap1",
+    "texture": "a4769c99-ec27-4f20-82d1-c76b4744df84",
+    "atlas": "",
+    "rect": [
+      0,
+      0,
+      46,
+      68
+    ],
+    "offset": [
+      0,
+      0
+    ],
+    "originalSize": [
+      46,
+      68
+    ],
+    "capInsets": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}

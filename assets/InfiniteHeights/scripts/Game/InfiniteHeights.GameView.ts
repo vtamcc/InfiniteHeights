@@ -11,6 +11,7 @@ import BackGround from "./InfiniteHeights.BackGround";
 import Ballon from "./InfiniteHeights.Ballon";
 import GameOver from "./InfiniteHeights.GameOver";
 import obstacleManager from "./InfiniteHeights.ObstacleManager";
+import Pause from "./InfiniteHeights.Pause";
 
 const { ccclass, property } = cc._decorator;
 
@@ -45,12 +46,21 @@ export default class GameView extends cc.Component {
     lbScore: cc.Label = null;
     @property(cc.Prefab)
     prfGameOver: cc.Prefab = null;
+
+    @property(cc.Prefab)
+    prfPause: cc.Prefab = null;
+    @property(cc.Node)
+    hands: cc.Node = null;
+
+    @property(cc.Label)
+    lbTimeResume: cc.Label = null;
     time = 0;
+    timeResume = 4;
     isFirstTouch = false;
     isGameOver = false;
     ballon = null;
     unLockBallon = false
-    isScoreAdded = false
+    isCountDown = false;
     // LIFE-CYCLE CALLBACKS:
 
     onLoad() {
@@ -62,11 +72,12 @@ export default class GameView extends cc.Component {
         console.log("index ", Global.unlockIndexBallon);
         Global.currentIndexBallon = JSON.parse(cc.sys.localStorage.getItem('currentIndexBallon')) || 0;
         this.ballon = cc.instantiate(this.prfBallon).getComponent(Ballon)
-        this.ballon.node.y = -500;
+        this.ballon.node.y = -420;
         this.ballon.setData(Global.currentIndexBallon)
         this.nBallon.addChild(this.ballon.node);
         this.genObstacle();
         this.node.on(cc.Node.EventType.TOUCH_START, this.onTouchStart, this);
+        this.handsDestroy()
         this.resetGame();
 
     }
@@ -75,6 +86,23 @@ export default class GameView extends cc.Component {
 
     }
 
+    startTimeResume() {
+        this.lbTimeResume.node.active = true;
+        this.isCountDown = true;
+        this.schedule(this.updateTimeResume,1);
+    }
+
+    updateTimeResume() {
+        if(this.timeResume > 0) {
+            this.timeResume--;
+            this.lbTimeResume.string = this.timeResume + " ";
+        }else {
+            this.isCountDown = false;
+            this.isGameOver = false;
+            this.lbTimeResume.node.active = false;
+        }
+    }
+    
     createObstacle(node: cc.Node) {
 
         for (let i = 0; i < 2; i++) {
@@ -102,10 +130,21 @@ export default class GameView extends cc.Component {
         if (!this.isFirstTouch) {
             this.isFirstTouch = true;
             this.schedule(this.updateTime, 1);
+            this.handsDestroy();
         } else {
             this.fall();
-
+           
         }
+    }
+
+    handsDestroy() {
+        if (!this.isFirstTouch) return;
+
+        this.scheduleOnce(() => {
+            if (!this.isGameOver) { // Chỉ thực hiện khi game không bị tạm dừng
+                this.hands.active = false;
+            }
+        }, 3.5);
     }
 
     fall() {
@@ -137,7 +176,6 @@ export default class GameView extends cc.Component {
     }
 
     resetGame() {
-        this.isScoreAdded = false;
         Global.diaMond = 0;
         Global.score = 0;
         this.time = 0;
@@ -145,13 +183,14 @@ export default class GameView extends cc.Component {
         this.updateLbTime(this.lbTime);
         this.updateLbDiamond(this.lbDiamond);
         this.ballon.node.active = true;
-        this.ballon.node.y = -500;
+        this.ballon.node.y = -420;
         cc.director.getCollisionManager().enabled = true;
         this.isFirstTouch = false;
         this.isGameOver = false;
         this.listBg.forEach(value => {
             value.removeAllChildren();
         })
+        this.hands.active = true;
         this.listBg[0].y = 3120;
         this.listBg[1].y = 1840;
         this.listBg[2].y = 560;
@@ -162,10 +201,9 @@ export default class GameView extends cc.Component {
     }
 
     gameOver() {
-        if (this.isScoreAdded) {
-            return;
-        }
+
         this.isGameOver = true;
+        this.hands.active = false
         let gameOver = cc.instantiate(this.prfGameOver).getComponent(GameOver).node
         this.unschedule(this.updateTime);
         cc.tween(this.ballon).stop();
@@ -173,11 +211,9 @@ export default class GameView extends cc.Component {
         cc.director.getCollisionManager().enabled = false;
         let scores = this.time + Global.diaMond;
         this.unLockBallon = false
-        Global.dataScore.push(scores);
         let MAX_SCORES = 10;
 
         Global.dataScore.push(scores);
-
         Global.dataScore.sort((a, b) => {
             return a > b ? -1 : 1;
         });
@@ -193,13 +229,18 @@ export default class GameView extends cc.Component {
             cc.sys.localStorage.setItem('unlockIndexBallon', Global.unlockIndexBallon);
             console.log("unLockIndex ", Global.unlockIndexBallon);
         }
-        this.isScoreAdded = true; 
         this.ballon.node.active = false;
         this.scheduleOnce(() => {
             this.node.addChild(gameOver);
         }, 0.3)
 
 
+    }
+
+    pauseGame() {
+        this.isGameOver = true;
+        let pauseGame = cc.instantiate(this.prfPause).getComponent(Pause)
+        this.node.addChild(pauseGame.node);
     }
 
     gameDestroy() {

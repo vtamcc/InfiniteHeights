@@ -29,31 +29,35 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+var InfiniteHeights_GameView_1 = require("./InfiniteHeights.GameView");
 var _a = cc._decorator, ccclass = _a.ccclass, property = _a.property;
-var NewClass = /** @class */ (function (_super) {
-    __extends(NewClass, _super);
-    function NewClass() {
-        var _this = _super !== null && _super.apply(this, arguments) || this;
-        _this.label = null;
-        _this.text = 'hello';
-        return _this;
-        // update (dt) {}
+var Pause = /** @class */ (function (_super) {
+    __extends(Pause, _super);
+    function Pause() {
+        return _super !== null && _super.apply(this, arguments) || this;
     }
     // LIFE-CYCLE CALLBACKS:
-    // onLoad () {}
-    NewClass.prototype.start = function () {
+    Pause.prototype.onLoad = function () {
     };
-    __decorate([
-        property(cc.Label)
-    ], NewClass.prototype, "label", void 0);
-    __decorate([
-        property
-    ], NewClass.prototype, "text", void 0);
-    NewClass = __decorate([
+    Pause.prototype.start = function () {
+    };
+    Pause.prototype.onResumeGame = function () {
+        InfiniteHeights_GameView_1.default.instance.startTimeResume();
+        this.node.destroy();
+    };
+    Pause.prototype.onHome = function () {
+        InfiniteHeights_GameView_1.default.instance.gameDestroy();
+        this.node.destroy();
+    };
+    Pause.prototype.onReset = function () {
+        InfiniteHeights_GameView_1.default.instance.resetGame();
+        this.node.destroy();
+    };
+    Pause = __decorate([
         ccclass
-    ], NewClass);
-    return NewClass;
+    ], Pause);
+    return Pause;
 }(cc.Component));
-exports.default = NewClass;
+exports.default = Pause;
 
 cc._RF.pop();

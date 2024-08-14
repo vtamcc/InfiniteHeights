@@ -33,6 +33,7 @@ var InfiniteHeights_Global_1 = require("../InfiniteHeights.Global");
 var InfiniteHeights_Ballon_1 = require("./InfiniteHeights.Ballon");
 var InfiniteHeights_GameOver_1 = require("./InfiniteHeights.GameOver");
 var InfiniteHeights_ObstacleManager_1 = require("./InfiniteHeights.ObstacleManager");
+var InfiniteHeights_Pause_1 = require("./InfiniteHeights.Pause");
 var _a = cc._decorator, ccclass = _a.ccclass, property = _a.property;
 var GameView = /** @class */ (function (_super) {
     __extends(GameView, _super);
@@ -51,12 +52,16 @@ var GameView = /** @class */ (function (_super) {
         _this.lbTime = null;
         _this.lbScore = null;
         _this.prfGameOver = null;
+        _this.prfPause = null;
+        _this.hands = null;
+        _this.lbTimeResume = null;
         _this.time = 0;
+        _this.timeResume = 4;
         _this.isFirstTouch = false;
         _this.isGameOver = false;
         _this.ballon = null;
         _this.unLockBallon = false;
-        _this.isScoreAdded = false;
+        _this.isCountDown = false;
         return _this;
     }
     GameView_1 = GameView;
@@ -69,14 +74,31 @@ var GameView = /** @class */ (function (_super) {
         console.log("index ", InfiniteHeights_Global_1.Global.unlockIndexBallon);
         InfiniteHeights_Global_1.Global.currentIndexBallon = JSON.parse(cc.sys.localStorage.getItem('currentIndexBallon')) || 0;
         this.ballon = cc.instantiate(this.prfBallon).getComponent(InfiniteHeights_Ballon_1.default);
-        this.ballon.node.y = -500;
+        this.ballon.node.y = -420;
         this.ballon.setData(InfiniteHeights_Global_1.Global.currentIndexBallon);
         this.nBallon.addChild(this.ballon.node);
         this.genObstacle();
         this.node.on(cc.Node.EventType.TOUCH_START, this.onTouchStart, this);
+        this.handsDestroy();
         this.resetGame();
     };
     GameView.prototype.start = function () {
+    };
+    GameView.prototype.startTimeResume = function () {
+        this.lbTimeResume.node.active = true;
+        this.isCountDown = true;
+        this.schedule(this.updateTimeResume, 1);
+    };
+    GameView.prototype.updateTimeResume = function () {
+        if (this.timeResume > 0) {
+            this.timeResume--;
+            this.lbTimeResume.string = this.timeResume + " ";
+        }
+        else {
+            this.isCountDown = false;
+            this.isGameOver = false;
+            this.lbTimeResume.node.active = false;
+        }
     };
     GameView.prototype.createObstacle = function (node) {
         for (var i = 0; i < 2; i++) {
@@ -102,10 +124,21 @@ var GameView = /** @class */ (function (_super) {
         if (!this.isFirstTouch) {
             this.isFirstTouch = true;
             this.schedule(this.updateTime, 1);
+            this.handsDestroy();
         }
         else {
             this.fall();
         }
+    };
+    GameView.prototype.handsDestroy = function () {
+        var _this = this;
+        if (!this.isFirstTouch)
+            return;
+        this.scheduleOnce(function () {
+            if (!_this.isGameOver) { // Chỉ thực hiện khi game không bị tạm dừng
+                _this.hands.active = false;
+            }
+        }, 3.5);
     };
     GameView.prototype.fall = function () {
         if (this.isGameOver)
@@ -132,7 +165,6 @@ var GameView = /** @class */ (function (_super) {
         lbScore.string = this.time + InfiniteHeights_Global_1.Global.diaMond + ' ';
     };
     GameView.prototype.resetGame = function () {
-        this.isScoreAdded = false;
         InfiniteHeights_Global_1.Global.diaMond = 0;
         InfiniteHeights_Global_1.Global.score = 0;
         this.time = 0;
@@ -140,13 +172,14 @@ var GameView = /** @class */ (function (_super) {
         this.updateLbTime(this.lbTime);
         this.updateLbDiamond(this.lbDiamond);
         this.ballon.node.active = true;
-        this.ballon.node.y = -500;
+        this.ballon.node.y = -420;
         cc.director.getCollisionManager().enabled = true;
         this.isFirstTouch = false;
         this.isGameOver = false;
         this.listBg.forEach(function (value) {
             value.removeAllChildren();
         });
+        this.hands.active = true;
         this.listBg[0].y = 3120;
         this.listBg[1].y = 1840;
         this.listBg[2].y = 560;
@@ -157,10 +190,8 @@ var GameView = /** @class */ (function (_super) {
     };
     GameView.prototype.gameOver = function () {
         var _this = this;
-        if (this.isScoreAdded) {
-            return;
-        }
         this.isGameOver = true;
+        this.hands.active = false;
         var gameOver = cc.instantiate(this.prfGameOver).getComponent(InfiniteHeights_GameOver_1.default).node;
         this.unschedule(this.updateTime);
         cc.tween(this.ballon).stop();
@@ -168,7 +199,6 @@ var GameView = /** @class */ (function (_super) {
         cc.director.getCollisionManager().enabled = false;
         var scores = this.time + InfiniteHeights_Global_1.Global.diaMond;
         this.unLockBallon = false;
-        InfiniteHeights_Global_1.Global.dataScore.push(scores);
         var MAX_SCORES = 10;
         InfiniteHeights_Global_1.Global.dataScore.push(scores);
         InfiniteHeights_Global_1.Global.dataScore.sort(function (a, b) {
@@ -185,11 +215,15 @@ var GameView = /** @class */ (function (_super) {
             cc.sys.localStorage.setItem('unlockIndexBallon', InfiniteHeights_Global_1.Global.unlockIndexBallon);
             console.log("unLockIndex ", InfiniteHeights_Global_1.Global.unlockIndexBallon);
         }
-        this.isScoreAdded = true;
         this.ballon.node.active = false;
         this.scheduleOnce(function () {
             _this.node.addChild(gameOver);
         }, 0.3);
+    };
+    GameView.prototype.pauseGame = function () {
+        this.isGameOver = true;
+        var pauseGame = cc.instantiate(this.prfPause).getComponent(InfiniteHeights_Pause_1.default);
+        this.node.addChild(pauseGame.node);
     };
     GameView.prototype.gameDestroy = function () {
         this.node.destroy();
@@ -236,6 +270,15 @@ var GameView = /** @class */ (function (_super) {
     __decorate([
         property(cc.Prefab)
     ], GameView.prototype, "prfGameOver", void 0);
+    __decorate([
+        property(cc.Prefab)
+    ], GameView.prototype, "prfPause", void 0);
+    __decorate([
+        property(cc.Node)
+    ], GameView.prototype, "hands", void 0);
+    __decorate([
+        property(cc.Label)
+    ], GameView.prototype, "lbTimeResume", void 0);
     GameView = GameView_1 = __decorate([
         ccclass
     ], GameView);

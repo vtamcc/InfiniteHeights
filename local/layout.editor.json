@@ -13,13 +13,13 @@
         "type": "dock-h",
         "children": [
           {
-            "width": 311,
-            "height": 755,
+            "width": 385,
+            "height": 911,
             "type": "dock-v",
             "children": [
               {
-                "width": 311,
-                "height": 319,
+                "width": 385,
+                "height": 385,
                 "type": "panel",
                 "active": 0,
                 "children": [
@@ -27,8 +27,8 @@
                 ]
               },
               {
-                "width": 311,
-                "height": 432.984375,
+                "width": 385,
+                "height": 523,
                 "type": "panel",
                 "active": 0,
                 "children": [
@@ -38,13 +38,13 @@
             ]
           },
           {
-            "width": 845.984375,
-            "height": 755,
+            "width": 1046.984375,
+            "height": 911,
             "type": "dock-v",
             "children": [
               {
-                "width": 845.984375,
-                "height": 468,
+                "width": 1046.984375,
+                "height": 564.984375,
                 "type": "panel",
                 "active": 0,
                 "children": [
@@ -52,8 +52,8 @@
                 ]
               },
               {
-                "width": 845.984375,
-                "height": 284,
+                "width": 1046.984375,
+                "height": 343,
                 "type": "panel",
                 "active": 0,
                 "children": [
@@ -65,8 +65,8 @@
             ]
           },
           {
-            "width": 389,
-            "height": 755,
+            "width": 482,
+            "height": 911,
             "type": "panel",
             "active": 0,
             "children": [
@@ -86,10 +86,7 @@
         "inspector",
         "cocos-services"
       ]
-    },
-    "window-1723605366030": {},
-    " build-worker-worker": {},
-    " compile-worker-worker": {}
+    }
   },
   "panels": {
     "project-settings": {
